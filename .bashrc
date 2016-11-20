@@ -169,3 +169,8 @@ dkc() {
     esac
 }
 export -f dkc
+
+randstring() {
+    python3 -c "import os; import base64; print(base64.b32encode(os.urandom(${1:-32})).decode('utf-8').strip('='))"
+}
+export -f randstring
