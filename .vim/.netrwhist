@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/home/nate/CTFd/CTFd'
+let g:netrw_dirhist_2='/home/nate/NetworkExploitLab/arp_spoof_prototype/openvpn/build'
+let g:netrw_dirhist_3='/home/nate/NetworkExploitLab/arp_spoof_prototype/openvpn/config'
