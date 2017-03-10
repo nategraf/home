@@ -119,4 +119,5 @@ fi
 
 alias dkc="docker-compose"
 alias dk="docker"
+alias g="git "
 alias s="sudo "

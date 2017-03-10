@@ -1,4 +1,4 @@
-" URL: http://vim.wikia.com/wiki/Example_vimrc
+" Url: HTTP://VIM.WIkia.com/wiki/Example_vimrc
 " Authors: http://vim.wikia.com/wiki/Vim_on_Freenode
 " Description: A minimal, but feature rich, example .vimrc. If you are a
 "              newbie, basing your first .vimrc on this file is a good choice.
@@ -178,7 +178,24 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " F3 to enter paste mode
-set pastetoggle=<F3>
+nnoremap <F2> :set invpaste paste?<CR>
+set pastetoggle=<F2>
+set showmode
+
+"------------------------------------------------------------
+" Easymotion
+let g:EasyMotion_do_mapping = 0
+
+" Jump to anywhere you want with minimal keystrokes, with just one key
+" binding.
+nmap t <Plug>(easymotion-overwin-f2)
+
+" Turn on case insensitive feature
+let g:EasyMotion_smartcase = 1
+"
+" JK motions: Line motions
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
 
 "------------------------------------------------------------
 " Plugin
