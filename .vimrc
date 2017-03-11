@@ -165,8 +165,8 @@ map Y y$
 nnoremap <C-_> :nohl<CR>:redraw!<CR>
 
 " Add the ability to insert a single charecter by pressing 's' or 'S'
-:nnoremap s :exec "normal i".nr2char(getchar())."\e"<CR>
-:nnoremap S :exec "normal a".nr2char(getchar())."\e"<CR>
+:nnoremap S :exec "normal i".nr2char(getchar())."\e"<CR>
+:nnoremap s :exec "normal a".nr2char(getchar())."\e"<CR>
 
 " Map // in visual mode to search under selection
 vnoremap // y/<C-R>"<CR>
