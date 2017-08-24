@@ -177,6 +177,10 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" Navigate tabs with J and K (like vimium)
+nnoremap J gT
+nnoremap K gt
+
 " F3 to enter paste mode
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
