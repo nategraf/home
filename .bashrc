@@ -117,9 +117,12 @@ if ! shopt -oq posix; then
   fi
 fi
 
-alias dkc="docker-compose"
-alias dk="docker"
+alias dkc="docker-compose "
+alias dkc-kick="docker-compose up -d --force-recreate "
+alias dk="docker "
 alias g="git "
 alias s="sudo "
-alias py="python"
-alias py3="python3"
+alias py2="python "
+alias py="python3 "
+alias ipy="ipython3 "
+alias ipy2="ipython "
