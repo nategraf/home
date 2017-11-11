@@ -117,6 +117,14 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# Virualenvwrapper
+if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
+  export WORKON_HOME=~/virtenvs
+  export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+  source /usr/local/bin/virtualenvwrapper.sh
+fi;
+
+# More aliases
 alias dkc="docker-compose "
 alias dkc-kick="docker-compose up -d --force-recreate "
 alias dk="docker "

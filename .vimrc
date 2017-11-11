@@ -162,7 +162,7 @@ map Y y$
 
 " Map <C-L> (redraw screen) to also turn off search highlighting until the
 " next search
-nnoremap <C-_> :nohl<CR>:redraw!<CR>
+nnoremap <C-L> :nohl<CR>:redraw!<CR>
 
 " Add the ability to insert a single charecter by pressing 's' or 'S'
 :nnoremap S :exec "normal i".nr2char(getchar())."\e"<CR>
@@ -170,12 +170,6 @@ nnoremap <C-_> :nohl<CR>:redraw!<CR>
 
 " Map // in visual mode to search under selection
 vnoremap // y/<C-R>"<CR>
-
-" Navigate splits with Ctrl-[hjkl]
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
 
 " Navigate tabs with J and K (like vimium)
 nnoremap J gT
