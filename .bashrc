@@ -125,12 +125,35 @@ if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
 fi;
 
 # More aliases
-alias dkc="docker-compose "
-alias dkc-kick="docker-compose up -d --force-recreate "
-alias dk="docker "
+alias dk="sudo docker "
 alias g="git "
-alias s="sudo "
 alias py2="python "
 alias py="python3 "
 alias ipy="ipython3 "
 alias ipy2="ipython "
+
+s(){
+    command sudo "$@"
+}
+export -f s
+
+dkc() {
+    case "$1" in
+        kick)
+            shift
+            command sudo docker-compose up -d --force-recreate "$@"
+            ;;
+        watch)
+            while /bin/true; do
+                shift
+                sudo docker-compose logs -f $@
+                sleep 2
+                clear
+            done
+            ;;
+        *)
+            command sudo docker-compose "$@"
+            ;;
+    esac
+}
+export -f dkc
