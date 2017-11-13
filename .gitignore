@@ -5,3 +5,4 @@
 .vim/.netrwhist
 !.vimrc
 !.bashrc
+!.tmux.conf
