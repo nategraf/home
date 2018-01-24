@@ -141,7 +141,7 @@ dkc() {
     case "$1" in
         kick)
             shift
-            command sudo docker-compose up -d --force-recreate "$@"
+            command sudo docker-compose up -d --force-recreate $@
             ;;
         watch)
             while /bin/true; do
@@ -152,7 +152,7 @@ dkc() {
             done
             ;;
         *)
-            command sudo docker-compose "$@"
+            command sudo docker-compose $@
             ;;
     esac
 }
