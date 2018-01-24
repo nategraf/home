@@ -125,7 +125,6 @@ if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
 fi;
 
 # More aliases
-alias dk="sudo docker "
 alias g="git "
 alias py2="python "
 alias py="python3 "
@@ -136,6 +135,19 @@ s(){
     command sudo "$@"
 }
 export -f s
+
+dk() {
+    case "$1" in
+        purge)
+            shift
+            command sudo docker rm -f $(sudo docker ps -q) "$@"
+            ;;
+        *)
+            command sudo docker "$@"
+            ;;
+    esac
+}
+export -f dk
 
 dkc() {
     case "$1" in
