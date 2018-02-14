@@ -157,3 +157,10 @@ dkc() {
     esac
 }
 export -f dkc
+
+ttime() {
+    (
+        sleep $(bc -l <<< "${1:-5}*60")
+        wall 'TEA TIME!'
+    )&
+}
