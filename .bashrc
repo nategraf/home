@@ -125,7 +125,6 @@ if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
 fi;
 
 # More aliases
-alias dk="sudo docker "
 alias g="git "
 alias py2="python "
 alias py="python3 "
@@ -137,11 +136,24 @@ s(){
 }
 export -f s
 
+dk() {
+    case "$1" in
+        purge)
+            shift
+            command sudo docker rm -f $(sudo docker ps -q) "$@"
+            ;;
+        *)
+            command sudo docker "$@"
+            ;;
+    esac
+}
+export -f dk
+
 dkc() {
     case "$1" in
         kick)
             shift
-            command sudo docker-compose up -d --force-recreate "$@"
+            command sudo docker-compose up -d --force-recreate $@
             ;;
         watch)
             while /bin/true; do
@@ -152,7 +164,7 @@ dkc() {
             done
             ;;
         *)
-            command sudo docker-compose "$@"
+            command sudo docker-compose $@
             ;;
     esac
 }
@@ -164,3 +176,8 @@ ttime() {
         wall 'TEA TIME!'
     )&
 }
+
+randstring() {
+    python3 -c "import os; import base64; print(base64.b32encode(os.urandom(${1:-32})).decode('utf-8').strip('='))"
+}
+export -f randstring
