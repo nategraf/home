@@ -21,6 +21,7 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
-if [ -d "/usr/local/go/bin" ] ; then
-    PATH=$PATH:/usr/local/go/bin
+if [ -d "$HOME/go/bin" ] ; then
+    GOPATH=$HOME/go/bin
+    PATH=$PATH:$GOPATH
 fi

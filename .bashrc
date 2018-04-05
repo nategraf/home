@@ -181,3 +181,10 @@ randstring() {
     python3 -c "import os; import base64; print(base64.b32encode(os.urandom(${1:-32})).decode('utf-8').strip('='))"
 }
 export -f randstring
+
+dkenter() {
+    container=$1
+    shift
+    sudo nsenter -t $(sudo docker inspect "$container" -f '{{ .State.Pid }}') $@
+}
+export -f dkenter
