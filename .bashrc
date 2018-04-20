@@ -140,7 +140,7 @@ dk() {
     case "$1" in
         purge)
             shift
-            command sudo docker rm -f $(sudo docker ps -q) "$@"
+            command sudo docker rm -f $(sudo docker ps -qa) "$@"
             ;;
         *)
             command sudo docker "$@"
