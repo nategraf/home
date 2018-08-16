@@ -124,6 +124,10 @@ if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
   source /usr/local/bin/virtualenvwrapper.sh
 fi;
 
+if [ -d /usr/local/cuda/extras/CUPTI/lib64 ]; then
+  export LD_LIBRARY_PATH=${LD_LIBRARY_PATH:+${LD_LIBRARY_PATH}:}/usr/local/cuda/extras/CUPTI/lib64
+fi;
+
 # More aliases
 alias g="git "
 alias py2="python "
