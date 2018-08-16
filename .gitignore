@@ -1,5 +1,6 @@
 *
 !.gitignore
+!.gitmodules
 !.vim
 !.vim/**
 .vim/.netrwhist

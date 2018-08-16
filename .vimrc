@@ -190,10 +190,13 @@ nmap t <Plug>(easymotion-overwin-f2)
 
 " Turn on case insensitive feature
 let g:EasyMotion_smartcase = 1
-"
+
 " JK motions: Line motions
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
+
+" Turn on async ctag updates
+let g:easytags_async = 1
 
 "------------------------------------------------------------
 " Plugin
