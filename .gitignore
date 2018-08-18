@@ -1,10 +1,26 @@
+# Ignore everything
 *
+
+# Include git repo information
 !.gitignore
 !.gitmodules
+
+# Include vim profile
 !.vim
 !.vim/**
 .vim/.netrwhist
 !.vimrc
+
+# Include bash profile
 !.bashrc
-!.tmux.conf
 !.profile
+
+# Include tmux profile
+!.tmux.conf
+
+# Include IPython profile
+!.ipython/
+.ipython/*
+!.ipython/profile_default/
+.ipython/profile_default/*
+!.ipython/profile_default/ipython_config.py
