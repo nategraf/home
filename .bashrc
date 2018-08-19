@@ -192,3 +192,7 @@ dkenter() {
     sudo nsenter -t $(sudo docker inspect "$container" -f '{{ .State.Pid }}') $@
 }
 export -f dkenter
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/nate/.sdkman"
+[[ -s "/home/nate/.sdkman/bin/sdkman-init.sh" ]] && source "/home/nate/.sdkman/bin/sdkman-init.sh"

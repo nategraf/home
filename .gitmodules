@@ -17,3 +17,7 @@
 [submodule "vim-misc"]
     path = .vim/bundle/vim-misc
     url = https://github.com/xolox/vim-misc.git
+
+[submodule "kotlin-vim"]
+    path = .vim/bundle/kotlin-vim
+    url = https://github.com/udalov/kotlin-vim.git
