@@ -196,3 +196,10 @@ export -f dkenter
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/nate/.sdkman"
 [[ -s "/home/nate/.sdkman/bin/sdkman-init.sh" ]] && source "/home/nate/.sdkman/bin/sdkman-init.sh"
+
+# If tmux is installed attach atomatically and exit bash when it quits
+if command -v tmux>/dev/null; then
+    if [[ ! $TERM =~ screen ]] && [ -z $TMUX ]; then
+        tmux attach -t default || tmux new-session -s default && exit;
+    fi
+fi
