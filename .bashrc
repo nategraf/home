@@ -200,6 +200,6 @@ export SDKMAN_DIR="/home/nate/.sdkman"
 # If tmux is installed attach atomatically and exit bash when it quits
 if command -v tmux>/dev/null; then
     if [[ ! $TERM =~ screen ]] && [ -z $TMUX ]; then
-        tmux attach -t "^-^" || tmux new-session -s "^-^" && exit;
+        tmux attach -t "^-^" || tmux new-session -s "^-^"
     fi
 fi
