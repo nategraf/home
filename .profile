@@ -25,3 +25,8 @@ if [ -d "$HOME/go/bin" ] ; then
     GOPATH=$HOME/go/bin
     PATH=$PATH:$GOPATH
 fi
+
+# use the go installation in /usr/local/go/bin, is it exists
+if [ -d "/usr/local/go/bin" ] ; then
+    PATH=$PATH:/usr/local/go/bin
+fi
