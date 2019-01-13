@@ -134,6 +134,7 @@ alias py2="python "
 alias py="python3 "
 alias ipy="ipython3 "
 alias ipy2="ipython "
+alias ovs="ovs-vsctl "
 
 s(){
     command sudo "$@"
