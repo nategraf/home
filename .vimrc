@@ -180,6 +180,32 @@ nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 set showmode
 
+" Bind Leader o to open in new tab
+" NOTE: Intentional trailing space
+nnoremap <Leader>o :tabe 
+
+"------------------------------------------------------------
+" The Silver Searcher (and grep)
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --vimgrep
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+
+  " bind \ (backward slash) to grep shortcut
+   command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+endif
+
+" bind K to grep word under cursor
+nnoremap M :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+
+" bind Leader q to close the quickfix window
+nnoremap <Leader>q :ccl<CR>
+
 "------------------------------------------------------------
 " Easymotion
 let g:EasyMotion_do_mapping = 0
@@ -201,5 +227,5 @@ let g:easytags_async = 1
 "------------------------------------------------------------
 " Plugin
 
-" Turn on pahtogen
+" Turn on pathogen
 execute pathogen#infect()
