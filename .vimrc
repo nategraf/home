@@ -184,6 +184,12 @@ set showmode
 " NOTE: Intentional trailing space
 nnoremap <Leader>o :tabe 
 
+" Bind Leader q save and close the current window
+nnoremap <Leader>q :wq<CR> 
+
+" Bind Leader Q to save and close all windows
+nnoremap <Leader>Q :wqa<CR> 
+
 "------------------------------------------------------------
 " The Silver Searcher (and grep)
 if executable('ag')
@@ -201,10 +207,10 @@ if executable('ag')
 endif
 
 " bind K to grep word under cursor
-nnoremap M :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+nnoremap = :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
-" bind Leader q to close the quickfix window
-nnoremap <Leader>q :ccl<CR>
+" bind Leader c to close the quickfix window
+nnoremap <Leader>c :ccl<CR>
 
 "------------------------------------------------------------
 " Easymotion

@@ -21,3 +21,6 @@
 [submodule "kotlin-vim"]
     path = .vim/bundle/kotlin-vim
     url = https://github.com/udalov/kotlin-vim.git
+[submodule "/home/nate/.vim/bundle/vim-go"]
+	path = /home/nate/.vim/bundle/vim-go
+	url = https://github.com/fatih/vim-go.git
