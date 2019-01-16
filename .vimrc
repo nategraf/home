@@ -147,8 +147,7 @@ set expandtab
 
 " Indentation settings for using hard tabs for indent. Display tabs as
 " four characters wide.
-"set shiftwidth=4
-"set tabstop=4
+set tabstop=4
 
 
 "------------------------------------------------------------
@@ -196,6 +195,12 @@ nnoremap <Leader>q :q<CR>
 " Bind Leader Q close all windows
 nnoremap <Leader>Q :qa<CR>
 
+" Bind Leader b to go build
+nnoremap <Leader>b :GoBuild<CR>
+
+" Bind Leader m to make
+nnoremap <Leader>m :make<CR>
+
 "------------------------------------------------------------
 " The Silver Searcher (and grep)
 if executable('ag')
@@ -235,6 +240,12 @@ map <Leader>k <Plug>(easymotion-k)
 
 " Turn on async ctag updates
 let g:easytags_async = 1
+
+"------------------------------------------------------------
+" vim-go
+" https://github.com/fatih/vim-go/blob/master/doc/vim-go.txt
+
+let g:go_doc_keywordprg_enabled = 0
 
 "------------------------------------------------------------
 " Plugin
