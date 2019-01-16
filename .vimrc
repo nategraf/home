@@ -184,11 +184,17 @@ set showmode
 " NOTE: Intentional trailing space
 nnoremap <Leader>o :tabe 
 
-" Bind Leader q save and close the current window
-nnoremap <Leader>q :wq<CR> 
+" Bind Leader s save
+nnoremap <Leader>s :w<CR>
 
-" Bind Leader Q to save and close all windows
-nnoremap <Leader>Q :wqa<CR> 
+" Bind Leader S save all windows
+nnoremap <Leader>S :wa<CR>
+
+" Bind Leader q close the current window
+nnoremap <Leader>q :q<CR>
+
+" Bind Leader Q close all windows
+nnoremap <Leader>Q :qa<CR>
 
 "------------------------------------------------------------
 " The Silver Searcher (and grep)
