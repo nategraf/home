@@ -194,6 +194,18 @@ dkenter() {
 }
 export -f dkenter
 
+# Kill all but the most recent mosh session.
+mosh-highlander() {
+    zombies=$(ps h -C mosh-server -o pid --sort start_time | head -n -1)
+    if [ -z "$zombies" ]; then
+        echo "There is only one!";
+    else
+        echo "There can only be one!"
+        kill $zombies
+    fi
+}
+export -f mosh-highlander
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/nate/.sdkman"
 [[ -s "/home/nate/.sdkman/bin/sdkman-init.sh" ]] && source "/home/nate/.sdkman/bin/sdkman-init.sh"
