@@ -196,10 +196,10 @@ nnoremap <Leader>q :q<CR>
 nnoremap <Leader>Q :qa<CR>
 
 " Bind Leader b to go build
-nnoremap <Leader>b :GoBuild<CR>
+nnoremap <Leader>b :w<CR>:GoBuild<CR>
 
 " Bind Leader m to make
-nnoremap <Leader>m :make<CR>
+nnoremap <Leader>m :w<CR>:make<CR>
 
 "------------------------------------------------------------
 " The Silver Searcher (and grep)
