@@ -188,11 +188,32 @@ randstring() {
 export -f randstring
 
 dkenter() {
-    container=$1
-    shift
-    sudo nsenter -t $(sudo docker inspect "$container" -f '{{ .State.Pid }}') $@
+    if [ -z "$1" ]; then
+        echo "container name must be specified" && return 1
+    fi
+    sudo nsenter -t $(sudo docker inspect "$1" -f '{{ .State.Pid }}') $@
 }
 export -f dkenter
+
+dkln() {
+    if [ -z "$1" ]; then
+        echo "container name must be specified" && return 1
+    fi
+
+    id=$(sudo docker inspect -f '{{.Id}}' $1)
+    if [ -z "$id" ]; then
+        echo "container $1 not found" && return 1
+    fi
+    shift
+
+    root=$(sudo cat /var/run/docker/runtime-runc/moby/$id/state.json | python3 -c 'import sys, json; sys.stdout.write(json.load(sys.stdin)["config"]["rootfs"])')
+    if [ -z "$root" ]; then
+        echo "failed to identify rootfs for $id" && return 1
+    fi
+
+    sudo ln -s $root $@
+}
+export -f dkln
 
 # Kill all but the most recent mosh session.
 mosh-highlander() {
