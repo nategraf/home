@@ -191,7 +191,9 @@ dkenter() {
     if [ -z "$1" ]; then
         echo "container name must be specified" && return 1
     fi
-    sudo nsenter -t $(sudo docker inspect "$1" -f '{{ .State.Pid }}') $@
+    container=$1
+    shift
+    sudo nsenter -t $(sudo docker inspect "$container" -f '{{ .State.Pid }}') $@
 }
 export -f dkenter
 
