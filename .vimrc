@@ -201,6 +201,27 @@ nnoremap <Leader>b :w<CR>:GoBuild<CR>
 " Bind Leader m to make
 nnoremap <Leader>m :w<CR>:make<CR>
 
+" Bind Leader < to sort a paragraph (imports)
+nnoremap <Leader>< vip:sort<CR>
+
+" Bind Leader > to reverse sort a paragraph (imports)
+nnoremap <Leader>> vip:sort!<CR>
+
+"------------------------------------------------------------
+" Diff leader commands
+
+nnoremap <Leader>dt :diffthis<CR>
+nnoremap <Leader>du :diffupdate<CR>
+nnoremap <Leader>do :diffoff!<CR>
+
+"------------------------------------------------------------
+" Git Fugitive leader commands
+
+nnoremap <Leader>gd :Gdiff<CR>
+nnoremap <Leader>gs :Gstatus<CR>
+nnoremap <Leader>gc :Gcommit<CR>
+nnoremap <Leader>gc :Gpush<CR>
+
 "------------------------------------------------------------
 " The Silver Searcher (and grep)
 if executable('ag')
@@ -246,6 +267,12 @@ let g:easytags_async = 1
 " https://github.com/fatih/vim-go/blob/master/doc/vim-go.txt
 
 let g:go_doc_keywordprg_enabled = 0
+
+"------------------------------------------------------------
+" yapf
+"
+nmap <Leader>y :YAPF<CR>
+vmap <Leader>y :'<,'>YAPF<CR>
 
 "------------------------------------------------------------
 " Plugin
