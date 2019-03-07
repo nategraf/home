@@ -21,12 +21,13 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
-if [ -d "$HOME/go/bin" ] ; then
-    GOPATH=$HOME/go/bin
-    PATH=$PATH:$GOPATH
+if [ -d "$HOME/go" ] ; then
+    GOPATH=$HOME/go
+    PATH=$PATH:$GOPATH/bin
 fi
 
-# use the go installation in /usr/local/go/bin, is it exists
-if [ -d "/usr/local/go/bin" ] ; then
-    PATH=$PATH:/usr/local/go/bin
+# use the go installation in /usr/local/go/bin, if it exists
+if [ -d "/usr/local/go" ] ; then
+    GOROOT=/usr/local/go
+    PATH=$PATH:$GOROOT/bin
 fi
