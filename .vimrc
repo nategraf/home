@@ -207,6 +207,15 @@ nnoremap <Leader>< vip:sort<CR>
 " Bind Leader > to reverse sort a paragraph (imports)
 nnoremap <Leader>> vip:sort!<CR>
 
+" Bind Leader .p to toggle paste mode
+nnoremap <Leader>.p :set paste!<CR>
+
+" Bind Leader .n to toggle line numbers
+nnoremap <Leader>.n :set number!<CR>
+
+" Bind Leader .b to toggle scroll bind
+nnoremap <Leader>.b :set scrollbind!<CR>
+
 "------------------------------------------------------------
 " Diff leader commands
 
