@@ -228,7 +228,7 @@ mosh_highlander() {
         kill $zombies
     fi
 }
-export -f mosh-highlander
+export -f mosh_highlander
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/nate/.sdkman"
