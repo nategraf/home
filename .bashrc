@@ -217,8 +217,9 @@ dkln() {
 }
 export -f dkln
 
+
 # Kill all but the most recent mosh session.
-mosh-highlander() {
+mosh_highlander() {
     zombies=$(ps h -C mosh-server -o pid --sort start_time | head -n -1)
     if [ -z "$zombies" ]; then
         echo "There is only one!";

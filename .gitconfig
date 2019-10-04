@@ -1,0 +1,13 @@
+[user]
+	name = Victor Graf
+	email = victor@celo.org
+
+[alias]
+    st = status
+    ci = commit -V
+    co = checkout
+    br = branch
+    last = log -1 HEAD
+    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+    ls = log --pretty=format:"%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
+    staged = diff --staged

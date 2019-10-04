@@ -4,6 +4,7 @@
 # Include git repo information
 !.gitignore
 !.gitmodules
+!.gitconfig
 
 # Include vim profile
 !.vim
