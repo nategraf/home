@@ -1,10 +1,10 @@
 [user]
-	name = Victor Graf
-	email = victor@celo.org
+	name = Victor Nate Graf
+	email = nategraf1@gmail.com
 
 [alias]
     st = status
-    ci = commit -V
+    ci = commit -v
     co = checkout
     br = branch
     last = log -1 HEAD
