@@ -230,6 +230,15 @@ mosh_highlander() {
 }
 export -f mosh_highlander
 
+# Quickly create an ssh tunnel
+sshtun() {
+    if [ -z "$1" ] || [ -z "$2" ]; then
+        echo "usage (see man ssh -L option): sshtun [bind_address:]port:host:hostport remote" && return 1
+    fi
+    ssh -N -L "$1" "$2"
+}
+export -f sshtun
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/nate/.sdkman"
 [[ -s "/home/nate/.sdkman/bin/sdkman-init.sh" ]] && source "/home/nate/.sdkman/bin/sdkman-init.sh"
