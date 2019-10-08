@@ -96,6 +96,7 @@ alias l='ls -CF'
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+alias bell="echo -ne '\\a'"
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -240,8 +241,11 @@ sshtun() {
 export -f sshtun
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/nate/.sdkman"
-[[ -s "/home/nate/.sdkman/bin/sdkman-init.sh" ]] && source "/home/nate/.sdkman/bin/sdkman-init.sh"
+if [[ -s "/home/nate/.sdkman/bin/sdkman-init.sh" ]]; then
+    export SDKMAN_DIR="/home/nate/.sdkman"
+    source "/home/nate/.sdkman/bin/sdkman-init.sh"
+fi
+
 
 # If tmux is installed attach atomatically and exit bash when it quits
 if command -v tmux>/dev/null; then

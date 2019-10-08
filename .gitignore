@@ -9,6 +9,7 @@
 # Include vim profile
 !.vim
 !.vim/**
+.vim/cache/**
 .vim/.netrwhist
 !.vimrc
 

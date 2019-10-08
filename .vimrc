@@ -183,6 +183,14 @@ set showmode
 " NOTE: Intentional trailing space
 nnoremap <Leader>o :tabe 
 
+" Bind Leader eb to execute the buffer in bash
+nnoremap <Leader>eb :w !bash<CR>
+xnoremap <Leader>eb :w !bash<CR>
+
+" Bind Leader eb to execute the buffer in Python
+nnoremap <Leader>ep :w !python<CR>
+xnoremap <Leader>ep :w !python<CR>
+
 " Bind Leader s save
 nnoremap <Leader>s :w<CR>
 
