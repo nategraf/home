@@ -286,6 +286,15 @@ let g:easytags_async = 1
 let g:go_doc_keywordprg_enabled = 0
 
 "------------------------------------------------------------
+" vim-signiture
+
+" Fix margin background color.
+" https://github.com/kshenoy/vim-signature/issues/116#issuecomment-231510680
+hi SignColumn guibg=NONE
+hi SignColumn ctermbg=NONE
+hi SignatureMarkText ctermbg=NONE
+
+"------------------------------------------------------------
 " yapf
 "
 nmap <Leader>y :YAPF<CR>

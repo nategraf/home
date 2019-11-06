@@ -25,6 +25,11 @@
 [submodule "vim-go"]
 	path = .vim/bundle/vim-go
 	url = https://github.com/fatih/vim-go.git
+
 [submodule ".vim/bundle/vim-bracketed-paste"]
 	path = .vim/bundle/vim-bracketed-paste
 	url = https://github.com/ConradIrwin/vim-bracketed-paste.git
+
+[submodule ".vim/bundle/vim-signiture"]
+	path = .vim/bundle/vim-signiture
+	url = https://github.com/kshenoy/vim-signature.git
