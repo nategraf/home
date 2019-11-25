@@ -149,6 +149,40 @@ set expandtab
 " four characters wide.
 set tabstop=4
 
+"------------------------------------------------------------
+" Line wrapping options
+
+function EnableWrapNavigation()
+  nnoremap <buffer> <Up> gk
+  nnoremap <buffer> <Down> gj
+  inoremap <buffer> <Up> <C-O>gk
+  inoremap <buffer> <Down> <C-O>gj
+  vnoremap <buffer> <Up> gk
+  vnoremap <buffer> <Down> gj
+  noremap <buffer> k gk
+  noremap <buffer> j gj
+  noremap <buffer> 0 g0
+  noremap <buffer> ^ g^
+  noremap <buffer> $ g$
+endfunction
+
+function DisableWrapNavigation()
+  nunmap <buffer> <Up>
+  nunmap <buffer> <Down>
+  iunmap <buffer> <Up>
+  iunmap <buffer> <Down>
+  vunmap <buffer> <Up>
+  vunmap <buffer> <Down>
+  nunmap <buffer> k
+  nunmap <buffer> j
+  nunmap <buffer> 0
+  nunmap <buffer> ^
+  nunmap <buffer> $
+endfunction
+
+" Bind Leader .we and .wd to enable and disable line wrap navigation.
+nnoremap <Leader>.we :call EnableWrapNavigation()<CR>
+nnoremap <Leader>.wd :call DisableWrapNavigation()<CR>
 
 "------------------------------------------------------------
 " Mappings {{{1
@@ -214,6 +248,9 @@ nnoremap <Leader>< vip:sort<CR>
 
 " Bind Leader > to reverse sort a paragraph (imports)
 nnoremap <Leader>> vip:sort!<CR>
+
+"------------------------------------------------------------
+" Leader options
 
 " Bind Leader .p to toggle paste mode
 nnoremap <Leader>.p :set paste!<CR>
