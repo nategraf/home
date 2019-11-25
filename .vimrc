@@ -261,6 +261,10 @@ nnoremap <Leader>.n :set number!<CR>
 " Bind Leader .b to toggle scroll bind
 nnoremap <Leader>.b :set scrollbind!<CR>
 
+" Bing Leader .s to toggle spell-check
+set spelllang=en_us
+nnoremap <Leader>.s :set spell!<CR>
+
 "------------------------------------------------------------
 " Diff leader commands
 
