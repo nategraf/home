@@ -33,3 +33,11 @@
 [submodule ".vim/bundle/vim-signiture"]
 	path = .vim/bundle/vim-signiture
 	url = https://github.com/kshenoy/vim-signature.git
+
+[submodule ".vim/bundle/vim-solidity"]
+	path = .vim/bundle/vim-solidity
+	url = https://github.com/tomlion/vim-solidity.git
+
+[submodule ".vim/bundle/vim-polyglot"]
+	path = .vim/bundle/vim-polyglot
+	url = https://github.com/sheerun/vim-polyglot.git
