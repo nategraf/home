@@ -15,19 +15,3 @@ if [ -n "$BASH_VERSION" ]; then
 	. "$HOME/.bashrc"
     fi
 fi
-
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
-fi
-
-if [ -d "$HOME/go" ] ; then
-    GOPATH=$HOME/go
-    PATH=$PATH:$GOPATH/bin
-fi
-
-# use the go installation in /usr/local/go/bin, if it exists
-if [ -d "/usr/local/go" ] ; then
-    GOROOT=/usr/local/go
-    PATH=$PATH:$GOROOT/bin
-fi

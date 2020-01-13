@@ -52,6 +52,11 @@ set hidden
 
 " Better command-line completion
 set wildmenu
+set wildmode=longest,list
+set wildignore+=*.a,*.o
+set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png
+set wildignore+=.DS_Store,.git,.hg,.svn
+set wildignore+=*~,*.swp,*.swo,*.tmp
 
 " Show partial commands in the last line of the screen
 set showcmd
@@ -140,9 +145,8 @@ set splitright
 " Indentation settings according to personal preference.
 
 " Indentation settings for using 4 spaces instead of tabs.
-" Do not change 'tabstop' from its default value of 8 with this setup.
-set shiftwidth=4
-set softtabstop=4
+set shiftwidth=2
+set softtabstop=2
 set expandtab
 
 " Indentation settings for using hard tabs for indent. Display tabs as
@@ -237,6 +241,12 @@ nnoremap <Leader>q :q<CR>
 " Bind Leader Q close all windows
 nnoremap <Leader>Q :qa<CR>
 
+" Bind Leader z to save and close the current window
+nnoremap <Leader>z :wq<CR>
+"
+" Bind Leader Z to save and close all windows
+nnoremap <Leader>Z :wqa<CR>
+
 " Bind Leader b to go build
 nnoremap <Leader>b :w<CR>:GoBuild<CR>
 
@@ -278,7 +288,9 @@ nnoremap <Leader>do :diffoff!<CR>
 nnoremap <Leader>gd :Gdiff<CR>
 nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gc :Gcommit<CR>
-nnoremap <Leader>gc :Gpush<CR>
+nnoremap <Leader>gp :Gpush<CR>
+nnoremap <Leader>gb :Gbrowse<CR>
+xnoremap <Leader>gb :Gbrowse<CR>
 
 "------------------------------------------------------------
 " The Silver Searcher (and grep)
@@ -296,11 +308,14 @@ if executable('ag')
    command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 endif
 
-" bind K to grep word under cursor
-nnoremap = :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+" bind = to grep word under cursor
+nnoremap = :copen<CR><C-W><C-W>:Ag '\b<C-R><C-W>\b'
 
-" bind Leader c to close the quickfix window
-nnoremap <Leader>c :ccl<CR>
+" bind Leader cc to close the quickfix window
+nnoremap <Leader>cc :cclose<CR>
+
+" bind Leader co to open the quickfix window
+nnoremap <Leader>co :copen<CR>
 
 "------------------------------------------------------------
 " Easymotion
@@ -336,10 +351,13 @@ hi SignColumn ctermbg=NONE
 hi SignatureMarkText ctermbg=NONE
 
 "------------------------------------------------------------
-" yapf
-"
-nmap <Leader>y :YAPF<CR>
-vmap <Leader>y :'<,'>YAPF<CR>
+" ctrlp (github.com/ctrlpvim/ctrlp.vim)
+
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+
+" Always use cwd as the starting point for search.
+let g:ctrlp_working_path_mode = ''
 
 "------------------------------------------------------------
 " Plugin

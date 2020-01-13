@@ -1,5 +1,8 @@
+[core]
+    excludesfile = "~/.gitignore.global"
+
 [user]
-	name = Victor Nate Graf
+	name = Victor Graf
 	email = nategraf1@gmail.com
 
 [alias]

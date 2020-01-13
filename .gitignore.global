@@ -1,0 +1,2 @@
+# Ignore git mergetool .orig files
+*.orig

@@ -3,18 +3,22 @@
 
 # Include git repo information
 !.gitignore
+!.gitignore.global
 !.gitmodules
 !.gitconfig
+!.git-completion.bash
 
 # Include vim profile
 !.vim
 !.vim/**
+.vim/spell/**
 .vim/cache/**
 .vim/.netrwhist
 !.vimrc
 
 # Include bash profile
 !.bashrc
+!.bash_aliases
 !.profile
 !.inputrc
 
