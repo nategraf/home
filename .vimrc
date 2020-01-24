@@ -286,30 +286,35 @@ nnoremap <Leader>do :diffoff!<CR>
 " Git Fugitive leader commands
 
 nnoremap <Leader>gd :Gdiff<CR>
+nnoremap <Leader>gD :Gdiff master<CR>
 nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gc :Gcommit<CR>
 nnoremap <Leader>gp :Gpush<CR>
 nnoremap <Leader>gb :Gbrowse<CR>
 xnoremap <Leader>gb :Gbrowse<CR>
+nnoremap <Leader>gr :Greview<CR>
+nnoremap <Leader>gR :Greview master<CR>
+
+" Add the commit and branch information to the status line
+set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
+
+" Create a quickfix window with the files that have changed in a diff.
+command -nargs=? -bar Greview call setqflist(map(systemlist("git diff --pretty='' --name-only <args>"), '{"filename": v:val, "lnum": 1}'))|cwindow|redraw!
 
 "------------------------------------------------------------
-" The Silver Searcher (and grep)
+" The Silver Searcher (and grep) and Ack.vim
+
 if executable('ag')
   " Use ag over grep
   set grepprg=ag\ --vimgrep
+  let g:ackprg = 'ag --vimgrep'
 
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-
-  " bind \ (backward slash) to grep shortcut
-   command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 endif
 
 " bind = to grep word under cursor
-nnoremap = :copen<CR><C-W><C-W>:Ag '\b<C-R><C-W>\b'
+nnoremap = :copen<CR><C-W><C-W>:Ack! '\b<C-R><C-W>\b'
 
 " bind Leader cc to close the quickfix window
 nnoremap <Leader>cc :cclose<CR>
@@ -319,6 +324,7 @@ nnoremap <Leader>co :copen<CR>
 
 "------------------------------------------------------------
 " Easymotion
+
 let g:EasyMotion_do_mapping = 0
 
 " Jump to anywhere you want with minimal keystrokes, with just one key
@@ -358,6 +364,15 @@ let g:ctrlp_cmd = 'CtrlP'
 
 " Always use cwd as the starting point for search.
 let g:ctrlp_working_path_mode = ''
+
+" Add ctrl+enter as a mapping to open a selection in a new tab.
+let g:ctrlp_prompt_mappings = { 'AcceptSelection("t")': ['<c-t>', '<space>'] }
+
+"------------------------------------------------------------
+" bookmarks (github.com/MattesGroeger/vim-bookmarks)
+
+let g:bookmark_save_per_working_dir = 1
+let g:bookmark_auto_save = 1
 
 "------------------------------------------------------------
 " Plugin
