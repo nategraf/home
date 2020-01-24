@@ -30,22 +30,26 @@
 	path = .vim/bundle/vim-bracketed-paste
 	url = https://github.com/ConradIrwin/vim-bracketed-paste.git
 
-[submodule ".vim/bundle/vim-signiture"]
-	path = .vim/bundle/vim-signiture
-	url = https://github.com/kshenoy/vim-signature.git
-
 [submodule ".vim/bundle/vim-solidity"]
 	path = .vim/bundle/vim-solidity
 	url = https://github.com/tomlion/vim-solidity.git
+
 [submodule ".vim/bundle/vim-polyglot"]
 	path = .vim/bundle/vim-polyglot
 	url = https://github.com/sheerun/vim-polyglot.git
+
 [submodule "/Users/victor/.vim/bundle/vim-rhubarb"]
 	path = /Users/victor/.vim/bundle/vim-rhubarb
 	url = https://github.com/tpope/vim-rhubarb.git
+
 [submodule ".vim/bundle/ctrlp"]
 	path = .vim/bundle/ctrlp
 	url = https://github.com/ctrlpvim/ctrlp.vim
+
 [submodule "/Users/victor/.vim/bundle/vim-bookmarks"]
 	path = /Users/victor/.vim/bundle/vim-bookmarks
 	url = https://github.com/MattesGroeger/vim-bookmarks.git
+
+[submodule "/Users/victor/.vim/bundle/ack.vim"]
+	path = /Users/victor/.vim/bundle/ack.vim
+	url = https://github.com/mileszs/ack.vim
