@@ -38,18 +38,18 @@
 	path = .vim/bundle/vim-polyglot
 	url = https://github.com/sheerun/vim-polyglot.git
 
-[submodule "/Users/victor/.vim/bundle/vim-rhubarb"]
-	path = /Users/victor/.vim/bundle/vim-rhubarb
+[submodule ".vim/bundle/vim-rhubarb"]
+	path = .vim/bundle/vim-rhubarb
 	url = https://github.com/tpope/vim-rhubarb.git
 
 [submodule ".vim/bundle/ctrlp"]
 	path = .vim/bundle/ctrlp
 	url = https://github.com/ctrlpvim/ctrlp.vim
 
-[submodule "/Users/victor/.vim/bundle/vim-bookmarks"]
-	path = /Users/victor/.vim/bundle/vim-bookmarks
+[submodule ".vim/bundle/vim-bookmarks"]
+	path = .vim/bundle/vim-bookmarks
 	url = https://github.com/MattesGroeger/vim-bookmarks.git
 
-[submodule "/Users/victor/.vim/bundle/ack.vim"]
-	path = /Users/victor/.vim/bundle/ack.vim
+[submodule ".vim/bundle/ack.vim"]
+	path = .vim/bundle/ack.vim
 	url = https://github.com/mileszs/ack.vim
