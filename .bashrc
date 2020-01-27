@@ -113,11 +113,12 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
 
 # Setup jenv for Java version management.
-export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
+if [ -n "$(which jenv)" ]; then
+  export PATH="$HOME/.jenv/bin:$PATH"
+  eval "$(jenv init -)"
+fi
 
 # Add Android home env variables to make Android development work properly.
-
 export ANDROID_HOME=/usr/local/share/android-sdk
 export ANDROID_NDK=/usr/local/share/android-ndk
 
