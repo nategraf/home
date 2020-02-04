@@ -141,17 +141,21 @@ sshtun() {
 export -f sshtun
 
 # Add some modifications to Node.js REPL
-nod() {
+nodex() {
     if [ $(command -v rlwrap) ]; then
         NODE_NO_READLINE=1 rlwrap node --experimental-repl-await
     else
         node --experimental-repl-await
     fi
 }
-export -f nod
+export -f nodex
 
 cdtmp() {
   cd $(mktemp -d)
 }
 export -f cdtmp
 
+math() {
+  echo $* | bc
+}
+export -f math
