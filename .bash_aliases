@@ -120,7 +120,7 @@ export -f dkln
 
 
 # Kill all but the most recent mosh session.
-mosh_highlander() {
+mosh-highlander() {
     zombies=$(ps h -C mosh-server -o pid --sort start_time | head -n -1)
     if [ -z "$zombies" ]; then
         echo "There is only one!";
@@ -129,16 +129,16 @@ mosh_highlander() {
         kill $zombies
     fi
 }
-export -f mosh_highlander
+export -f mosh-highlander
 
 # Quickly create an ssh tunnel
-sshtun() {
+ssh-tunnel() {
     if [ -z "$1" ] || [ -z "$2" ]; then
         echo "usage (see man ssh -L option): sshtun [bind_address:]port:host:hostport remote" && return 1
     fi
     ssh -N -L "$1" "$2"
 }
-export -f sshtun
+export -f ssh-tunnel
 
 # Add some modifications to Node.js REPL
 nod() {
