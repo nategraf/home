@@ -88,11 +88,13 @@ if ! shopt -oq posix; then
 fi
 
 # Virualenvwrapper
-if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
-  export WORKON_HOME=~/virtenvs
-  export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-  source /usr/local/bin/virtualenvwrapper.sh
-fi;
+for VENV_PATH in /usr/local/bin/virtualenvwrapper.sh $HOME/.local/bin/virtualenvwrapper.sh; do
+  if [ -f "$VENV_PATH" ]; then
+    export WORKON_HOME=$HOME/virtenvs
+    export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+    source $VENV_PATH
+  fi;
+done
 
 if [ -d /usr/local/cuda/extras/CUPTI/lib64 ]; then
   export LD_LIBRARY_PATH=${LD_LIBRARY_PATH:+${LD_LIBRARY_PATH}:}/usr/local/cuda/extras/CUPTI/lib64
@@ -103,8 +105,8 @@ fi;
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+if [ -f $HOME/.bash_aliases ]; then
+    . $HOME/.bash_aliases
 fi
 
 # Setup NVM for managing node versions.
@@ -125,6 +127,10 @@ export ANDROID_NDK=/usr/local/share/android-ndk
 # Set PATH so it includes user's private bin if it exists.
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
+fi
+
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
 fi
 
 if [ -d "$HOME/go" ] ; then
