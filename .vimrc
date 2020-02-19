@@ -191,6 +191,10 @@ nnoremap <Leader>.wd :call DisableWrapNavigation()<CR>
 " Bind Leader .ww to toggle line wrapping.
 nnoremap <Leader>.ww :set wrap!<CR>
 
+" Bind ctrl-j and ctrl-k for quicker autocomplete.
+inoremap <C-J> <C-N>
+inoremap <C-K> <C-P>
+
 "------------------------------------------------------------
 " Mappings {{{1
 "
