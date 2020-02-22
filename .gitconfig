@@ -17,7 +17,7 @@
     staged = diff --staged
     push-init = !git push --set-upstream origin $(git branch --show-current)
     scrub = clean -Xdi
-    diff-branch = !git ls --no-merges $(git branch --show-current) ^$1
+    diff-branch = !git log --oneline --decorate --left-right --date=relative HEAD...$1
 
 [merge]
     tool = vimdiff

@@ -33,14 +33,20 @@ s(){
 }
 export -f s
 
+# Use sudo on linux, but not on Mac
+case "$(uname -s)" in
+    Darwin*)    DOCKER_CMD_PREFIX="";;
+    *)          DOCKER_CMD_PREFIX="sudo"
+esac
+
 dk() {
     case "$1" in
         purge)
             shift
-            command sudo docker rm -f $(sudo docker ps -qa) "$@"
+            command $DOCKER_CMD_PREFIX docker rm -f $(sudo docker ps -qa) "$@"
             ;;
         *)
-            command sudo docker "$@"
+            command $DOCKER_CMD_PREFIX docker "$@"
             ;;
     esac
 }
@@ -50,18 +56,18 @@ dkc() {
     case "$1" in
         kick)
             shift
-            command sudo docker-compose up -d --force-recreate $@
+            command $DOCKER_CMD_PREFIX docker-compose up -d --force-recreate $@
             ;;
         watch)
             while /bin/true; do
                 shift
-                sudo docker-compose logs -f $@
+                $DOCKER_CMD_PREFIX docker-compose logs -f $@
                 sleep 2
                 clear
             done
             ;;
         *)
-            command sudo docker-compose $@
+            command $DOCKER_CMD_PREFIX docker-compose $@
             ;;
     esac
 }
@@ -141,17 +147,21 @@ ssh-tunnel() {
 export -f ssh-tunnel
 
 # Add some modifications to Node.js REPL
-nod() {
+nodex() {
     if [ $(command -v rlwrap) ]; then
         NODE_NO_READLINE=1 rlwrap node --experimental-repl-await
     else
         node --experimental-repl-await
     fi
 }
-export -f nod
+export -f nodex
 
 cdtmp() {
   cd $(mktemp -d)
 }
 export -f cdtmp
 
+math() {
+  echo $* | bc
+}
+export -f math

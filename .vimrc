@@ -188,6 +188,13 @@ endfunction
 nnoremap <Leader>.we :call EnableWrapNavigation()<CR>
 nnoremap <Leader>.wd :call DisableWrapNavigation()<CR>
 
+" Bind Leader .ww to toggle line wrapping.
+nnoremap <Leader>.ww :set wrap!<CR>
+
+" Bind ctrl-j and ctrl-k for quicker autocomplete.
+inoremap <C-J> <C-N>
+inoremap <C-K> <C-P>
+
 "------------------------------------------------------------
 " Mappings {{{1
 "
@@ -247,9 +254,6 @@ nnoremap <Leader>z :wq<CR>
 " Bind Leader Z to save and close all windows
 nnoremap <Leader>Z :wqa<CR>
 
-" Bind Leader b to go build
-nnoremap <Leader>b :w<CR>:GoBuild<CR>
-
 " Bind Leader m to make
 nnoremap <Leader>m :w<CR>:make<CR>
 
@@ -273,9 +277,12 @@ nnoremap <Leader>.n :set number!<CR>
 " Bind Leader .b to toggle scroll bind
 nnoremap <Leader>.b :set scrollbind!<CR>
 
-" Bing Leader .s to toggle spell-check
+" Bind Leader .s to toggle spell-check
 set spelllang=en_us
 nnoremap <Leader>.s :set spell!<CR>
+
+" Bind Leader .x to toggle syntax highlighting
+nnoremap <Leader>.x :if exists("g:syntax_on") <BAR> syntax off <BAR> else <BAR> syntax enable <BAR> endif<CR>
 
 "------------------------------------------------------------
 " Diff leader commands
@@ -287,21 +294,22 @@ nnoremap <Leader>do :diffoff!<CR>
 "------------------------------------------------------------
 " Git Fugitive leader commands
 
-nnoremap <Leader>gd :Gdiff<CR>
-nnoremap <Leader>gD :Gdiff master<CR>
-nnoremap <Leader>gs :Gstatus<CR>
-nnoremap <Leader>gc :Gcommit<CR>
-nnoremap <Leader>gp :Gpush<CR>
-nnoremap <Leader>gb :Gbrowse<CR>
-xnoremap <Leader>gb :Gbrowse<CR>
-nnoremap <Leader>gr :Greview<CR>
-nnoremap <Leader>gR :Greview master<CR>
-
 " Add the commit and branch information to the status line
 set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
 
 " Create a quickfix window with the files that have changed in a diff.
 command -nargs=? -bar Greview call setqflist(map(systemlist("git diff --pretty='' --name-only <args>"), '{"filename": v:val, "lnum": 1}'))|cwindow|redraw!
+
+nnoremap <Leader>gd :Gdiff<CR>
+nnoremap <Leader>gD :Gdiff master<CR>
+nnoremap <Leader>gs :Gstatus<CR>
+nnoremap <Leader>gc :Gcommit<CR>
+nnoremap <Leader>gp :Gpush<CR>
+nnoremap <Leader>gB :Gblame<CR>
+nnoremap <Leader>gb :Gbrowse<CR>
+xnoremap <Leader>gb :Gbrowse<CR>
+nnoremap <Leader>gr :Greview<CR>
+nnoremap <Leader>gR :Greview master<CR>
 
 "------------------------------------------------------------
 " The Silver Searcher (and grep) and Ack.vim
@@ -317,6 +325,11 @@ endif
 
 " bind = to grep word under cursor
 nnoremap = :copen<CR><C-W><C-W>:Ack! '\b<C-R><C-W>\b'
+
+" bind Leader f to open ack and populate it with selected text if applicable.
+" TODO: Fix and consolidate search bindings.
+nnoremap <Leader>f y:Ack! 
+xnoremap <Leader>f y:Ack! '<C-R>=escape(@",'/\')<CR>'
 
 " bind Leader cc to close the quickfix window
 nnoremap <Leader>cc :cclose<CR>
@@ -363,6 +376,7 @@ hi SignatureMarkText ctermbg=NONE
 
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+nnoremap <C-]> :CtrlPBuffer<CR>
 
 " Always use cwd as the starting point for search.
 let g:ctrlp_working_path_mode = ''

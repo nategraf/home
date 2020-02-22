@@ -1,2 +1,4 @@
 # Ignore git mergetool .orig files
 *.orig
+
+.vim-bookmarks
