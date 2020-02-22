@@ -255,9 +255,11 @@ nnoremap <Leader>m :w<CR>:make<CR>
 
 " Bind Leader < to sort a paragraph (imports)
 nnoremap <Leader>< vip:sort<CR>
+xnoremap <Leader>< :sort<CR>
 
 " Bind Leader > to reverse sort a paragraph (imports)
 nnoremap <Leader>> vip:sort!<CR>
+xnoremap <Leader>> :sort!<CR>
 
 "------------------------------------------------------------
 " Leader options
