@@ -114,6 +114,9 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
 
+# Setup node env variables.
+export NODE_OPTIONS="--experimental-repl-await"
+
 # Setup jenv for Java version management.
 if [ -n "$(which jenv)" ]; then
   export PATH="$HOME/.jenv/bin:$PATH"
