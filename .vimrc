@@ -300,6 +300,7 @@ set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
 " Create a quickfix window with the files that have changed in a diff.
 command -nargs=? -bar Greview call setqflist(map(systemlist("git diff --pretty='' --name-only <args>"), '{"filename": v:val, "lnum": 1}'))|cwindow|redraw!
 
+" Useful bindings for Git and Github operations.
 nnoremap <Leader>gd :Gdiff<CR>
 nnoremap <Leader>gD :Gdiff master<CR>
 nnoremap <Leader>gs :Gstatus<CR>
@@ -310,6 +311,10 @@ nnoremap <Leader>gb :Gbrowse<CR>
 xnoremap <Leader>gb :Gbrowse<CR>
 nnoremap <Leader>gr :Greview<CR>
 nnoremap <Leader>gR :Greview master<CR>
+nnoremap <Leader>gu :w !hub gist create<CR>
+xnoremap <Leader>gu :w !hub gist create<CR>
+nnoremap <Leader>gU :w !hub gist create -o<CR>
+xnoremap <Leader>gU :w !hub gist create -o<CR>
 
 "------------------------------------------------------------
 " The Silver Searcher (and grep) and Ack.vim
