@@ -237,13 +237,20 @@ set showmode
 " NOTE: Intentional trailing space
 nnoremap <Leader>o :tabe 
 
+" Bind Leader ee to execute the current file
+nnoremap <Leader>ee :!./%<CR>
+
 " Bind Leader eb to execute the buffer in bash
 nnoremap <Leader>eb :w !bash<CR>
 xnoremap <Leader>eb :w !bash<CR>
 
-" Bind Leader eb to execute the buffer in Python
+" Bind Leader ep to execute the buffer in Python
 nnoremap <Leader>ep :w !python<CR>
 xnoremap <Leader>ep :w !python<CR>
+"
+" Bind Leader en to execute the buffer in Node
+nnoremap <Leader>en :w !node<CR>
+xnoremap <Leader>en :w !node<CR>
 
 " Bind Leader s save
 nnoremap <Leader>s :w<CR>
@@ -349,16 +356,18 @@ set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
 command -nargs=? -bar Greview call setqflist(map(systemlist("git diff --pretty='' --name-only <args>"), '{"filename": v:val, "lnum": 1}'))|cwindow|redraw!
 
 " Useful bindings for Git and Github operations.
-nnoremap <Leader>gd :Gdiff<CR>
-nnoremap <Leader>gD :Gdiff master<CR>
+" Set the diffbase variable with soemthing like `let g:diffbase = deadbeef`
+let g:diffbase = "HEAD"
+nnoremap <Leader>gd :Gdiff origin/master...<CR>
+nnoremap <Leader>gD :exec "Gdiff" g:diffbase<CR>
 nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gc :Gcommit<CR>
 nnoremap <Leader>gp :Gpush<CR>
-nnoremap <Leader>gB :Gblame<CR>
-nnoremap <Leader>gb :Gbrowse<CR>
-xnoremap <Leader>gb :Gbrowse<CR>
-nnoremap <Leader>gr :Greview<CR>
-nnoremap <Leader>gR :Greview master<CR>
+nnoremap <Leader>gB :Gblame!<CR>
+nnoremap <Leader>gb :Gbrowse!<CR>
+xnoremap <Leader>gb :Gbrowse!<CR>
+nnoremap <Leader>gr :Greview origin/master...<CR>
+nnoremap <Leader>gR :exec "Greview" g:diffbase<CR>
 nnoremap <Leader>gu :w !hub gist create<CR>
 xnoremap <Leader>gu :w !hub gist create<CR>
 nnoremap <Leader>gU :w !hub gist create -o<CR>
@@ -389,6 +398,9 @@ nnoremap <Leader>cc :cclose<CR>
 
 " bind Leader co to open the quickfix window
 nnoremap <Leader>co :copen<CR>
+
+" bind space in quickfix window to open in new tab
+let g:ack_mappings = { "<space>": "<C-W><CR><C-W>T" }
 
 "------------------------------------------------------------
 " Easymotion

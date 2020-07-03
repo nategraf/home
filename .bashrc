@@ -109,6 +109,9 @@ if [ -f $HOME/.bash_aliases ]; then
     . $HOME/.bash_aliases
 fi
 
+# Disable the "deprecation" notice for bash on MacOS Catalina.
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
 # Setup NVM for managing node versions.
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
@@ -117,15 +120,25 @@ export NVM_DIR="$HOME/.nvm"
 # Setup node env variables.
 export NODE_OPTIONS="--experimental-repl-await"
 
+# Add Android home env variables to make Android development work properly.
+export ANDROID_HOME=/usr/local/share/android-sdk
+export ANDROID_NDK=/usr/local/share/android-ndk
+export ANDROID_SDK_ROOT=/usr/local/share/android-sdk
+# this is an optional gradle configuration that should make builds faster
+export GRADLE_OPTS='-Dorg.gradle.daemon=true -Dorg.gradle.parallel=true -Dorg.gradle.jvmargs="-Xmx4096m -XX:+HeapDumpOnOutOfMemoryError"'
+# Add the emulator and Android tools to path
+export PATH=$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$PATH
+
+if [ "$(uname -s)" = Darwin ]; then
+  # On Mac, add Apple's WiFi utilities to PATH.
+  export PATH=/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/:$PATH
+fi
+
 # Setup jenv for Java version management.
 if [ -n "$(which jenv)" ]; then
   export PATH="$HOME/.jenv/bin:$PATH"
   eval "$(jenv init -)"
 fi
-
-# Add Android home env variables to make Android development work properly.
-export ANDROID_HOME=/usr/local/share/android-sdk
-export ANDROID_NDK=/usr/local/share/android-ndk
 
 # Set PATH so it includes user's private bin if it exists.
 if [ -d "$HOME/bin" ] ; then

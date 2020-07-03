@@ -73,27 +73,6 @@ dkc() {
 }
 export -f dkc
 
-bell() {
-    tput bel
-}
-export -f bell
-
-ttime() {
-    sleep $(bc -l <<< "${1:-5}*60")
-    echo 'TEA TIME!' && bell
-}
-export -f ttime
-
-randstring() {
-    python3 -c "import os; import base64; print(base64.b32encode(os.urandom(${1:-32})).decode('utf-8').strip('='))"
-}
-export -f randstring
-
-randhex() {
-    python3 -c "import os; import base64; print(base64.b16encode(os.urandom(${1:-32})).decode('utf-8').lower())"
-}
-export -f randhex
-
 dkenter() {
     if [ -z "$1" ]; then
         echo "container name must be specified" && return 1
@@ -124,6 +103,27 @@ dkln() {
 }
 export -f dkln
 
+bell() {
+    tput bel
+}
+export -f bell
+
+ttime() {
+    sleep $(bc -l <<< "${1:-5}*60")
+    echo 'TEA TIME!' && bell
+}
+export -f ttime
+
+randstring() {
+    python3 -c "import os; import base64; print(base64.b32encode(os.urandom(${1:-32})).decode('utf-8').strip('='))"
+}
+export -f randstring
+
+randhex() {
+    python3 -c "import os; import base64; print(base64.b16encode(os.urandom(${1:-32})).decode('utf-8').lower())"
+}
+export -f randhex
+
 # Add some modifications to Node.js REPL
 nodex() {
     if [ $(command -v rlwrap) ]; then
@@ -140,7 +140,7 @@ cdtmp() {
 export -f cdtmp
 
 math() {
-  echo $* | bc
+  echo "$*" | bc -l
 }
 export -f math
 
