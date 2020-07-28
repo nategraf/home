@@ -342,9 +342,11 @@ nnoremap <Leader>.x :if exists("g:syntax_on") <BAR> syntax off <BAR> else <BAR> 
 "------------------------------------------------------------
 " Diff leader commands
 
-nnoremap <Leader>dt :diffthis<CR>
-nnoremap <Leader>du :diffupdate<CR>
+nnoremap <Leader>dd :windo diffthis<CR>
+nnoremap <Leader>dD :diffthis<CR>
+nnoremap <Leader>du :windo diffupdate<CR>
 nnoremap <Leader>do :diffoff!<CR>
+nnoremap <Leader>dO :diffoff<CR>
 
 "------------------------------------------------------------
 " Git Fugitive leader commands
@@ -386,7 +388,7 @@ if executable('ag')
 endif
 
 " bind = to grep word under cursor
-nnoremap = :copen<CR><C-W><C-W>:Ack! '\b<C-R><C-W>\b'
+nnoremap = yiw:copen<CR>:Ack! '\b<C-R>0\b'
 
 " bind Leader f to open ack and populate it with selected text if applicable.
 " TODO: Fix and consolidate search bindings.
