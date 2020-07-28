@@ -138,6 +138,7 @@ if [ "$(uname -s)" = Darwin ]; then
     . "$ASDF_PATH/asdf.sh"
     . "$ASDF_PATH/etc/bash_completion.d/asdf.bash"
   fi
+  export PATH=$HOME/Library/Python/3.7/bin/:$PATH
 fi
 
 # Add Android home env variables to make Android development work properly.
