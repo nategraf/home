@@ -88,11 +88,12 @@ if ! shopt -oq posix; then
 fi
 
 # Virualenvwrapper
-for VENV_PATH in /usr/local/bin/virtualenvwrapper.sh $HOME/.local/bin/virtualenvwrapper.sh; do
+for VENV_PATH in /usr/local/bin/virtualenvwrapper.sh $HOME/.local/bin/virtualenvwrapper.sh $HOME/Library/Python/3.7/bin/virtualenvwrapper.sh; do
   if [ -f "$VENV_PATH" ]; then
     export WORKON_HOME=$HOME/virtenvs
     export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
     source $VENV_PATH
+    break
   fi;
 done
 
@@ -120,6 +121,12 @@ export NVM_DIR="$HOME/.nvm"
 # Setup node env variables.
 export NODE_OPTIONS="--experimental-repl-await"
 
+if [ "$(uname -s)" = Darwin ]; then
+  # On Mac, add Apple's WiFi utilities to PATH.
+  export PATH=/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/:$PATH
+  export PATH=$HOME/Library/Python/3.7/bin/:$PATH
+fi
+
 # Add Android home env variables to make Android development work properly.
 export ANDROID_HOME=/usr/local/share/android-sdk
 export ANDROID_NDK=/usr/local/share/android-ndk
@@ -128,11 +135,6 @@ export ANDROID_SDK_ROOT=/usr/local/share/android-sdk
 export GRADLE_OPTS='-Dorg.gradle.daemon=true -Dorg.gradle.parallel=true -Dorg.gradle.jvmargs="-Xmx4096m -XX:+HeapDumpOnOutOfMemoryError"'
 # Add the emulator and Android tools to path
 export PATH=$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$PATH
-
-if [ "$(uname -s)" = Darwin ]; then
-  # On Mac, add Apple's WiFi utilities to PATH.
-  export PATH=/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/:$PATH
-fi
 
 # Setup jenv for Java version management.
 if [ -n "$(which jenv)" ]; then
