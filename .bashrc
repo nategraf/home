@@ -88,7 +88,7 @@ if ! shopt -oq posix; then
 fi
 
 # Virualenvwrapper
-for VENV_PATH in /usr/local/bin/virtualenvwrapper.sh $HOME/.local/bin/virtualenvwrapper.sh; do
+for VENV_PATH in /usr/local/bin/virtualenvwrapper.sh $HOME/.local/bin/virtualenvwrapper.sh $HOME/Library/Python/3.7/bin/virtualenvwrapper.sh; do
   if [ -f "$VENV_PATH" ]; then
     export WORKON_HOME=$HOME/virtenvs
     export VIRTUALENVWRAPPER_PYTHON=$(which python3)
@@ -131,6 +131,7 @@ export NODE_OPTIONS="--experimental-repl-await"
 if [ "$(uname -s)" = Darwin ]; then
   # On Mac, add Apple's WiFi utilities to PATH.
   export PATH=/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/:$PATH
+  export PATH=$HOME/Library/Python/3.7/bin/:$PATH
 fi
 
 # Add Android home env variables to make Android development work properly.
