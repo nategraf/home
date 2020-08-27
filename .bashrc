@@ -88,10 +88,10 @@ if ! shopt -oq posix; then
 fi
 
 # Virualenvwrapper
-for VENV_PATH in /usr/local/bin/virtualenvwrapper.sh $HOME/.local/bin/virtualenvwrapper.sh $HOME/Library/Python/3.7/bin/virtualenvwrapper.sh; do
+for VENV_PATH in /usr/local/bin/virtualenvwrapper.sh $HOME/.local/bin/virtualenvwrapper.sh; do
   if [ -f "$VENV_PATH" ]; then
     export WORKON_HOME=$HOME/virtenvs
-    export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+    export VIRTUALENVWRAPPER_PYTHON=$(which python3)
     source $VENV_PATH
     break
   fi;
@@ -113,10 +113,17 @@ fi
 # Disable the "deprecation" notice for bash on MacOS Catalina.
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
-# Setup NVM for managing node versions.
-export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
+# Setup a node version manager for managing node versions.
+# First try to setup n. https://github.com/tj/n
+# As a backup, check is NVM is installed and if so, initialize it.
+if which -s n; then
+  export N_PREFIX=$HOME/.n
+elif [ -d "$HOME/.nvm" ]; then
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
+fi
+
 
 # Setup node env variables.
 export NODE_OPTIONS="--experimental-repl-await"
@@ -124,7 +131,6 @@ export NODE_OPTIONS="--experimental-repl-await"
 if [ "$(uname -s)" = Darwin ]; then
   # On Mac, add Apple's WiFi utilities to PATH.
   export PATH=/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/:$PATH
-  export PATH=$HOME/Library/Python/3.7/bin/:$PATH
 fi
 
 # Add Android home env variables to make Android development work properly.
