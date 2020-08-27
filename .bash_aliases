@@ -109,7 +109,9 @@ bell() {
 export -f bell
 
 ttime() {
-    sleep $(bc -l <<< "${1:-5}*60")
+    WAIT="$(bc -l <<< "${1:-5}*60")"
+    echo "Tea ready in $WAIT seconds"
+    sleep "$WAIT"
     echo 'TEA TIME!' && bell
 }
 export -f ttime
