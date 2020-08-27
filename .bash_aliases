@@ -75,20 +75,20 @@ export -f dkc
 
 dkenter() {
     if [ -z "$1" ]; then
-        echo "container name must be specified" && return 1
+        echo "usage: dkenter <container> [nsenter flags]" && return 1
     fi
     container=$1
     shift
-    sudo nsenter -t $(sudo docker inspect "$container" -f '{{ .State.Pid }}') $@
+    sudo nsenter -t $($DOCKER_CMD_PREFIX docker inspect "$container" -f '{{ .State.Pid }}') $@
 }
 export -f dkenter
 
 dkln() {
     if [ -z "$1" ]; then
-        echo "container name must be specified" && return 1
+        echo "usage: dkln <container> <ln path>" && return 1
     fi
 
-    id=$(sudo docker inspect -f '{{.Id}}' $1)
+    id=$($DOCKER_CMD_PREFIX docker inspect -f '{{.Id}}' $1)
     if [ -z "$id" ]; then
         echo "container $1 not found" && return 1
     fi
