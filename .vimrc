@@ -233,9 +233,8 @@ nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 set showmode
 
-" Bind Leader o to open in new tab
-" NOTE: Intentional trailing space
-nnoremap <Leader>o :tabe 
+" Leader bindings for quick execution
+" -----------------------------------
 
 " Bind Leader ee to execute the current file
 nnoremap <Leader>ee :!./%<CR>
@@ -247,10 +246,18 @@ xnoremap <Leader>eb :w !bash<CR>
 " Bind Leader ep to execute the buffer in Python
 nnoremap <Leader>ep :w !python<CR>
 xnoremap <Leader>ep :w !python<CR>
-"
+
 " Bind Leader en to execute the buffer in Node
 nnoremap <Leader>en :w !node<CR>
 xnoremap <Leader>en :w !node<CR>
+
+" Bind Leader eq to execute the buffer in BigQuery SQL
+nnoremap <Leader>eq :w !bq query<CR>
+xnoremap <Leader>eq :w !bq query<CR>
+
+" Bind Leader o to open in new tab
+" NOTE: Intentional trailing space
+nnoremap <Leader>o :tabe 
 
 " Bind Leader s save
 nnoremap <Leader>s :w<CR>
@@ -456,6 +463,7 @@ let g:ctrlp_prompt_mappings = { 'AcceptSelection("t")': ['<c-t>', '<space>'] }
 
 let g:bookmark_save_per_working_dir = 1
 let g:bookmark_auto_save = 1
+let g:bookmark_disable_ctrlp = 1
 
 "------------------------------------------------------------
 " Plugin
