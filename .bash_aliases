@@ -146,6 +146,21 @@ math() {
 }
 export -f math
 
+# Utility on Linux to add the provided capabilties to a new as ambient, makes them automatically
+# See `man capabilties` for more details.
+# Note: Requires a recent build of capsh (e.g. from git.kernel.org/pub/scm/libs/libcap/libcap.git)
+reqcaps() {
+  if [ -z "$1" ]; then
+      echo "usage: reqcaps <capabilties>" && return 1
+  fi
+  capabilties=$1
+  shift
+
+  # Why isn't there a shorter command for this? ¯\_(ツ)_/¯
+  sudo capsh --caps="${capabilties}+i" -- -c "capsh --user=nate --addamb='${capabilties}' --"
+}
+export -f reqcaps
+
 # Only define the following functions when in Bash.
 # These use non-standard names and I am too stuborn to change them.
 if [ "$0" = "-bash" ]; then
