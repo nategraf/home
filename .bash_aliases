@@ -157,7 +157,7 @@ reqcaps() {
   shift
 
   # Why isn't there a shorter command for this? ¯\_(ツ)_/¯
-  sudo capsh --caps="${capabilties}+i" -- -c "capsh --user=nate --addamb='${capabilties}' --"
+  sudo capsh --caps="${capabilties}+i" -- -c "capsh --user=$USER --addamb='${capabilties}' --"
 }
 export -f reqcaps
 
