@@ -372,7 +372,7 @@ nnoremap <Leader>gD :exec "Gdiff" g:diffbase<CR>
 nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gc :Gcommit<CR>
 nnoremap <Leader>gp :Gpush<CR>
-nnoremap <Leader>gB :Gblame!<CR>
+nnoremap <Leader>gB :Gblame<CR>
 nnoremap <Leader>gb :Gbrowse!<CR>
 xnoremap <Leader>gb :Gbrowse!<CR>
 nnoremap <Leader>gr :Greview origin/master...<CR>
