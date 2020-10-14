@@ -116,7 +116,7 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 # Setup a node version manager for managing node versions.
 # First try to setup n. https://github.com/tj/n
 # As a backup, check is NVM is installed and if so, initialize it.
-if which -s n; then
+if [ -n $(which n) ]; then
   export N_PREFIX=$HOME/.n
 elif [ -d "$HOME/.nvm" ]; then
   export NVM_DIR="$HOME/.nvm"
