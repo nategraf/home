@@ -88,7 +88,7 @@ if ! shopt -oq posix; then
 fi
 
 # Virualenvwrapper
-for VENV_PATH in /usr/local/bin/virtualenvwrapper.sh $HOME/.local/bin/virtualenvwrapper.sh $HOME/Library/Python/3.7/bin/virtualenvwrapper.sh; do
+for VENV_PATH in /usr/local/bin/virtualenvwrapper.sh /usr/share/virtualenvwrapper/virtualenvwrapper.sh $HOME/.local/bin/virtualenvwrapper.sh $HOME/Library/Python/3.7/bin/virtualenvwrapper.sh; do
   if [ -f "$VENV_PATH" ]; then
     export WORKON_HOME=$HOME/virtenvs
     export VIRTUALENVWRAPPER_PYTHON=$(which python3)
