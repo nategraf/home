@@ -207,3 +207,4 @@ if command -v tmux>/dev/null; then
         tmux attach -t "^-^" || tmux new-session -s "^-^"
     fi
 fi
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
