@@ -277,6 +277,9 @@ nnoremap <Leader>z :wq<CR>
 " Bind Leader Z to save and close all windows
 nnoremap <Leader>Z :wqa<CR>
 
+" Bind Leader b to go build
+nnoremap <Leader>b :w<CR>:GoBuild<CR>
+
 " Bind Leader m to make
 nnoremap <Leader>m :w<CR>:make<CR>
 
@@ -289,10 +292,7 @@ nnoremap <Leader>> vip:sort!<CR>
 xnoremap <Leader>> :sort!<CR>
 
 "------------------------------------------------------------
-" Leader options
-
-"------------------------------------------------------------
-" Leader options
+" Line wrapping options
 
 function EnableWrapNavigation()
   nnoremap <buffer> <Up> gk
@@ -328,7 +328,6 @@ nnoremap <Leader>.wd :call DisableWrapNavigation()<CR>
 
 " Bind Leader .ww to toggle line wrapping.
 nnoremap <Leader>.ww :set wrap!<CR>
-
 
 " Bind Leader .p to toggle paste mode
 nnoremap <Leader>.p :set paste!<CR>
@@ -372,7 +371,7 @@ nnoremap <Leader>gD :exec "Gdiff" g:diffbase<CR>
 nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gc :Gcommit<CR>
 nnoremap <Leader>gp :Gpush<CR>
-nnoremap <Leader>gB :Gblame!<CR>
+nnoremap <Leader>gB :Gblame<CR>
 nnoremap <Leader>gb :Gbrowse!<CR>
 xnoremap <Leader>gb :Gbrowse!<CR>
 nnoremap <Leader>gr :Greview origin/master...<CR>
@@ -464,6 +463,12 @@ let g:ctrlp_prompt_mappings = { 'AcceptSelection("t")': ['<c-t>', '<space>'] }
 let g:bookmark_save_per_working_dir = 1
 let g:bookmark_auto_save = 1
 let g:bookmark_disable_ctrlp = 1
+
+"-----------------------------------------------------------
+" vim-polyglot (github.com/sheerun/vim-polyglot)
+
+" Disable vim-polyglots CSV syntax rules.
+let g:polyglot_disabled = ['csv']
 
 "------------------------------------------------------------
 " Plugin

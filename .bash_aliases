@@ -43,7 +43,7 @@ dk() {
     case "$1" in
         purge)
             shift
-            command $DOCKER_CMD_PREFIX docker rm -f $(sudo docker ps -qa) "$@"
+            command $DOCKER_CMD_PREFIX docker rm -f $($DOCKER_CMD_PREFIX docker ps -qa) "$@"
             ;;
         *)
             command $DOCKER_CMD_PREFIX docker "$@"
