@@ -118,6 +118,7 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 # As a backup, check is NVM is installed and if so, initialize it.
 if [ -n $(which n) ]; then
   export N_PREFIX=$HOME/.n
+  export PATH=$N_PREFIX/bin:$PATH
 elif [ -d "$HOME/.nvm" ]; then
   export NVM_DIR="$HOME/.nvm"
   [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
@@ -182,6 +183,11 @@ fi
 # Set up kubectl tab completion.
 if [ -n "$(which kubectl)" ]; then
     . <(kubectl completion bash)
+fi
+
+# If the SSH agent is not running, start it.
+if [ -z "$SSH_AGENT_SOCK" ] && [ -n "$(which ssh-agent)" ]; then
+  . <(ssh-agent) > /dev/null
 fi
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
