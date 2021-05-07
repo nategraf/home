@@ -153,9 +153,16 @@ set expandtab
 " four characters wide.
 set tabstop=4
 
-" Bind ctrl-j and ctrl-k for quicker autocomplete.
+" Set default text width to be 100. Reasonable for more modern languages.
+set textwidth=100
+
+" Bind ctrl-j and ctrl-k for quicker autocomplete in insert mode.
 inoremap <C-J> <C-N>
 inoremap <C-K> <C-P>
+
+" Bind ctrl-j and ctrl-k to scroll in normal mode.
+nmap <C-J> <C-E>
+nmap <C-K> <C-Y>
 
 " Jump to the next or previous line that has the same level or a lower
 " level of indentation than the current line.
@@ -255,9 +262,16 @@ xnoremap <Leader>en :w !node<CR>
 nnoremap <Leader>eq :w !bq query<CR>
 xnoremap <Leader>eq :w !bq query<CR>
 
-" Bind Leader o to open in new tab
+" Bind Leader keys for tab commands
 " NOTE: Intentional trailing space
 nnoremap <Leader>o :tabe 
+nnoremap <Leader>te :tabe 
+nnoremap <Leader>tc :tabc<CR>
+nnoremap <Leader>tq :tabc<CR>
+nnoremap <Leader>tO :tabo<CR>
+nnoremap <Leader>tm :tabm 
+nnoremap <Leader>tj :tabm -1<CR>
+nnoremap <Leader>tk :tabm +1<CR>
 
 " Bind Leader s save
 nnoremap <Leader>s :w<CR>
@@ -367,7 +381,7 @@ command -nargs=? -bar Greview call setqflist(map(systemlist("git diff --pretty='
 " Set the diffbase variable with soemthing like `let g:diffbase = deadbeef`
 let g:diffbase = "HEAD"
 nnoremap <Leader>gd :Gdiff origin/master...<CR>
-nnoremap <Leader>gD :exec "Gdiff" g:diffbase<CR>
+nnoremap <Leader>gD :exec "Gdiff" g:diffbase . "..."<CR>
 nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gc :Gcommit<CR>
 nnoremap <Leader>gp :Gpush<CR>
@@ -375,7 +389,7 @@ nnoremap <Leader>gB :Gblame<CR>
 nnoremap <Leader>gb :Gbrowse!<CR>
 xnoremap <Leader>gb :Gbrowse!<CR>
 nnoremap <Leader>gr :Greview origin/master...<CR>
-nnoremap <Leader>gR :exec "Greview" g:diffbase<CR>
+nnoremap <Leader>gR :exec "Greview" g:diffbase . "..."<CR>
 nnoremap <Leader>gu :w !hub gist create<CR>
 xnoremap <Leader>gu :w !hub gist create<CR>
 nnoremap <Leader>gU :w !hub gist create -o<CR>

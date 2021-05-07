@@ -125,14 +125,19 @@ elif [ -d "$HOME/.nvm" ]; then
   [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
 fi
 
-
 # Setup node env variables.
 export NODE_OPTIONS="--experimental-repl-await"
 
 if [ "$(uname -s)" = Darwin ]; then
   # On Mac, add Apple's WiFi utilities to PATH.
   export PATH=/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/:$PATH
-  export PATH=$HOME/Library/Python/3.7/bin/:$PATH
+
+  # If asdf is installed via homebrew, load it into the environment.
+  ASDF_PATH="$(brew --prefix asdf)"
+  if [ -d "$ASDF_PATH" ]; then
+    . "$ASDF_PATH/asdf.sh"
+    . "$ASDF_PATH/etc/bash_completion.d/asdf.bash"
+  fi
 fi
 
 # Add Android home env variables to make Android development work properly.
