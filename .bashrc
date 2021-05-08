@@ -179,6 +179,9 @@ fi
 # Set up the cargo bin directory for Rust.
 if [ -d "$HOME/.cargo/bin" ]; then
     export PATH="$HOME/.cargo/bin:$PATH"
+    if [ -f "$HOME/.cargo/env" ]; then
+      . "$HOME/.cargo/env"
+    fi
 fi
 
 # Set up git tab completion.
@@ -208,4 +211,3 @@ if command -v tmux>/dev/null; then
         tmux attach -t "^-^" || tmux new-session -s "^-^"
     fi
 fi
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
