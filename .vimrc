@@ -267,6 +267,7 @@ xnoremap <Leader>eq :w !bq query<CR>
 nnoremap <Leader>o :tabe 
 nnoremap <Leader>te :tabe 
 nnoremap <Leader>tc :tabc<CR>
+nnoremap <Leader>td :tabdo 
 nnoremap <Leader>tq :tabc<CR>
 nnoremap <Leader>tO :tabo<CR>
 nnoremap <Leader>tm :tabm 
@@ -378,7 +379,7 @@ set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
 command -nargs=? -bar Greview call setqflist(map(systemlist("git diff --pretty='' --name-only <args>"), '{"filename": v:val, "lnum": 1}'))|cwindow|redraw!
 
 " Useful bindings for Git and Github operations.
-" Set the diffbase variable with soemthing like `let g:diffbase = deadbeef`
+" Set the diffbase variable with soemthing like `let g:diffbase = "deadbeef"`
 let g:diffbase = "HEAD"
 nnoremap <Leader>gd :Gdiff origin/master...<CR>
 nnoremap <Leader>gD :exec "Gdiff" g:diffbase . "..."<CR>
