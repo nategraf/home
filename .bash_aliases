@@ -93,6 +93,9 @@ ttime() {
     echo "Tea ready in $WAIT seconds"
     sleep "$WAIT"
     echo 'TEA TIME!' && bell
+    if [ -n $(which say) ]; then
+        say "tea is ready"
+    fi
 }
 export -f ttime
 
