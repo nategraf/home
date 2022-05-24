@@ -11,6 +11,7 @@
 # Include vim profile
 !.vim
 !.vim/**
+.vim/%*.swp
 .vim/spell/**
 .vim/cache/**
 .vim/.netrwhist
@@ -31,3 +32,6 @@
 !.ipython/profile_default/
 .ipython/profile_default/*
 !.ipython/profile_default/ipython_config.py
+
+# Include alacritty terminal profile
+!.alacritty.yml

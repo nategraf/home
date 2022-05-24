@@ -180,9 +180,10 @@ fi
 # Set up the cargo bin directory for Rust.
 if [ -d "$HOME/.cargo/bin" ]; then
     export PATH="$HOME/.cargo/bin:$PATH"
-    if [ -f "$HOME/.cargo/env" ]; then
-      . "$HOME/.cargo/env"
-    fi
+fi
+
+if [ -f "$HOME/.cargo/env" ]; then
+  . "$HOME/.cargo/env"
 fi
 
 # Set up git tab completion.
