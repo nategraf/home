@@ -211,6 +211,21 @@ onoremap <silent> ]l :call NextIndent(0, 1, 0, 1)<CR>
 onoremap <silent> [L :call NextIndent(1, 0, 1, 1)<CR>
 onoremap <silent> ]L :call NextIndent(1, 1, 1, 1)<CR>
 
+"-----------------------------------------------------------
+" Directory explorer settings
+" 
+" Configure to open directories in a tree view
+"
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
+" augroup ProjectDrawer
+"   autocmd!
+"   autocmd VimEnter * :Vexplore
+" augroup END
+
 "------------------------------------------------------------
 " Mappings {{{1
 "
@@ -376,21 +391,21 @@ nnoremap <Leader>dO :diffoff<CR>
 set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
 
 " Create a quickfix window with the files that have changed in a diff.
-command -nargs=? -bar Greview call setqflist(map(systemlist("git diff --pretty='' --name-only <args>"), '{"filename": v:val, "lnum": 1}'))|cwindow|redraw!
+command -nargs=? -bar GReview call setqflist(map(systemlist("git diff --pretty='' --name-only <args>"), '{"filename": v:val, "lnum": 1}'))|cwindow|redraw!
 
 " Useful bindings for Git and Github operations.
 " Set the diffbase variable with soemthing like `let g:diffbase = "deadbeef"`
 let g:diffbase = "HEAD"
-nnoremap <Leader>gd :Gdiff origin/master...<CR>
+nnoremap <Leader>gd :Gdiff origin/HEAD...<CR>
 nnoremap <Leader>gD :exec "Gdiff" g:diffbase . "..."<CR>
-nnoremap <Leader>gs :Gstatus<CR>
-nnoremap <Leader>gc :Gcommit<CR>
+nnoremap <Leader>gs :GStatus<CR>
+nnoremap <Leader>gc :GCommit<CR>
 nnoremap <Leader>gp :Gpush<CR>
-nnoremap <Leader>gB :Gblame<CR>
-nnoremap <Leader>gb :Gbrowse!<CR>
-xnoremap <Leader>gb :Gbrowse!<CR>
-nnoremap <Leader>gr :Greview origin/master...<CR>
-nnoremap <Leader>gR :exec "Greview" g:diffbase . "..."<CR>
+nnoremap <Leader>gB :Git blame<CR>
+nnoremap <Leader>gb :GBrowse!<CR>
+xnoremap <Leader>gb :GBrowse!<CR>
+nnoremap <Leader>gr :GReview origin/HEAD...<CR>
+nnoremap <Leader>gR :exec "GReview" g:diffbase . "..."<CR>
 nnoremap <Leader>gu :w !hub gist create<CR>
 xnoremap <Leader>gu :w !hub gist create<CR>
 nnoremap <Leader>gU :w !hub gist create -o<CR>
@@ -464,7 +479,9 @@ hi SignatureMarkText ctermbg=NONE
 
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
-nnoremap <C-]> :CtrlPBuffer<CR>
+
+" Disabled because it overrides c-tags go-to-definition.
+"nnoremap <C-]> :CtrlPBuffer<CR>
 
 " Always use cwd as the starting point for search.
 let g:ctrlp_working_path_mode = ''

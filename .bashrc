@@ -166,16 +166,15 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
+# Use the prefered go installation.
 if [ -d "$HOME/go" ] ; then
-    GOPATH=$HOME/go
-    PATH=$PATH:$GOPATH/bin
+    export GOPATH=$HOME/go
+    PATH=$GOPATH/bin:$PATH
+elif [ -d "/usr/local/go" ] ; then
+    export GOPATH=/usr/local/go
+    PATH=$GOPATH/bin:$PATH
 fi
 
-# Use the go installation in /usr/local/go/bin, if it exists.
-if [ -d "/usr/local/go" ] ; then
-    GOROOT=/usr/local/go
-    PATH=$PATH:$GOROOT/bin
-fi
 
 # Set up the cargo bin directory for Rust.
 if [ -d "$HOME/.cargo/bin" ]; then

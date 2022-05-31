@@ -90,9 +90,10 @@ export -f bell
 
 ttime() {
     WAIT="$(bc -l <<< "${1:-5}*60")"
-    echo "Tea ready in $WAIT seconds"
-    sleep "$WAIT"
-    echo 'TEA TIME!' && bell
+    echo "Tea ready in $WAIT seconds" && \
+    sleep "$WAIT" && \
+    echo 'TEA TIME!' && \
+    bell && \
     if [ -n $(which say) ]; then
         say "tea is ready"
     fi
@@ -144,6 +145,11 @@ reqcaps() {
   sudo capsh --caps="${capabilties}+i" -- -c "capsh --user=${calling_user} --addamb='${capabilties}' --"
 }
 export -f reqcaps
+
+# Open stdin in Vim read-only mode. Useful for looking at command outputs.
+vimr() {
+    vim -R - $@
+}
 
 # Only define the following functions when in Bash.
 # These use non-standard names and I am too stuborn to change them.
