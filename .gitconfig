@@ -1,9 +1,9 @@
 [core]
     excludesfile = "~/.gitignore.global"
+    pager = delta
 
-[user]
-	name = Victor Graf
-	email = nategraf1@gmail.com
+[advice]
+    detachedHead = false
 
 [alias]
     st = status
@@ -20,11 +20,22 @@
     diff-branch = !git log --oneline --decorate --left-right --cherry --date=relative $1...HEAD
     current-branch = rev-parse --abbrev-ref HEAD
 
-[merge]
-    tool = vimdiff
+[delta]
+    line-numbers = true
+
+[diff]
+    colorMoved = default
 
 [fetch]
     prune = true
 
-[advice]
-    detachedHead = false
+[interactive]
+    diffFilter = delta --color-only
+
+[merge]
+    tool = vimdiff
+    conflictstyle = diff3
+
+[user]
+	name = Victor Graf
+	email = nategraf1@gmail.com
