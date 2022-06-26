@@ -206,6 +206,13 @@ fi
 # If tmux is installed attach atomatically and exit bash when it quits
 if command -v tmux>/dev/null; then
     if [[ ! $TERM =~ screen ]] && [ -z $TMUX ]; then
+        # If the ssh agent has no keys loaded, load the keys now.
+        # This is done before starting tmux so all windows in the session will get access to the keys.
+        if ssh-add -l | grep -q "The agent has no identities."; then
+          ssh-add
+        fi
+
+        # Now attach to the existing tmux session or start a new one.
         tmux attach -t "^-^" || tmux new-session -s "^-^"
     fi
 fi
