@@ -502,6 +502,15 @@ let g:bookmark_disable_ctrlp = 1
 " Disable vim-polyglots CSV syntax rules.
 let g:polyglot_disabled = ['csv']
 
+"-----------------------------------------------------------
+" Themes
+
+" In diff mode, the default colorscheme can make words hard to read due to low contrast between the
+" diff highlight and the text color. Use a custom theme to make this a little better.
+if &diff
+  colorscheme molokai
+endif
+
 "------------------------------------------------------------
 " Plugin
 
