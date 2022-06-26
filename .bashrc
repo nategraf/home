@@ -131,14 +131,6 @@ export NODE_OPTIONS="--experimental-repl-await"
 if [ "$(uname -s)" = Darwin ]; then
   # On Mac, add Apple's WiFi utilities to PATH.
   export PATH=/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/:$PATH
-
-  # NOTE: Commented out decause asdf is slow.
-  # If asdf is installed via homebrew, load it into the environment.
-  #ASDF_PATH="$(brew --prefix asdf)"
-  #if [ -d "$ASDF_PATH" ]; then
-  #  . "$ASDF_PATH/asdf.sh"
-  #  . "$ASDF_PATH/etc/bash_completion.d/asdf.bash"
-  #fi
   export PATH=$HOME/Library/Python/3.7/bin/:$PATH
 fi
 
@@ -175,6 +167,11 @@ elif [ -d "/usr/local/go" ] ; then
     PATH=$GOPATH/bin:$PATH
 fi
 
+# If asdf is installed, load it into the environment.
+if [ -d "$HOME/.asdf" ]; then
+  . "$HOME/.asdf/asdf.sh"
+  . "$HOME/.asdf/completions/asdf.bash"
+fi
 
 # Set up the cargo bin directory for Rust.
 if [ -d "$HOME/.cargo/bin" ]; then
