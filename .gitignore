@@ -11,7 +11,7 @@
 # Include vim profile
 !.vim
 !.vim/**
-.vim/%*.swp
+.vim/%*.sw*
 .vim/spell/**
 .vim/cache/**
 .vim/.netrwhist

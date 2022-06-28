@@ -192,9 +192,20 @@ if [ -n "$(which kubectl)" ]; then
     . <(kubectl completion bash)
 fi
 
-# If the SSH agent is not running, start it.
-if [ -z "$SSH_AGENT_SOCK" ] && [ -n "$(which ssh-agent)" ]; then
-  . <(ssh-agent) > /dev/null
+# Ensure we have a running SSH agent.
+if [ -n "$(which ssh-agent)" ]; then
+  # First check if a socket path is defined. Note that OSX defines this as the keychain agent.
+  if [ -z "$SSH_AUTH_SOCK" ]; then
+    export SSH_AUTH_SOCK=$HOME/.ssh/auth_sock
+  fi
+
+  # If a previously started SSH agent is using the socket, we are done.
+  if \
+    [ -z "$SSH_AGENT_PID" ] || ! kill -0 "$SSH_AGENT_PID" && \
+    ! fuser "$SSH_AUTH_SOCK" >/dev/null 2>/dev/null; then
+    # A running ssh agent has not been found, so start one now.
+    ssh-agent -a "$SSH_AUTH_SOCK" -s > ~/.ssh/agent-info
+  fi
 fi
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
@@ -206,12 +217,6 @@ fi
 # If tmux is installed attach atomatically and exit bash when it quits
 if command -v tmux>/dev/null; then
     if [[ ! $TERM =~ screen ]] && [ -z $TMUX ]; then
-        # If the ssh agent has no keys loaded, load the keys now.
-        # This is done before starting tmux so all windows in the session will get access to the keys.
-        if ssh-add -l | grep -q "The agent has no identities."; then
-          ssh-add
-        fi
-
         # Now attach to the existing tmux session or start a new one.
         tmux attach -t "^-^" || tmux new-session -s "^-^"
     fi
