@@ -214,7 +214,7 @@ if [ -n "$(which ssh-agent)" ]; then
   fi
 fi
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+# This must be at the end of the file for sdkman to work.
 if [[ -s "/home/nate/.sdkman/bin/sdkman-init.sh" ]]; then
     export SDKMAN_DIR="/home/nate/.sdkman"
     source "/home/nate/.sdkman/bin/sdkman-init.sh"
