@@ -194,17 +194,23 @@ fi
 
 # Ensure we have a running SSH agent.
 if [ -n "$(which ssh-agent)" ]; then
+  # Where this script stores info about the running SSH agent.
+  export SSH_AGENT_INFO=$HOME/.ssh/agent_info
+
+  # If there is an agent info file, load it.
+  if [ -f $SSH_AGENT_INFO ]; then
+    . $SSH_AGENT_INFO > /dev/null
+  fi
+
   # First check if a socket path is defined. Note that OSX defines this as the keychain agent.
   if [ -z "$SSH_AUTH_SOCK" ]; then
     export SSH_AUTH_SOCK=$HOME/.ssh/auth_sock
   fi
 
   # If a previously started SSH agent is using the socket, we are done.
-  if \
-    [ -z "$SSH_AGENT_PID" ] || ! kill -0 "$SSH_AGENT_PID" && \
-    ! fuser "$SSH_AUTH_SOCK" >/dev/null 2>/dev/null; then
+  if [ -z "$SSH_AGENT_PID" ] || ! kill -0 "$SSH_AGENT_PID"; then
     # A running ssh agent has not been found, so start one now.
-    ssh-agent -a "$SSH_AUTH_SOCK" -s > ~/.ssh/agent-info
+    ssh-agent -a "$SSH_AUTH_SOCK" -s > $HOME/.ssh/agent_info
   fi
 fi
 
