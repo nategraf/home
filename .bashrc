@@ -208,7 +208,9 @@ if [ -n "$(which ssh-agent)" ]; then
   fi
 
   # If a previously started SSH agent is using the socket, we are done.
-  if [ -z "$SSH_AGENT_PID" ] || ! kill -0 "$SSH_AGENT_PID"; then
+  if \
+    [ -z "$SSH_AGENT_PID" ] || ! kill -0 "$SSH_AGENT_PID" &&\
+    ! fuser "$SSH_AUTH_SOCK" >/dev/null 2>/dev/null; then
     # A running ssh agent has not been found, so start one now.
     ssh-agent -a "$SSH_AUTH_SOCK" -s > $HOME/.ssh/agent_info
   fi
