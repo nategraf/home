@@ -156,7 +156,7 @@ font:
     #style: Bold Italic
 
   # Point size
-  size: 13
+  size: 11
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
@@ -410,7 +410,7 @@ selection:
   # When set to `true`, selected text will be copied to the primary clipboard.
   save_to_clipboard: true
 
-#cursor:
+cursor:
   # Cursor style
   #style:
     # Cursor shape
@@ -436,7 +436,8 @@ selection:
   # the style of the active value of the normal cursor.
   #
   # See `cursor.style` for available options.
-  #vi_mode_style: None
+  vi_mode_style:
+    shape: Beam
 
   # Cursor blinking interval in milliseconds.
   #blink_interval: 750
@@ -776,6 +777,7 @@ selection:
 # in the order they were defined in.
 key_bindings:
   - { key: W,              mods: Control|Shift,                    action: Quit                  }
+  - { key: N,              mods: Control|Shift,                    action: CreateNewWindow       }
   #- { key: Paste,                                       action: Paste          }
   #- { key: Copy,                                        action: Copy           }
   #- { key: L,         mods: Control,                    action: ClearLogNotice }
