@@ -27,11 +27,23 @@ alias ipy="ipython3 "
 alias ipy2="ipython "
 alias ovs="ovs-vsctl "
 alias kc="kubectl "
+alias netadminsh='sudo setpriv --inh-caps "+net_admin,+net_raw,+net_bind_service" --ambient-caps "+net_admin,+net_raw,+net_bind_service" --reuid $USER --regid $(id -g) --init-groups --reset-env $SHELL'
 
 s(){
     command sudo "$@"
 }
 export -f s
+
+capme() {
+    if [ -z "$1" ]; then
+        echo "usage: capme <capability string>; see man setpriv" && return 1
+    fi
+
+    capstring=$1
+    shift
+
+    sudo setpriv --inh-caps "$capstring" --ambient-caps "$capstring" --reuid $USER --regid $(id -g) --init-groups --reset-env $SHELL
+}
 
 # Use sudo on linux, but not on Mac
 case "$(uname -s)" in

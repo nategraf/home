@@ -213,6 +213,9 @@ if [ -n "$(which ssh-agent)" ]; then
     ! fuser "$SSH_AUTH_SOCK" >/dev/null 2>/dev/null; then
     # A running ssh agent has not been found, so start one now.
     ssh-agent -a "$SSH_AUTH_SOCK" -s > $HOME/.ssh/agent_info
+  else
+    printf "export SSH_AGENT_PID=\"$SSH_AGENT_PID\"\nexport SSH_AUTH_SOCK=\"$SSH_AUTH_SOCK\"\n" \
+      > "$SSH_AGENT_INFO"
   fi
 fi
 
