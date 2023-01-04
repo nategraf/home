@@ -182,6 +182,11 @@ if [ -f "$HOME/.cargo/env" ]; then
   . "$HOME/.cargo/env"
 fi
 
+# On MacOS, If Homebrew is installed to /opt, add it to path.
+if [ -d "/opt/homebrew" ]; then
+  eval $(/opt/homebrew/bin/brew shellenv)
+fi
+
 # Set up git tab completion.
 if [ -f "$HOME/.git-completion.bash" ]; then
     . "$HOME/.git-completion.bash" 
