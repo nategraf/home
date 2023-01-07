@@ -159,18 +159,27 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 # Use the prefered go installation.
-if [ -d "$HOME/go" ] ; then
-    export GOPATH=$HOME/go
-    PATH=$GOPATH/bin:$PATH
-elif [ -d "/usr/local/go" ] ; then
-    export GOPATH=/usr/local/go
-    PATH=$GOPATH/bin:$PATH
+#if [ -d "$HOME/go" ] ; then
+#    export GOROOT=$HOME/go
+#    PATH=$GOROOT/bin:$PATH
+if [ -d "/usr/local/go" ] ; then
+    # Default Go installation location.
+    export GOROOT=/usr/local/go
+    PATH=$GOROOT/bin:$PATH
 fi
 
-# If asdf is installed, load it into the environment.
+## If asdf is installed, load it into the environment.
 if [ -d "$HOME/.asdf" ]; then
   . "$HOME/.asdf/asdf.sh"
   . "$HOME/.asdf/completions/asdf.bash"
+fi
+
+# Load pyenv and pyenv-virtualenv if it is installed.
+if [ -n $(which pyenv) ]; then
+  export PYENV_ROOT="$HOME/.pyenv"
+  command -v pyenv > /dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
 fi
 
 # Set up the cargo bin directory for Rust.
