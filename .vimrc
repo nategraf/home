@@ -376,6 +376,10 @@ nnoremap <Leader>.s :set spell!<CR>
 nnoremap <Leader>.x :if exists("g:syntax_on") <BAR> syntax off <BAR> else <BAR> syntax enable <BAR> endif<CR>
 
 "------------------------------------------------------------
+" Rust options
+let g:rustfmt_autosave = 1
+
+"------------------------------------------------------------
 " Diff leader commands
 
 nnoremap <Leader>dd :windo diffthis<CR>
