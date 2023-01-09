@@ -175,7 +175,7 @@ if [ -d "$HOME/.asdf" ]; then
 fi
 
 # Load pyenv and pyenv-virtualenv if it is installed.
-if [ -n $(which pyenv) ]; then
+if [ -n "$(which pyenv)" ]; then
   export PYENV_ROOT="$HOME/.pyenv"
   command -v pyenv > /dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
   eval "$(pyenv init -)"
