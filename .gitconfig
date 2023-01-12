@@ -20,6 +20,11 @@
     diff-branch = !git log --oneline --decorate --left-right --cherry --date=relative $1...HEAD
     current-branch = rev-parse --abbrev-ref HEAD
 
+[checkout]
+    # When running `git checkout <branch>` do not automatically create a tracking branch for the
+    # remote branch with a matching name.
+    guess = false
+
 [delta]
     line-numbers = true
 
@@ -38,6 +43,7 @@
 [merge]
     tool = vimdiff
     conflictstyle = diff3
+    layout = "(LOCAL,BASE,REMOTE)/MERGED"
 
 [user]
 	name = Victor Graf
