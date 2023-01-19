@@ -42,7 +42,6 @@
 
 [merge]
     tool = vimdiff
-    conflictstyle = diff3
     layout = "(LOCAL,BASE,REMOTE)/MERGED"
 
 [user]
