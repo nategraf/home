@@ -110,9 +110,6 @@ if [ -f $HOME/.bash_aliases ]; then
     . $HOME/.bash_aliases
 fi
 
-# Disable the "deprecation" notice for bash on MacOS Catalina.
-export BASH_SILENCE_DEPRECATION_WARNING=1
-
 # Setup a node version manager for managing node versions.
 # First try to setup n. https://github.com/tj/n
 # As a backup, check is NVM is installed and if so, initialize it.
@@ -191,9 +188,23 @@ if [ -f "$HOME/.cargo/env" ]; then
   . "$HOME/.cargo/env"
 fi
 
+# Disable the "deprecation" notice for bash on MacOS Catalina.
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
 # On MacOS, If Homebrew is installed to /opt, add it to path.
 if [ -d "/opt/homebrew" ]; then
   eval $(/opt/homebrew/bin/brew shellenv)
+fi
+
+if [ -n "$(which brew)" ]; then
+  HOMEBREW_PREFIX="$(brew --prefix)"
+  if [[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]]; then
+    source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
+  else
+    for COMPLETION in "${HOMEBREW_PREFIX}/etc/bash_completion.d/"*; do
+      [[ -r "${COMPLETION}" ]] && source "${COMPLETION}"
+    done
+  fi
 fi
 
 # Set up git tab completion.
