@@ -200,7 +200,7 @@ if [ "$0" = "-bash" ]; then
   # Quickly create an ssh tunnel
   ssh-tunnel() {
       if [ -z "$1" ] || [ -z "$2" ]; then
-          echo "usage (see man ssh -L option): sshtun [bind_address:]port:host:hostport remote" && return 1
+          echo "usage (see man ssh -L option): ssh-tunnel [bind_address:]port:host:hostport remote" && return 1
       fi
       ssh -N -L "$1" "$2"
   }
