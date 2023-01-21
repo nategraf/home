@@ -511,8 +511,13 @@ let g:polyglot_disabled = ['csv']
 
 " In diff mode, the default colorscheme can make words hard to read due to low contrast between the
 " diff highlight and the text color. Use a custom theme to make this a little better.
+" Installed themes:
+" * molokai
+" * jellybeans
 if &diff
-  colorscheme molokai
+  colorscheme jellybeans
+else
+  colorscheme jellybeans
 endif
 
 "------------------------------------------------------------
