@@ -214,6 +214,12 @@ if [ -f "$HOME/.git-completion.bash" ]; then
     . "$HOME/.git-completion.bash" 
 fi
 
+# Set up flyctl for fly.io
+if [ -d "$HOME/.fly" ]; then
+  export FLYCTL_INSTALL="$HOME/.fly"
+  export PATH="$FLYCTL_INSTALL/bin:$PATH"
+fi
+
 # Set up kubectl tab completion.
 if [ -n "$(which kubectl)" ]; then
     . <(kubectl completion bash)
