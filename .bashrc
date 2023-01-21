@@ -132,13 +132,15 @@ if [ "$(uname -s)" = Darwin ]; then
 fi
 
 # Add Android home env variables to make Android development work properly.
-export ANDROID_HOME=/usr/local/share/android-sdk
-export ANDROID_NDK=/usr/local/share/android-ndk
-export ANDROID_SDK_ROOT=/usr/local/share/android-sdk
-# this is an optional gradle configuration that should make builds faster
-export GRADLE_OPTS='-Dorg.gradle.daemon=true -Dorg.gradle.parallel=true -Dorg.gradle.jvmargs="-Xmx4096m -XX:+HeapDumpOnOutOfMemoryError"'
-# Add the emulator and Android tools to path
-export PATH=$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$PATH
+if [ -d "/usr/local/share/android-sdk" ]; then
+  export ANDROID_HOME=/usr/local/share/android-sdk
+  export ANDROID_NDK=/usr/local/share/android-ndk
+  export ANDROID_SDK_ROOT=/usr/local/share/android-sdk
+  # this is an optional gradle configuration that should make builds faster
+  export GRADLE_OPTS='-Dorg.gradle.daemon=true -Dorg.gradle.parallel=true -Dorg.gradle.jvmargs="-Xmx4096m -XX:+HeapDumpOnOutOfMemoryError"'
+  # Add the emulator and Android tools to path
+  export PATH="$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$PATH"
+fi
 
 # Setup jenv for Java version management.
 if [ -n "$(which jenv)" ]; then
