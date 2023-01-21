@@ -47,3 +47,5 @@
 [user]
 	name = Victor Graf
 	email = victor@subgraf.dev
+[credential]
+	helper = cache
