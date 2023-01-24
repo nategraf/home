@@ -382,11 +382,12 @@ let g:rustfmt_autosave = 1
 "------------------------------------------------------------
 " Diff leader commands
 
-nnoremap <Leader>dd :windo diffthis<CR>
-nnoremap <Leader>dD :diffthis<CR>
+" TODO(victor) Make this a toggle with dd (or just d) as diff this for a window and dD for all.
+nnoremap <Leader>dD :windo diffthis<CR>
+nnoremap <Leader>dd :diffthis<CR>
 nnoremap <Leader>du :windo diffupdate<CR>
-nnoremap <Leader>do :diffoff!<CR>
-nnoremap <Leader>dO :diffoff<CR>
+nnoremap <Leader>dO :diffoff!<CR>
+nnoremap <Leader>do :diffoff<CR>
 
 "------------------------------------------------------------
 " Git Fugitive leader commands
@@ -514,6 +515,7 @@ let g:polyglot_disabled = ['csv']
 " Installed themes:
 " * molokai
 " * jellybeans
+
 if &diff
   colorscheme jellybeans
 else
