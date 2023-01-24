@@ -35,3 +35,5 @@
 
 # Include alacritty terminal profile
 !.alacritty.yml
+!.alacritty-colorscheme
+!.alacritty-colorscheme/**

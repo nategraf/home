@@ -57,3 +57,7 @@
 	path = .vim/bundle/rust.vim
 	url = https://github.com/rust-lang/rust.vim.git
 	branch = "master"
+
+[submodule ".alacritty-colorscheme"]
+	path = .alacritty-colorscheme
+	url = git@github.com:alacritty/alacritty-theme.git
