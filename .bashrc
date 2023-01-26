@@ -241,15 +241,21 @@ if [ -n "$(which ssh-agent)" ]; then
   fi
 
   # If a previously started SSH agent is using the socket, we are done.
-  if \
-    [ -z "$SSH_AGENT_PID" ] || ! kill -0 "$SSH_AGENT_PID" &&\
-    ! fuser "$SSH_AUTH_SOCK" >/dev/null 2>/dev/null; then
-    # A running ssh agent has not been found, so start one now.
-    ssh-agent -a "$SSH_AUTH_SOCK" -s > $HOME/.ssh/agent_info
-  else
-    printf "export SSH_AGENT_PID=\"$SSH_AGENT_PID\"\nexport SSH_AUTH_SOCK=\"$SSH_AUTH_SOCK\"\n" \
-      > "$SSH_AGENT_INFO"
-  fi
+  case $SSH_AUTH_SOCK in
+    # If the AUTH_SOCK is in the private Apple directory, we won't be able to test it. Skip.
+    /private/tmp/com.apple.launchd*);;
+
+    # Check that the auth agent is alive, and start it if it is not.
+    *) if \
+        ([ -z "$SSH_AGENT_PID" ] || ! kill -0 "$SSH_AGENT_PID") &&\
+        ! fuser "$SSH_AUTH_SOCK" >/dev/null 2>/dev/null; then
+        # A running ssh agent has not been found, so start one now.
+        ssh-agent -a "$SSH_AUTH_SOCK" -s > $HOME/.ssh/agent_info
+      else
+        printf "export SSH_AGENT_PID=\"$SSH_AGENT_PID\"\nexport SSH_AUTH_SOCK=\"$SSH_AUTH_SOCK\"\n" \
+          > "$SSH_AGENT_INFO"
+      fi;;
+    esac
 fi
 
 # This must be at the end of the file for sdkman to work.
