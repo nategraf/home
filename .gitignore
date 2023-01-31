@@ -37,3 +37,9 @@
 !.alacritty.yml
 !.alacritty-colorscheme
 !.alacritty-colorscheme/**
+
+# Include chosen files in the .config dir.
+!.config
+.config/*
+!.config/git
+!.config/git/**
