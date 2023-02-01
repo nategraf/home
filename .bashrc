@@ -110,18 +110,6 @@ if [ -f $HOME/.bash_aliases ]; then
     . $HOME/.bash_aliases
 fi
 
-# Setup a node version manager for managing node versions.
-# First try to setup n. https://github.com/tj/n
-# As a backup, check is NVM is installed and if so, initialize it.
-if [ -n $(which n) ]; then
-  export N_PREFIX=$HOME/.n
-  export PATH=$N_PREFIX/bin:$PATH
-elif [ -d "$HOME/.nvm" ]; then
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
-fi
-
 # Setup node env variables.
 export NODE_OPTIONS="--experimental-repl-await"
 
