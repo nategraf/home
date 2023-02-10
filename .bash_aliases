@@ -68,18 +68,18 @@ dkc() {
     case "$1" in
         kick)
             shift
-            command $DOCKER_CMD_PREFIX docker-compose up -d --force-recreate $@
+            command $DOCKER_CMD_PREFIX docker compose up -d --force-recreate $@
             ;;
         watch)
             while /bin/true; do
                 shift
-                $DOCKER_CMD_PREFIX docker-compose logs -f $@
+                $DOCKER_CMD_PREFIX docker compose logs -f $@
                 sleep 2
                 clear
             done
             ;;
         *)
-            command $DOCKER_CMD_PREFIX docker-compose $@
+            command $DOCKER_CMD_PREFIX docker compose $@
             ;;
     esac
 }
