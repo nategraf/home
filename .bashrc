@@ -184,6 +184,12 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 # On MacOS, If Homebrew is installed to /opt, add it to path.
 if [ -d "/opt/homebrew" ]; then
   eval $(/opt/homebrew/bin/brew shellenv)
+
+  # If openssh is installed via homebrew, setup PATH to point to it.
+  OPENSSH_PATH="$(brew --prefix openssh)"
+  if [ -d "$OPENSSH_PATH" ]; then
+    export PATH="$OPENSSH_PATH/bin:$PATH"
+  fi
 fi
 
 if [ -n "$(which brew)" ]; then
