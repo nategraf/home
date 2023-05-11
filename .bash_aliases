@@ -15,10 +15,6 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
 # Common utility aliases.
 alias g="git "
 alias py2="python "
@@ -99,6 +95,18 @@ bell() {
     tput bel
 }
 export -f bell
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alert() {
+    title="$([ $? = 0 ] && echo terminal || echo error)"
+    body="$(history|tail -n1|sed -e 's/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//')"
+    if [ "$(uname -s)" = Darwin ]; then
+        osascript -e "display notification \"$body\" with title \"$title\""
+    else
+        notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$body"
+    fi
+}
 
 ttime() {
     WAIT="$(bc -l <<< "${1:-5}*60")"
