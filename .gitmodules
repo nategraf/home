@@ -79,3 +79,7 @@
 	path = .config/nvim/bundle/coc.nvim
 	url = https://github.com/neoclide/coc.nvim
 	branch = release
+[submodule "/home/victor/.asdf"]
+	path = /home/victor/.asdf
+	url = https://github.com/asdf-vm/asdf.git
+	branch = release-v0.11.0
