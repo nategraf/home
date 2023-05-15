@@ -82,3 +82,7 @@
 	path = /home/victor/.asdf
 	url = git@github.com:asdf-vm/asdf.git
 	branch = release-v0.11.0
+
+[submodule "/Users/victorgraf/.oh-my-zsh"]
+	path = /Users/victorgraf/.oh-my-zsh
+	url = https://github.com/ohmyzsh/ohmyzsh.git

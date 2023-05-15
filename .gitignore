@@ -24,6 +24,7 @@
 !.bash_aliases
 !.profile
 !.inputrc
+!.oh-my-zsh
 
 # Include tmux profile
 !.tmux.conf

@@ -20,7 +20,9 @@ fi
 ## If asdf is installed, load it into the environment.
 if [ -d "$HOME/.asdf" ]; then
   . "$HOME/.asdf/asdf.sh"
-  . "$HOME/.asdf/completions/asdf.bash"
+  if [ -n "$BASH_VERSION" ]; then
+    . "$HOME/.asdf/completions/asdf.bash"
+  fi
 fi
 
 ### Node JS
