@@ -41,7 +41,7 @@
     diffFilter = delta --color-only
 
 [merge]
-    tool = vimdiff
+    tool = nvimdiff
     layout = "(LOCAL,BASE,REMOTE)/MERGED"
 
 [user]
