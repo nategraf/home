@@ -17,7 +17,7 @@
     staged = diff --staged
     push-init = !git push --set-upstream origin $(git branch --show-current)
     scrub = clean -Xdi
-    diff-branch = !git log --oneline --decorate --left-right --cherry --date=relative $1...HEAD
+    diff-branch = !git log --oneline --graph --decorate --left-right --cherry-mark --no-merges --date=relative HEAD...$1
     current-branch = rev-parse --abbrev-ref HEAD
 
 [checkout]
