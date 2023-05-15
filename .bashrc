@@ -18,7 +18,11 @@ shopt -s histappend
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
 HISTFILESIZE=2000
-export EDITOR=vim
+if [ -n "$(which nvim)" ]; then
+  export EDITOR=nvim
+else
+  export EDITOR=vim
+fi
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
