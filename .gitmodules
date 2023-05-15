@@ -65,8 +65,17 @@
 	url = https://github.com/rust-lang/rust.vim.git
 	branch = "master"
 
+[submodule "/Users/victorgraf/.config/nvim/bundle/coc.nvim"]
+	path = .config/nvim/bundle/coc.nvim
+	url = https://github.com/neoclide/coc.nvim
+	branch = release
+
 ### Themes
 
 [submodule ".alacritty-colorscheme"]
 	path = .alacritty-colorscheme
 	url = git@github.com:alacritty/alacritty-theme.git
+[submodule ".config/nvim/bundle/coc.nvim"]
+	path = .config/nvim/bundle/coc.nvim
+	url = https://github.com/neoclide/coc.nvim
+	branch = release
