@@ -1,4 +1,7 @@
 
+# Set LANG to english with UTF-8
+export LANG=en_US.UTF-8
+
 # Use nvim if installed or vim if not.
 if which nvim > /dev/null; then
   export EDITOR=nvim
