@@ -27,7 +27,9 @@ antigen bundles <<BUNDLES
   colorize
   web-search
   docker
+
   ael-code/zsh-colored-man-pages
+  jeffreytse/zsh-vi-mode
 BUNDLES
 
 antigen theme romkatv/powerlevel10k
