@@ -1,19 +1,30 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+# Load antigen and Oh My ZSH with ZSH plugins
+#
+# Awesome Zsh Plugins: https://github.com/unixorn/awesome-zsh-plugins
+# Antigen: https://github.com/zsh-users/antigen
+# Oh My Zsh: https://github.com/ohmyzsh/ohmyzsh
 
-export ZSH=~/.oh-my-zsh
+source ~/.antigen.zsh
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="random"
+antigen use oh-my-zsh
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+antigen bundles <<BUNDLES
+  evalcache
+  git
+  git-extras
+  debian
+  tmux
+  screen
+  history
+  extract
+  colorize
+  web-search
+  docker
+  ael-code/zsh-colored-man-pages
+BUNDLES
+
+antigen theme romkatv/powerlevel10k
+antigen apply
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -61,18 +72,6 @@ zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 # see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
 
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(evalcache git git-extras debian tmux screen history extract colorize web-search docker)
-
-source $ZSH/oh-my-zsh.sh
-
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -100,4 +99,4 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Load configurations shared in Bash and ZSH
-. $HOME/.rc.sh
+. ~/.rc.sh
