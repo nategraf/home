@@ -17,8 +17,10 @@
 .vim/.netrwhist
 !.vimrc
 
-# Include bash profile
+# Include shell profile
 !.bashrc
+!.zshrc
+!.rc.sh
 !.bash_aliases
 !.profile
 !.inputrc
