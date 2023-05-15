@@ -75,11 +75,10 @@
 [submodule ".alacritty-colorscheme"]
 	path = .alacritty-colorscheme
 	url = git@github.com:alacritty/alacritty-theme.git
-[submodule ".config/nvim/bundle/coc.nvim"]
-	path = .config/nvim/bundle/coc.nvim
-	url = https://github.com/neoclide/coc.nvim
-	branch = release
+
+### Tools
+
 [submodule "/home/victor/.asdf"]
 	path = /home/victor/.asdf
-	url = https://github.com/asdf-vm/asdf.git
+	url = git@github.com:asdf-vm/asdf.git
 	branch = release-v0.11.0
