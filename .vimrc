@@ -66,6 +66,10 @@ set showcmd
 set hlsearch
 set incsearch
 
+" Map <C-L> (redraw screen) to also turn off search highlighting until the
+" next search
+nnoremap <C-L> :nohl<CR>:redraw!<CR>
+
 " Modelines have historically been a source of security vulnerabilities. As
 " such, it may be a good idea to disable them and use the securemodelines
 " script, <http://www.vim.org/scripts/script.php?script_id=1876>.
@@ -157,8 +161,14 @@ set tabstop=4
 set textwidth=100
 
 " Bind ctrl-j and ctrl-k for quicker autocomplete in insert mode.
-inoremap <C-J> <C-N>
-inoremap <C-K> <C-P>
+if has('nvim')
+  " In nvim, use CoC based autocomplete.
+  inoremap <expr> <C-J> coc#pum#visible() ? coc#pum#next(1) : coc#refresh()
+  inoremap <expr> <C-K> coc#pum#visible() ? coc#pum#prev(1) : coc#refresh()
+else
+  inoremap <C-J> <C-N>
+  inoremap <C-K> <C-P>
+endif
 
 " Bind ctrl-j and ctrl-k to scroll in normal mode.
 nmap <C-J> <C-E>
@@ -198,6 +208,7 @@ function! NextIndent(exclusive, fwd, lowerlevel, skipblanks)
 endfunction
 
 " Moving back and forth between lines of same or lower indentation.
+" Useful for navigation in Python sources.
 nnoremap <silent> [l :call NextIndent(0, 0, 0, 1)<CR>
 nnoremap <silent> ]l :call NextIndent(0, 1, 0, 1)<CR>
 nnoremap <silent> [L :call NextIndent(0, 0, 1, 1)<CR>
@@ -221,10 +232,15 @@ let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 25
-" augroup ProjectDrawer
-"   autocmd!
-"   autocmd VimEnter * :Vexplore
-" augroup END
+
+" Open then directory tree immediately on start.
+"augroup ProjectDrawer
+"  autocmd!
+"  autocmd VimEnter * :Vexplore
+"augroup END
+
+" Bind Leader h to open the directory tree on the left hand side.
+nnoremap <Leader>h :Vexplore<CR>
 
 "------------------------------------------------------------
 " Mappings {{{1
@@ -234,10 +250,6 @@ let g:netrw_winsize = 25
 " Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
 " which is the default
 map Y y$
-
-" Map <C-L> (redraw screen) to also turn off search highlighting until the
-" next search
-nnoremap <C-L> :nohl<CR>:redraw!<CR>
 
 " Add the ability to insert a single charecter by pressing 's' or 'S'
 :nnoremap S :exec "normal i".nr2char(getchar())."\e"<CR>
@@ -249,11 +261,6 @@ vnoremap // y/<C-R>"<CR>
 " Navigate tabs with J and K (like vimium)
 nnoremap J gT
 nnoremap K gt
-
-" F3 to enter paste mode
-nnoremap <F2> :set invpaste paste?<CR>
-set pastetoggle=<F2>
-set showmode
 
 " Leader bindings for quick execution
 " -----------------------------------
@@ -307,8 +314,9 @@ nnoremap <Leader>z :wq<CR>
 " Bind Leader Z to save and close all windows
 nnoremap <Leader>Z :wqa<CR>
 
-" Bind Leader b to go build
-nnoremap <Leader>b :w<CR>:GoBuild<CR>
+" Bind Leader b to issue common build commands.
+autocmd FileType go nnoremap <Leader>b :w<CR>:GoBuild<CR>
+autocmd FileType rust nnoremap <Leader>b :w<CR>:Cargo build<CR>
 
 " Bind Leader m to make
 nnoremap <Leader>m :w<CR>:make<CR>
