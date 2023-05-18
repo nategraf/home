@@ -5,6 +5,10 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+if [[ -d ".fzf" ]]; then
+  source .fzf/shell/completion.zsh
+fi
+
 # Load antigen and Oh My ZSH with ZSH plugins
 #
 # Awesome Zsh Plugins: https://github.com/unixorn/awesome-zsh-plugins
@@ -17,16 +21,18 @@ antigen use oh-my-zsh
 
 antigen bundles <<BUNDLES
   evalcache
-  git
-  git-extras
-  debian
-  tmux
-  screen
   history
+  history-substring-search
   extract
   colorize
-  web-search
+
+  git
+  git-extras
   docker
+  tailscale
+  github
+  tmux
+  screen
 
   ael-code/zsh-colored-man-pages
   jeffreytse/zsh-vi-mode
@@ -34,6 +40,22 @@ BUNDLES
 
 antigen theme romkatv/powerlevel10k
 antigen apply
+
+# Bind the up and down arrows to use history-substring-search and set search options.
+# https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/history-substring-search
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+bindkey -M viins '^[[A' history-substring-search-up
+bindkey -M viins '^[[B' history-substring-search-down
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
+
+HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE="true"
+
+# Completion settings
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' insert-tab pending                                       # pasting with tabs doesn't perform completion
+zstyle ':completion:*' completer _expand _complete _files _correct _approximate # default to file completion
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -49,18 +71,6 @@ zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
 # zstyle ':omz:update' frequency 13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # You can also set it to another string to have that shown instead of the default red dots.
