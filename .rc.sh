@@ -1,4 +1,3 @@
-
 # Set LANG to english with UTF-8
 export LANG=en_US.UTF-8
 
@@ -62,6 +61,10 @@ fi
 if [ -f "$HOME/.cargo/env" ]; then
   . "$HOME/.cargo/env"
 fi
+
+# Preference to always have terminal color in Cargo.
+# Can be turned off with `unset CARGO_TERM_COLOR`
+export CARGO_TERM_COLOR=always
 
 ### MacOS
 
