@@ -26,6 +26,7 @@
 !.inputrc
 !.oh-my-zsh
 !.p10k.zsh
+!.fzf
 
 # Include tmux profile
 !.tmux.conf

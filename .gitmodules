@@ -60,12 +60,7 @@
 	url = https://github.com/sheerun/vim-polyglot.git
 	branch = "v4.17.1"
 
-[submodule "/home/victor/.vim/bundle/rust.vim"]
-	path = .vim/bundle/rust.vim
-	url = https://github.com/rust-lang/rust.vim.git
-	branch = "master"
-
-[submodule "/Users/victorgraf/.config/nvim/bundle/coc.nvim"]
+[submodule ".config/nvim/bundle/coc.nvim"]
 	path = .config/nvim/bundle/coc.nvim
 	url = https://github.com/neoclide/coc.nvim
 	branch = release
@@ -78,11 +73,16 @@
 
 ### Tools
 
-[submodule "/home/victor/.asdf"]
+[submodule ".asdf"]
 	path = .asdf
 	url = git@github.com:asdf-vm/asdf.git
 	branch = release-v0.11.0
 
-[submodule "/Users/victorgraf/.oh-my-zsh"]
+[submodule ".oh-my-zsh"]
 	path = .oh-my-zsh
 	url = https://github.com/ohmyzsh/ohmyzsh.git
+
+[submodule ".fzf"]
+	path = .fzf
+	url = git@github.com:junegunn/fzf.git
+	branch = "0.40.0"
