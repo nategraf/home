@@ -240,7 +240,8 @@ let g:netrw_winsize = 25
 "augroup END
 
 " Bind Leader h to open the directory tree on the left hand side.
-nnoremap <Leader>h :Vexplore<CR>
+" Related binding to switching tabs.
+nnoremap H :Vexplore<CR>
 
 "------------------------------------------------------------
 " Mappings {{{1
