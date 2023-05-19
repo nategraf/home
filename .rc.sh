@@ -85,6 +85,10 @@ if [ -d "/opt/homebrew" ]; then
   fi
 fi
 
+if [ -d "/Applications/CMake.app/Contents/bin/" ]; then
+  export PATH="$PATH:/Applications/CMake.app/Contents/bin/"
+fi
+
 ### Android Development
 
 # Add Android home env variables to make Android development work properly.
