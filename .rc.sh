@@ -71,7 +71,6 @@ export CARGO_TERM_COLOR=always
 if [ "$(uname -s)" = Darwin ]; then
   # On Mac, add Apple's WiFi utilities to PATH.
   export PATH=/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/:$PATH
-  export PATH=$HOME/Library/Python/3.7/bin/:$PATH
 fi
 
 # If Homebrew is installed to /opt, add it to path.
