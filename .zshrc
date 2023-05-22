@@ -1,3 +1,9 @@
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
 # If tmux is installed attach atomatically and exit the shell when it quits
 if command -v tmux>/dev/null; then
     if [[ ! $TERM =~ screen ]] && [ -z $TMUX ]; then
