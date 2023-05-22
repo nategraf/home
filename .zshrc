@@ -20,10 +20,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-if [[ -d ".fzf" ]]; then
-  source .fzf/shell/completion.zsh
-fi
-
 # Load antigen and Oh My ZSH with ZSH plugins
 #
 # Awesome Zsh Plugins: https://github.com/unixorn/awesome-zsh-plugins
@@ -35,9 +31,6 @@ source ~/.antigen.zsh
 antigen use oh-my-zsh
 
 antigen bundles <<BUNDLES
-  evalcache
-  history
-  history-substring-search
   extract
   colorize
 
@@ -58,12 +51,12 @@ antigen apply
 
 # Bind the up and down arrows to use history-substring-search and set search options.
 # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/history-substring-search
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-bindkey -M viins '^[[A' history-substring-search-up
-bindkey -M viins '^[[B' history-substring-search-down
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down
+#bindkey '^[[A' history-substring-search-up
+#bindkey '^[[B' history-substring-search-down
+#bindkey -M viins '^[[A' history-substring-search-up
+#bindkey -M viins '^[[B' history-substring-search-down
+#bindkey -M vicmd 'k' history-substring-search-up
+#bindkey -M vicmd 'j' history-substring-search-down
 
 HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE="true"
 
@@ -96,6 +89,8 @@ zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 # Load p10k command prompt configuration.
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+[[ ! -f ~/.fzf.zsh ]] || source ~/.fzf.zsh
 
 # Load configurations shared in Bash and ZSH
 . ~/.rc.sh
