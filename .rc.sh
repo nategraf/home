@@ -141,14 +141,6 @@ if which ssh-agent > /dev/null; then
     esac
 fi
 
-# If tmux is installed attach atomatically and exit bash when it quits
-if command -v tmux>/dev/null; then
-    if [[ ! $TERM =~ screen ]] && [ -z $TMUX ]; then
-        # Now attach to the existing tmux session or start a new one.
-        tmux attach -t "^-^" || tmux new-session -s "^-^"
-    fi
-fi
-
 # Activate the alias commands defned in .aliases.sh
 if [ -f $HOME/.aliases.sh ]; then
     . $HOME/.aliases.sh

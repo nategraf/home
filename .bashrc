@@ -8,6 +8,14 @@ case $- in
       *) return;;
 esac
 
+# If tmux is installed attach atomatically and exit the shell when it quits
+if command -v tmux>/dev/null; then
+    if [[ ! $TERM =~ screen ]] && [ -z $TMUX ]; then
+        # Now attach to the existing tmux session or start a new one.
+        tmux attach -t "^-^" || tmux new-session -s "^-^"
+    fi
+fi
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
