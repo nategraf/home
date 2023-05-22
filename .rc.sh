@@ -148,3 +148,8 @@ if command -v tmux>/dev/null; then
         tmux attach -t "^-^" || tmux new-session -s "^-^"
     fi
 fi
+
+# Activate the alias commands defned in .aliases.sh
+if [ -f $HOME/.aliases.sh ]; then
+    . $HOME/.aliases.sh
+fi

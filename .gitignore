@@ -21,10 +21,11 @@
 !.bashrc
 !.zshrc
 !.rc.sh
-!.bash_aliases
+!.aliases.sh
 !.profile
 !.inputrc
 !.oh-my-zsh
+!.antigen.zsh
 !.p10k.zsh
 !.fzf
 

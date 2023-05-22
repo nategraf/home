@@ -107,9 +107,16 @@ if [ -n "$(which kubectl)" ]; then
     . <(kubectl completion bash)
 fi
 
-# Activate the alias commands defned in .bash_aliases
-if [ -f $HOME/.bash_aliases ]; then
-    . $HOME/.bash_aliases
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
 fi
 
 # Load configurations shared in Bash and ZSH
