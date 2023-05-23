@@ -13,3 +13,5 @@ let g:coc_global_extensions = ['coc-json', 'coc-rust-analyzer']
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
+" Disable mouse support.
+set mouse=
