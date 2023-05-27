@@ -209,18 +209,18 @@ endfunction
 
 " Moving back and forth between lines of same or lower indentation.
 " Useful for navigation in Python sources.
-nnoremap <silent> [l :call NextIndent(0, 0, 0, 1)<CR>
-nnoremap <silent> ]l :call NextIndent(0, 1, 0, 1)<CR>
-nnoremap <silent> [L :call NextIndent(0, 0, 1, 1)<CR>
-nnoremap <silent> ]L :call NextIndent(0, 1, 1, 1)<CR>
-vnoremap <silent> [l <Esc>:call NextIndent(0, 0, 0, 1)<CR>m'gv''
-vnoremap <silent> ]l <Esc>:call NextIndent(0, 1, 0, 1)<CR>m'gv''
-vnoremap <silent> [L <Esc>:call NextIndent(0, 0, 1, 1)<CR>m'gv''
-vnoremap <silent> ]L <Esc>:call NextIndent(0, 1, 1, 1)<CR>m'gv''
-onoremap <silent> [l :call NextIndent(0, 0, 0, 1)<CR>
-onoremap <silent> ]l :call NextIndent(0, 1, 0, 1)<CR>
-onoremap <silent> [L :call NextIndent(1, 0, 1, 1)<CR>
-onoremap <silent> ]L :call NextIndent(1, 1, 1, 1)<CR>
+nnoremap <silent> [l :<C-u>call NextIndent(0, 0, 0, 1)<CR>
+nnoremap <silent> ]l :<C-u>call NextIndent(0, 1, 0, 1)<CR>
+nnoremap <silent> [L :<C-u>call NextIndent(0, 0, 1, 1)<CR>
+nnoremap <silent> ]L :<C-u>call NextIndent(0, 1, 1, 1)<CR>
+vnoremap <silent> [l <Esc>:<C-u>call NextIndent(0, 0, 0, 1)<CR>m'gv''
+vnoremap <silent> ]l <Esc>:<C-u>call NextIndent(0, 1, 0, 1)<CR>m'gv''
+vnoremap <silent> [L <Esc>:<C-u>call NextIndent(0, 0, 1, 1)<CR>m'gv''
+vnoremap <silent> ]L <Esc>:<C-u>call NextIndent(0, 1, 1, 1)<CR>m'gv''
+onoremap <silent> [l :<C-u>call NextIndent(0, 0, 0, 1)<CR>
+onoremap <silent> ]l :<C-u>call NextIndent(0, 1, 0, 1)<CR>
+onoremap <silent> [L :<C-u>call NextIndent(1, 0, 1, 1)<CR>
+onoremap <silent> ]L :<C-u>call NextIndent(1, 1, 1, 1)<CR>
 
 "-----------------------------------------------------------
 " Directory explorer settings
@@ -253,8 +253,8 @@ nnoremap H :Vexplore<CR>
 map Y y$
 
 " Add the ability to insert a single charecter by pressing 's' or 'S'
-:nnoremap S :exec "normal i".nr2char(getchar())."\e"<CR>
-:nnoremap s :exec "normal a".nr2char(getchar())."\e"<CR>
+:nnoremap S :<C-u>exec "normal i".nr2char(getchar())."\e"<CR>
+:nnoremap s :<C-u>exec "normal a".nr2char(getchar())."\e"<CR>
 
 " Map // in visual mode to search under selection
 vnoremap // y/<C-R>"<CR>
@@ -267,68 +267,68 @@ nnoremap K gt
 " -----------------------------------
 
 " Bind Leader ee to execute the current file
-nnoremap <Leader>ee :!./%<CR>
+nnoremap <Leader>ee :<C-u>!./%<CR>
 
 " Bind Leader eb to execute the buffer in bash
-nnoremap <Leader>eb :w !bash<CR>
-xnoremap <Leader>eb :w !bash<CR>
+nnoremap <Leader>eb :<C-u>w !bash<CR>
+xnoremap <Leader>eb :<C-u>w !bash<CR>
 
 " Bind Leader ep to execute the buffer in Python
-nnoremap <Leader>ep :w !python<CR>
-xnoremap <Leader>ep :w !python<CR>
+nnoremap <Leader>ep :<C-u>w !python<CR>
+xnoremap <Leader>ep :<C-u>w !python<CR>
 
 " Bind Leader en to execute the buffer in Node
-nnoremap <Leader>en :w !node<CR>
-xnoremap <Leader>en :w !node<CR>
+nnoremap <Leader>en :<C-u>w !node<CR>
+xnoremap <Leader>en :<C-u>w !node<CR>
 
 " Bind Leader eq to execute the buffer in BigQuery SQL
-nnoremap <Leader>eq :w !bq query<CR>
-xnoremap <Leader>eq :w !bq query<CR>
+nnoremap <Leader>eq :<C-u>w !bq query<CR>
+xnoremap <Leader>eq :<C-u>w !bq query<CR>
 
 " Bind Leader keys for tab commands
 " NOTE: Intentional trailing space
-nnoremap <Leader>o :tabe 
-nnoremap <Leader>te :tabe 
-nnoremap <Leader>tc :tabc<CR>
-nnoremap <Leader>td :tabdo 
-nnoremap <Leader>tq :tabc<CR>
-nnoremap <Leader>tO :tabo<CR>
-nnoremap <Leader>tm :tabm 
-nnoremap <Leader>tj :tabm -1<CR>
-nnoremap <Leader>tk :tabm +1<CR>
+nnoremap <Leader>o :<C-u>tabe 
+nnoremap <Leader>te :<C-u>tabe 
+nnoremap <Leader>tc :<C-u>tabc<CR>
+nnoremap <Leader>td :<C-u>tabdo 
+nnoremap <Leader>tq :<C-u>tabc<CR>
+nnoremap <Leader>tO :<C-u>tabo<CR>
+nnoremap <Leader>tm :<C-u>tabm 
+nnoremap <Leader>tj :<C-u>tabm -1<CR>
+nnoremap <Leader>tk :<C-u>tabm +1<CR>
 
 " Bind Leader s save
-nnoremap <Leader>s :w<CR>
+nnoremap <Leader>s :<C-u>w<CR>
 
 " Bind Leader S save all windows
-nnoremap <Leader>S :wa<CR>
+nnoremap <Leader>S :<C-u>wa<CR>
 
 " Bind Leader q close the current window
-nnoremap <Leader>q :q<CR>
+nnoremap <Leader>q :<C-u>q<CR>
 
 " Bind Leader Q close all windows
-nnoremap <Leader>Q :qa<CR>
+nnoremap <Leader>Q :<C-u>qa<CR>
 
 " Bind Leader z to save and close the current window
-nnoremap <Leader>z :wq<CR>
+nnoremap <Leader>z :<C-u>wq<CR>
 "
 " Bind Leader Z to save and close all windows
-nnoremap <Leader>Z :wqa<CR>
+nnoremap <Leader>Z :<C-u>wqa<CR>
 
 " Bind Leader b to issue common build commands.
-autocmd FileType go nnoremap <Leader>b :w<CR>:GoBuild<CR>
-autocmd FileType rust nnoremap <Leader>b :w<CR>:Cargo build<CR>
+autocmd FileType go nnoremap <Leader>b :<C-u>w<CR>:GoBuild<CR>
+autocmd FileType rust nnoremap <Leader>b :<C-u>w<CR>:Cargo build<CR>
 
 " Bind Leader m to make
-nnoremap <Leader>m :w<CR>:make<CR>
+nnoremap <Leader>m :<C-u>w<CR>:make<CR>
 
 " Bind Leader < to sort a paragraph (imports)
-nnoremap <Leader>< vip:sort<CR>
-xnoremap <Leader>< :sort<CR>
+nnoremap <Leader>< vip:<C-u>sort<CR>
+xnoremap <Leader>< :<C-u>sort<CR>
 
 " Bind Leader > to reverse sort a paragraph (imports)
-nnoremap <Leader>> vip:sort!<CR>
-xnoremap <Leader>> :sort!<CR>
+nnoremap <Leader>> vip:<C-u>sort!<CR>
+xnoremap <Leader>> :<C-u>sort!<CR>
 
 "------------------------------------------------------------
 " Line wrapping options
@@ -362,27 +362,27 @@ function DisableWrapNavigation()
 endfunction
 
 " Bind Leader .we and .wd to enable and disable line wrap navigation.
-nnoremap <Leader>.we :call EnableWrapNavigation()<CR>
-nnoremap <Leader>.wd :call DisableWrapNavigation()<CR>
+nnoremap <Leader>.we :<C-u>call EnableWrapNavigation()<CR>
+nnoremap <Leader>.wd :<C-u>call DisableWrapNavigation()<CR>
 
 " Bind Leader .ww to toggle line wrapping.
-nnoremap <Leader>.ww :set wrap!<CR>
+nnoremap <Leader>.ww :<C-u>set wrap!<CR>
 
 " Bind Leader .p to toggle paste mode
-nnoremap <Leader>.p :set paste!<CR>
+nnoremap <Leader>.p :<C-u>set paste!<CR>
 
 " Bind Leader .n to toggle line numbers
-nnoremap <Leader>.n :set number!<CR>
+nnoremap <Leader>.n :<C-u>set number!<CR>
 
 " Bind Leader .b to toggle scroll bind
-nnoremap <Leader>.b :set scrollbind!<CR>
+nnoremap <Leader>.b :<C-u>set scrollbind!<CR>
 
 " Bind Leader .s to toggle spell-check
 set spelllang=en_us
-nnoremap <Leader>.s :set spell!<CR>
+nnoremap <Leader>.s :<C-u>set spell!<CR>
 
 " Bind Leader .x to toggle syntax highlighting
-nnoremap <Leader>.x :if exists("g:syntax_on") <BAR> syntax off <BAR> else <BAR> syntax enable <BAR> endif<CR>
+nnoremap <Leader>.x :<C-u>if exists("g:syntax_on") <BAR> syntax off <BAR> else <BAR> syntax enable <BAR> endif<CR>
 
 "------------------------------------------------------------
 " Rust options
@@ -392,11 +392,11 @@ let g:rustfmt_autosave = 1
 " Diff leader commands
 
 " TODO(victor) Make this a toggle with dd (or just d) as diff this for a window and dD for all.
-nnoremap <Leader>dD :windo diffthis<CR>
-nnoremap <Leader>dd :diffthis<CR>
-nnoremap <Leader>du :windo diffupdate<CR>
-nnoremap <Leader>dO :diffoff!<CR>
-nnoremap <Leader>do :diffoff<CR>
+nnoremap <Leader>dD :<C-u>windo diffthis<CR>
+nnoremap <Leader>dd :<C-u>diffthis<CR>
+nnoremap <Leader>du :<C-u>windo diffupdate<CR>
+nnoremap <Leader>dO :<C-u>diffoff!<CR>
+nnoremap <Leader>do :<C-u>diffoff<CR>
 
 "------------------------------------------------------------
 " Git Fugitive leader commands
@@ -410,20 +410,16 @@ command -nargs=? -bar GReview call setqflist(map(systemlist("git diff --pretty='
 " Useful bindings for Git and Github operations.
 " Set the diffbase variable with soemthing like `let g:diffbase = "deadbeef"`
 let g:diffbase = "HEAD"
-nnoremap <Leader>gd :Gdiff origin/HEAD...<CR>
-nnoremap <Leader>gD :exec "Gdiff" g:diffbase . "..."<CR>
-nnoremap <Leader>gs :GStatus<CR>
-nnoremap <Leader>gc :GCommit<CR>
-nnoremap <Leader>gp :Gpush<CR>
-nnoremap <Leader>gB :Git blame<CR>
-nnoremap <Leader>gb :GBrowse!<CR>
-xnoremap <Leader>gb :GBrowse!<CR>
-nnoremap <Leader>gr :GReview origin/HEAD...<CR>
-nnoremap <Leader>gR :exec "GReview" g:diffbase . "..."<CR>
-nnoremap <Leader>gu :w !hub gist create<CR>
-xnoremap <Leader>gu :w !hub gist create<CR>
-nnoremap <Leader>gU :w !hub gist create -o<CR>
-xnoremap <Leader>gU :w !hub gist create -o<CR>
+nnoremap <Leader>gd :<C-u>Gdiff origin/HEAD...<CR>
+nnoremap <Leader>gD :<C-u>exec "Gdiff" g:diffbase . "..."<CR>
+nnoremap <Leader>gs :<C-u>GStatus<CR>
+nnoremap <Leader>gc :<C-u>GCommit<CR>
+nnoremap <Leader>gp :<C-u>Gpush<CR>
+nnoremap <Leader>gB :<C-u>Git blame<CR>
+nnoremap <Leader>gb :<C-u>GBrowse!<CR>
+xnoremap <Leader>gb :<C-u>GBrowse!<CR>
+nnoremap <Leader>gr :<C-u>GReview origin/HEAD...<CR>
+nnoremap <Leader>gR :<C-u>exec "GReview" g:diffbase . "..."<CR>
 
 "------------------------------------------------------------
 " The Silver Searcher (and grep) and Ack.vim
@@ -438,18 +434,18 @@ if executable('ag')
 endif
 
 " bind = to grep word under cursor
-nnoremap = yiw:copen<CR>:Ack! '\b<C-R>0\b'
+nnoremap = yiw:<C-u>copen<CR>:Ack! '\b<C-R>0\b'
 
 " bind Leader f to open ack and populate it with selected text if applicable.
 " TODO: Fix and consolidate search bindings.
-nnoremap <Leader>f y:Ack! 
-xnoremap <Leader>f y:Ack! '<C-R>=escape(@",'/\')<CR>'
+nnoremap <Leader>f y:<C-u>Ack! 
+xnoremap <Leader>f y:<C-u>Ack! '<C-R>=escape(@",'/\')<CR>'
 
 " bind Leader cc to close the quickfix window
-nnoremap <Leader>cc :cclose<CR>
+nnoremap <Leader>cc :<C-u>cclose<CR>
 
 " bind Leader co to open the quickfix window
-nnoremap <Leader>co :copen<CR>
+nnoremap <Leader>co :<C-u>copen<CR>
 
 " bind space in quickfix window to open in new tab
 let g:ack_mappings = { "<space>": "<C-W><CR><C-W>T" }
