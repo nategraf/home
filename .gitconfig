@@ -34,6 +34,11 @@
 [fetch]
     prune = true
 
+[remote "origin"]
+    # When fetching, get the HEAD symbol to have an unambigous reference to the main branch.
+    fetch = "+refs/heads/*:refs/remotes/origin/*"
+    fetch = "+HEAD:refs/remotes/origin/HEAD"
+
 [init]
 	defaultBranch = main
 
@@ -47,5 +52,6 @@
 [user]
 	name = Victor Graf
 	email = victor@subgraf.dev
+
 [credential]
 	helper = cache
