@@ -18,5 +18,7 @@ nnoremap <Leader>cx :<C-u>CocFzfList<CR>
 nnoremap <Leader>cc :<C-u>CocFzfList commands<CR>
 nnoremap <Leader>cd :<C-u>CocFzfList diagnostics<CR>
 
+" TODO: Add something for :call CocAction('showSignatureHelp')
+
 " Disable mouse support.
 set mouse=
