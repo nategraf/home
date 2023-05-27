@@ -90,7 +90,12 @@ zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-[[ ! -f ~/.fzf.zsh ]] || source ~/.fzf.zsh
+if [ -f ~/.fzf.zsh ]; then
+  source ~/.fzf.zsh
+elif [ -d ~/.fzf ]; then
+  # If fzf is cloned, but not installed, install it now.
+  ~/.fzf/install --no-bash --no-key-bindings --completion --no-update-rc
+fi
 
 # Load configurations shared in Bash and ZSH
-. ~/.rc.sh
+. ~/.shrc
