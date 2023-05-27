@@ -16,7 +16,7 @@ nnoremap ]g <Plug>(coc-diagnostic-next)
 " bind Leader c CoC commands and actions
 nnoremap <Leader>cx :<C-u>CocFzfList<CR>
 nnoremap <Leader>cc :<C-u>CocFzfList commands<CR>
-nnoremap <Leader>cd :<C-u>CocFzfList diagnostic<CR>
+nnoremap <Leader>cd :<C-u>CocFzfList diagnostics<CR>
 
 " Disable mouse support.
 set mouse=
