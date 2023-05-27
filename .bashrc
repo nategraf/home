@@ -128,6 +128,4 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # Load configurations shared in Bash and ZSH
-. $HOME/.rc.sh
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+. $HOME/.shrc
