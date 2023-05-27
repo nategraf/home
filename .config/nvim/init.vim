@@ -10,8 +10,11 @@ let g:LanguageClient_serverCommands = { 'rust': ['rust-analyzer'] }
 let g:coc_global_extensions = ['coc-json', 'coc-rust-analyzer']
 
 " With CoC, bind ]g and [g to next and prev diagnostics message.
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nnoremap <silent> [g <Plug>(coc-diagnostic-prev)
+nnoremap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" Map C-[ to pull up a fuzzy finder for Coc commands.
+nnoremap <silent> <C-m> :CocList commands<CR>
 
 " Disable mouse support.
 set mouse=
