@@ -452,6 +452,13 @@ nnoremap <Leader>co :<C-u>copen<CR>
 let g:ack_mappings = { "<space>": "<C-W><CR><C-W>T" }
 
 "------------------------------------------------------------
+" fzf
+
+" If you have cloned fzf on ~/.fzf directory, load the
+" vimscript it contains to enable it as a plugin.
+set rtp+=~/.fzf
+
+"------------------------------------------------------------
 " Easymotion
 
 let g:EasyMotion_do_mapping = 0
