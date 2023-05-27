@@ -486,12 +486,12 @@ hi SignatureMarkText ctermbg=NONE
 
 "------------------------------------------------------------
 " ctrlp (github.com/ctrlpvim/ctrlp.vim)
+" TIP: Use <c-z> to mark/unmark multiple files and <c-o> to open them.
 
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
-" Disabled because it overrides c-tags go-to-definition.
-"nnoremap <C-]> :CtrlPBuffer<CR>
+nnoremap <c-P> :CtrlPBuffer<CR>
 
 " Always use cwd as the starting point for search.
 let g:ctrlp_working_path_mode = ''
