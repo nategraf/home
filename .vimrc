@@ -405,6 +405,7 @@ nnoremap <Leader>do :<C-u>diffoff<CR>
 set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
 
 " Create a quickfix window with the files that have changed in a diff.
+" TODO: Improve this command
 command -nargs=? -bar GReview call setqflist(map(systemlist("git diff --pretty='' --name-only <args>"), '{"filename": v:val, "lnum": 1}'))|cwindow|redraw!
 
 " Useful bindings for Git and Github operations.
@@ -430,7 +431,7 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
 endif
 
 " bind = to grep word under cursor
@@ -491,7 +492,8 @@ hi SignatureMarkText ctermbg=NONE
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
-nnoremap <c-P> :CtrlPBuffer<CR>
+" Bind C-_ (same as Ctrl+/) to open a fuzzy-finder list of open buffers.
+nnoremap <c-_> :CtrlPBuffer<CR>
 
 " Always use cwd as the starting point for search.
 let g:ctrlp_working_path_mode = ''
