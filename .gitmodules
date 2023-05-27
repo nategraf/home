@@ -65,6 +65,11 @@
 	url = https://github.com/neoclide/coc.nvim
 	branch = release
 
+[submodule ".config/nvim/bundle/coc-fzf"]
+	path = .config/nvim/bundle/coc-fzf
+	url = git@github.com:antoinemadec/coc-fzf.git
+	branch = release
+
 ### Themes
 
 [submodule ".alacritty-colorscheme"]

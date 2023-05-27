@@ -442,11 +442,8 @@ nnoremap = yiw:<C-u>copen<CR>:Ack! '\b<C-R>0\b'
 nnoremap <Leader>f y:<C-u>Ack! 
 xnoremap <Leader>f y:<C-u>Ack! '<C-R>=escape(@",'/\')<CR>'
 
-" bind Leader cc to close the quickfix window
-nnoremap <Leader>cc :<C-u>cclose<CR>
-
-" bind Leader co to open the quickfix window
-nnoremap <Leader>co :<C-u>copen<CR>
+" bind Leader x to close the quickfix window
+nnoremap <Leader>x :<C-u>cclose<CR>
 
 " bind space in quickfix window to open in new tab
 let g:ack_mappings = { "<space>": "<C-W><CR><C-W>T" }
@@ -500,7 +497,7 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
 " Bind C-_ (same as Ctrl+/) to open a fuzzy-finder list of open buffers.
-nnoremap <c-_> :CtrlPBuffer<CR>
+nnoremap <c-_> :<C-u>CtrlPBuffer<CR>
 
 " Always use cwd as the starting point for search.
 let g:ctrlp_working_path_mode = ''
