@@ -1,3 +1,4 @@
+# vim: syntax=bash
 # Set LANG to english with UTF-8
 export LANG=en_US.UTF-8
 
@@ -145,6 +146,6 @@ if which ssh-agent > /dev/null; then
 fi
 
 # Activate the alias commands defned in .aliases.sh
-if [ -f $HOME/.aliases.sh ]; then
-    . $HOME/.aliases.sh
+if [ -f "$HOME/.aliases" ]; then
+    . $HOME/.aliases
 fi
