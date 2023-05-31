@@ -406,7 +406,7 @@ set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
 
 " Create a quickfix window with the files that have changed in a diff.
 " TODO: Improve this command
-command -nargs=? -bar GReview call setqflist(map(systemlist("git diff --pretty='' --name-only <args>"), '{"filename": v:val, "lnum": 1}'))|cwindow|redraw!
+command -nargs=? -bar GReview call setqflist(map(systemlist("git diff --pretty='' --name-only <args> --"), '{"filename": v:val, "lnum": 1}'))|cwindow|redraw!
 
 " Useful bindings for Git and Github operations.
 " Set the diffbase variable with soemthing like `let g:diffbase = "deadbeef"`
