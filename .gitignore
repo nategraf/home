@@ -55,5 +55,10 @@
 !.config/nvim
 !.config/nvim/**
 
+# Include global settings for cargo
+!.cargo/
+.cargo/*
+!.cargo/config.toml
+
 # Include asdf
 !.asdf
