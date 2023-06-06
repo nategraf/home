@@ -8,13 +8,10 @@ case $- in
       *) return;;
 esac
 
-# If tmux is installed attach atomatically and exit the shell when it quits
-if command -v tmux>/dev/null; then
-    if [[ ! $TERM =~ screen ]] && [ -z $TMUX ]; then
-        # Now attach to the existing tmux session or start a new one.
-        tmux attach -t "^-^" || tmux new-session -s "^-^"
-    fi
-fi
+# Load configurations shared in Bash and ZSH
+# NOTE: Starts tmux if this shell is not already attached. This line will only return if tmux is
+# exited, or the shell is already running in tmux.
+. $HOME/.shrc
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -126,6 +123,3 @@ if [ -x /usr/bin/dircolors ]; then
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
-
-# Load configurations shared in Bash and ZSH
-. $HOME/.shrc

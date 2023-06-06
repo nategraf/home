@@ -2,6 +2,26 @@
 # Set LANG to english with UTF-8
 export LANG=en_US.UTF-8
 
+# If Homebrew is installed to /opt, add it to path.
+# NOTE: This is before attaching to tmux so that it works when tmux is installed via homebrew.
+if [ -d "/opt/homebrew" ]; then
+  eval $(/opt/homebrew/bin/brew shellenv)
+
+  # If openssh is installed via homebrew, setup PATH to point to it.
+  OPENSSH_PATH="$(brew --prefix openssh)"
+  if [ -d "$OPENSSH_PATH" ]; then
+    export PATH="$OPENSSH_PATH/bin:$PATH"
+  fi
+fi
+
+# If tmux is installed attach atomatically and exit the shell when it quits
+if which tmux > /dev/null; then
+    if [[ ! $TERM =~ screen ]] && [ -z $TMUX ]; then
+        # Now attach to the existing tmux session or start a new one.
+        tmux attach -t "^-^" || tmux new-session -s "^-^"
+    fi
+fi
+
 # Use nvim if installed or vim if not.
 if which nvim > /dev/null; then
   export EDITOR=nvim
@@ -72,17 +92,6 @@ export CARGO_TERM_COLOR=always
 if [ "$(uname -s)" = Darwin ]; then
   # On Mac, add Apple's WiFi utilities to PATH.
   export PATH=/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/:$PATH
-fi
-
-# If Homebrew is installed to /opt, add it to path.
-if [ -d "/opt/homebrew" ]; then
-  eval $(/opt/homebrew/bin/brew shellenv)
-
-  # If openssh is installed via homebrew, setup PATH to point to it.
-  OPENSSH_PATH="$(brew --prefix openssh)"
-  if [ -d "$OPENSSH_PATH" ]; then
-    export PATH="$OPENSSH_PATH/bin:$PATH"
-  fi
 fi
 
 if [ -d "/Applications/CMake.app/Contents/bin/" ]; then

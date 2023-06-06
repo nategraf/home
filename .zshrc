@@ -4,13 +4,10 @@ case $- in
       *) return;;
 esac
 
-# If tmux is installed attach atomatically and exit the shell when it quits
-if command -v tmux>/dev/null; then
-    if [[ ! $TERM =~ screen ]] && [ -z $TMUX ]; then
-        # Now attach to the existing tmux session or start a new one.
-        tmux attach -t "^-^" || tmux new-session -s "^-^"
-    fi
-fi
+# Load configurations shared in Bash and ZSH
+# NOTE: Starts tmux if this shell is not already attached. This line will only return if tmux is
+# exited, or the shell is already running in tmux.
+. ~/.shrc
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -96,6 +93,3 @@ elif [ -d ~/.fzf ]; then
   # If fzf is cloned, but not installed, install it now.
   ~/.fzf/install --no-bash --no-key-bindings --completion --no-update-rc
 fi
-
-# Load configurations shared in Bash and ZSH
-. ~/.shrc
