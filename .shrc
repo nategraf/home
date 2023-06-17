@@ -1,11 +1,10 @@
-# vim: syntax=bash
 # Set LANG to english with UTF-8
 export LANG=en_US.UTF-8
 
 # If Homebrew is installed to /opt, add it to path.
 # NOTE: This is before attaching to tmux so that it works when tmux is installed via homebrew.
 if [ -d "/opt/homebrew" ]; then
-  eval $(/opt/homebrew/bin/brew shellenv)
+  eval "$(/opt/homebrew/bin/brew shellenv)"
 
   # If openssh is installed via homebrew, setup PATH to point to it.
   OPENSSH_PATH="$(brew --prefix openssh)"
@@ -16,7 +15,7 @@ fi
 
 # If tmux is installed attach atomatically and exit the shell when it quits
 if which tmux > /dev/null; then
-    if [[ ! $TERM =~ screen ]] && [ -z $TMUX ]; then
+    if [[ ! $TERM =~ screen ]] && [ -z "$TMUX" ]; then
         # Now attach to the existing tmux session or start a new one.
         tmux attach -t "^-^" || tmux new-session -s "^-^"
     fi
@@ -127,8 +126,8 @@ if which ssh-agent > /dev/null; then
   export SSH_AGENT_INFO=$HOME/.ssh/agent_info
 
   # If there is an agent info file, load it.
-  if [ -f $SSH_AGENT_INFO ]; then
-    . $SSH_AGENT_INFO > /dev/null
+  if [ -f "$SSH_AGENT_INFO" ]; then
+    source "$SSH_AGENT_INFO" > /dev/null
   fi
 
   # First check if a socket path is defined. Note that OSX defines this as the keychain agent.
@@ -146,7 +145,7 @@ if which ssh-agent > /dev/null; then
         ([ -z "$SSH_AGENT_PID" ] || ! kill -0 "$SSH_AGENT_PID") &&\
         ! fuser "$SSH_AUTH_SOCK" >/dev/null 2>/dev/null; then
         # A running ssh agent has not been found, so start one now.
-        ssh-agent -a "$SSH_AUTH_SOCK" -s > $HOME/.ssh/agent_info
+        ssh-agent -a "$SSH_AUTH_SOCK" -s > "$HOME"/.ssh/agent_info
       else
         printf "export SSH_AGENT_PID=\"$SSH_AGENT_PID\"\nexport SSH_AUTH_SOCK=\"$SSH_AUTH_SOCK\"\n" \
           > "$SSH_AGENT_INFO"
@@ -156,5 +155,5 @@ fi
 
 # Activate the alias commands defned in .aliases.sh
 if [ -f "$HOME/.aliases" ]; then
-    . $HOME/.aliases
+    source "$HOME"/.aliases
 fi
