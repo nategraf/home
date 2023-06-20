@@ -2,7 +2,13 @@
   "rust-analyzer.diagnostics.disabled": ["inactive-code"],
   "suggest.noselect": true,
   "suggest.autoTrigger": "always",
-  "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/16.0.2/clangd_16.0.2/bin/clangd",
+  "rust-analyzer.check.features": "all",
+  "markdownlint": {
+    "config": {
+      "default": true,
+      "line_length": false
+    }
+  },
   "languageserver": {
     // Install clangd to enable https://clangd.llvm.org/installation
     // NOTE: Also create a compile_commands.json file for each project.
