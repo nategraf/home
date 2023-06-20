@@ -15,6 +15,7 @@
 # https://github.com/alacritty/alacritty-theme
 import:
   - ~/.alacritty-colorscheme/themes/tomorrow_night_bright.yaml
+  # - ~/.alacritty-colorscheme/themes/papercolor_light.yaml
 
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables

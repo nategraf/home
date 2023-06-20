@@ -524,13 +524,25 @@ let g:polyglot_disabled = ['csv']
 " In diff mode, the default colorscheme can make words hard to read due to low contrast between the
 " diff highlight and the text color. Use a custom theme to make this a little better.
 " Installed themes:
-" * molokai
-" * jellybeans
+" * molokai    (https://github.com/tomasr/molokai)
+" * jellybeans (https://github.com/nanotech/jellybeans.vim)
+" * papercolor (https://github.com/NLKNguyen/papercolor-theme)
+
+set termguicolors
+set background=dark
 
 if &diff
   colorscheme jellybeans
 else
   colorscheme jellybeans
+endif
+
+" Override for jellybeans to use the terminal background instead of its own color.
+let g:jellybeans_overrides = {
+\    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
+\}
+if has('termguicolors') && &termguicolors
+    let g:jellybeans_overrides['background']['guibg'] = 'none'
 endif
 
 "------------------------------------------------------------
