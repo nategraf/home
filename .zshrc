@@ -7,7 +7,7 @@ esac
 # Load configurations shared in Bash and ZSH
 # NOTE: Starts tmux if this shell is not already attached. This line will only return if tmux is
 # exited, or the shell is already running in tmux.
-. ~/.shrc
+source ~/.shrc
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]

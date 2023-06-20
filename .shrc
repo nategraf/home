@@ -1,8 +1,19 @@
 # Set LANG to english with UTF-8
 export LANG=en_US.UTF-8
 
+### Binary management
+# NOTE: This is before attaching to tmux so that it can find tmux, at any valid PATH.
+
+# Set PATH so it includes user's private bin if it exists.
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
 # If Homebrew is installed to /opt, add it to path.
-# NOTE: This is before attaching to tmux so that it works when tmux is installed via homebrew.
 if [ -d "/opt/homebrew" ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 
@@ -28,16 +39,6 @@ else
   export EDITOR=vim
 fi
 
-### Binary management
-
-# Set PATH so it includes user's private bin if it exists.
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
-fi
-
-if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
-fi
 
 ## If asdf is installed, load it into the environment.
 if [ -d "$HOME/.asdf" ]; then
