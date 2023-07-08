@@ -57,10 +57,19 @@ antigen apply
 
 HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE="true"
 
-# Completion settings
-zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+# Completion settings.
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'                       # case insensitive completion.
 zstyle ':completion:*' insert-tab pending                                       # pasting with tabs doesn't perform completion
 zstyle ':completion:*' completer _expand _complete _files _correct _approximate # default to file completion
+
+setopt GLOB_COMPLETE # trigger the completion after a glob * instead of expanding it.
+
+# Bind ctrl-j/k/h/l to naviagte the completion list.
+zmodload zsh/complist
+bindkey -M menuselect '^k' vi-up-line-or-history
+bindkey -M menuselect '^j' vi-down-line-or-history
+bindkey -M menuselect '^l' vi-forward-char
+bindkey -M menuselect '^l' vi-forward-char
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -72,7 +81,7 @@ zstyle ':completion:*' completer _expand _complete _files _correct _approximate 
 # Uncomment one of the following lines to change the auto-update behavior
 # zstyle ':omz:update' mode disabled
 # zstyle ':omz:update' mode auto      # update automatically without asking
-zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+zstyle ':omz:update' mode reminder    # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
 # zstyle ':omz:update' frequency 13
@@ -91,5 +100,5 @@ if [ -f ~/.fzf.zsh ]; then
   source ~/.fzf.zsh
 elif [ -d ~/.fzf ]; then
   # If fzf is cloned, but not installed, install it now.
-  ~/.fzf/install --no-bash --no-key-bindings --completion --no-update-rc
+  ~/.fzf/install --no-bash --key-bindings --completion --no-update-rc
 fi

@@ -13,6 +13,9 @@ esac
 # exited, or the shell is already running in tmux.
 . $HOME/.shrc
 
+# turn on vi editing mode for Bash.
+set -o vi
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
