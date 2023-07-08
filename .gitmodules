@@ -50,11 +50,6 @@
 	url = https://github.com/fatih/vim-go.git
 	branch = "v1.26"
 
-[submodule ".vim/bundle/vim-solidity"]
-	path = .vim/bundle/vim-solidity
-	url = https://github.com/tomlion/vim-solidity.git
-	branch = "master"
-
 [submodule ".vim/bundle/vim-polyglot"]
 	path = .vim/bundle/vim-polyglot
 	url = https://github.com/sheerun/vim-polyglot.git

@@ -1,8 +1,13 @@
 {
-  "rust-analyzer.diagnostics.disabled": ["inactive-code"],
   "suggest.noselect": true,
   "suggest.autoTrigger": "always",
+  "workspace.ignoredFolders": [
+    "$HOME/.cargo/**",
+    "$HOME/.rustup/**"
+  ],
   "rust-analyzer.check.features": "all",
+  "rust-analyzer.cargo.features": "all",
+  "rust-analyzer.diagnostics.disabled": ["inactive-code"],
   "markdownlint": {
     "config": {
       "default": true,

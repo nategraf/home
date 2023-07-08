@@ -83,6 +83,12 @@ if [ -f "$HOME/.cargo/env" ]; then
   . "$HOME/.cargo/env"
 fi
 
+# If installed, use sccache.
+# https://github.com/mozilla/sccache
+if which sccache > /dev/null; then
+  export RUSTC_WRAPPER=sccache
+fi
+
 # Preference to always have terminal color in Cargo.
 # Can be turned off with `unset CARGO_TERM_COLOR`
 export CARGO_TERM_COLOR=always
