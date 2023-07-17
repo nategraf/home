@@ -29,6 +29,10 @@ nnoremap <Leader>cc :<C-u>CocFzfList commands<CR>
 nnoremap <Leader>cd :<C-u>CocFzfList diagnostics<CR>
 nnoremap <Leader>cs :<C-u>CocFzfList symbols<CR>
 nnoremap <Leader>co :<C-u>CocFzfList outline<CR>
+nnoremap <Leader>ca :<C-u>CocFzfList actions<CR>
+xnoremap <Leader>ca :CocFzfList actions<CR>
+
+nnoremap <Leader>a <Plug>(coc-fix-current)
 
 " Run the Code Lens action on the current line
 nmap <leader>cl  <Plug>(coc-codelens-action)
