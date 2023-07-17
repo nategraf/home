@@ -21,9 +21,10 @@ nnoremap <silent> gd <Plug>(coc-definition)
 nnoremap <silent> gy <Plug>(coc-type-definition)
 nnoremap <silent> gi <Plug>(coc-implementation)
 nnoremap <silent> gr <Plug>(coc-references)
-nnoremap <silent> gs :<C-u>call CocActionAsync('showSignatureHelp')<CR>
 
-" bind Leader c CoC commands and actions
+inoremap <silent> <C-S> <C-\><C-O>:call CocActionAsync('showSignatureHelp')<CR>
+
+" bind Leader c CoC command0.s and actions
 nnoremap <Leader>cx :<C-u>CocFzfList<CR>
 nnoremap <Leader>cc :<C-u>CocFzfList commands<CR>
 nnoremap <Leader>cd :<C-u>CocFzfList diagnostics<CR>
