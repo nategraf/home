@@ -271,19 +271,19 @@ nnoremap <Leader>ee :<C-u>!./%<CR>
 
 " Bind Leader eb to execute the buffer in bash
 nnoremap <Leader>eb :<C-u>w !bash<CR>
-xnoremap <Leader>eb :<C-u>w !bash<CR>
+xnoremap <Leader>eb :w !bash<CR>
 
 " Bind Leader ep to execute the buffer in Python
 nnoremap <Leader>ep :<C-u>w !python<CR>
-xnoremap <Leader>ep :<C-u>w !python<CR>
+xnoremap <Leader>ep :w !python<CR>
 
 " Bind Leader en to execute the buffer in Node
 nnoremap <Leader>en :<C-u>w !node<CR>
-xnoremap <Leader>en :<C-u>w !node<CR>
+xnoremap <Leader>en :w !node<CR>
 
 " Bind Leader eq to execute the buffer in BigQuery SQL
 nnoremap <Leader>eq :<C-u>w !bq query<CR>
-xnoremap <Leader>eq :<C-u>w !bq query<CR>
+xnoremap <Leader>eq :w !bq query<CR>
 
 " Bind Leader keys for tab commands
 " NOTE: Intentional trailing space
@@ -324,11 +324,11 @@ nnoremap <Leader>m :<C-u>w<CR>:make<CR>
 
 " Bind Leader < to sort a paragraph (imports)
 nnoremap <Leader>< vip:<C-u>sort<CR>
-xnoremap <Leader>< :<C-u>sort<CR>
+xnoremap <Leader>< :sort<CR>
 
 " Bind Leader > to reverse sort a paragraph (imports)
 nnoremap <Leader>> vip:<C-u>sort!<CR>
-xnoremap <Leader>> :<C-u>sort!<CR>
+xnoremap <Leader>> :sort!<CR>
 
 "------------------------------------------------------------
 " Line wrapping options
@@ -418,7 +418,7 @@ nnoremap <Leader>gc :<C-u>GCommit<CR>
 nnoremap <Leader>gp :<C-u>Gpush<CR>
 nnoremap <Leader>gB :<C-u>Git blame<CR>
 nnoremap <Leader>gb :<C-u>GBrowse!<CR>
-xnoremap <Leader>gb :<C-u>GBrowse!<CR>
+xnoremap <Leader>gb :GBrowse!<CR>
 nnoremap <Leader>gr :<C-u>GReview origin/HEAD...<CR>
 nnoremap <Leader>gR :<C-u>exec "GReview" g:diffbase . "..."<CR>
 
@@ -440,7 +440,7 @@ nnoremap = yiw:<C-u>copen<CR>:Ack! '\b<C-R>0\b'
 " bind Leader f to open ack and populate it with selected text if applicable.
 " TODO: Fix and consolidate search bindings.
 nnoremap <Leader>f y:<C-u>Ack! 
-xnoremap <Leader>f y:<C-u>Ack! '<C-R>=escape(@",'/\')<CR>'
+xnoremap <Leader>f y:Ack! '<C-R>=escape(@",'/\')<CR>'
 
 " bind Leader x to close the quickfix window
 nnoremap <Leader>x :<C-u>cclose<CR>
