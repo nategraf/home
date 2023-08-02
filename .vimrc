@@ -157,8 +157,9 @@ set expandtab
 " four characters wide.
 set tabstop=4
 
-" Set default text width to be 100. Reasonable for more modern languages.
-set textwidth=100
+" Disable automatic text wrappping.
+" Hot take: Automated text wrapping sucks. Use a formatter on save instead.
+set textwidth=0
 
 " Bind ctrl-j and ctrl-k for quicker autocomplete in insert mode.
 if has('nvim')
