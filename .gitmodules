@@ -62,20 +62,20 @@
 
 [submodule ".config/nvim/bundle/coc-fzf"]
 	path = .config/nvim/bundle/coc-fzf
-	url = git@github.com:antoinemadec/coc-fzf.git
+	url = https://github.com/antoinemadec/coc-fzf.git
 	branch = release
 
 ### Themes
 
 [submodule ".alacritty-colorscheme"]
 	path = .alacritty-colorscheme
-	url = git@github.com:alacritty/alacritty-theme.git
+	url = https://github.com/alacritty/alacritty-theme.git
 
 ### Tools
 
 [submodule ".asdf"]
 	path = .asdf
-	url = git@github.com:asdf-vm/asdf.git
+	url = https://github.com/asdf-vm/asdf.git
 	branch = release-v0.11.0
 
 [submodule ".oh-my-zsh"]
@@ -84,5 +84,5 @@
 
 [submodule ".fzf"]
 	path = .fzf
-	url = git@github.com:junegunn/fzf.git
+	url = https://github.com/junegunn/fzf.git
 	branch = "0.40.0"
