@@ -1,4 +1,9 @@
 {
+  "coc.preferences.formatOnSave": true,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "rust",
+    "jsonc"
+  ],
   "suggest.noselect": true,
   "suggest.autoTrigger": "always",
   "workspace.ignoredFolders": [
@@ -8,12 +13,15 @@
   "rust-analyzer.check.features": "all",
   "rust-analyzer.cargo.features": "all",
   //"rust-analyzer.check.command": "clippy",
-  "rust-analyzer.diagnostics.disabled": ["inactive-code"],
+  "rust-analyzer.diagnostics.disabled": [
+    "inactive-code"
+  ],
   "markdownlint": {
     "config": {
       "default": true,
       "line_length": false,
-      "single-trailing-newline": false
+      "single-trailing-newline": false,
+      "no-bare-urls": false
     }
   },
   "languageserver": {
@@ -21,14 +29,28 @@
     // NOTE: Also create a compile_commands.json file for each project.
     "clangd": {
       "command": "clangd",
-      "rootPatterns": ["compile_flags.txt", "compile_commands.json"],
-      "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"]
+      "rootPatterns": [
+        "compile_flags.txt",
+        "compile_commands.json"
+      ],
+      "filetypes": [
+        "c",
+        "cc",
+        "cpp",
+        "c++",
+        "objc",
+        "objcpp"
+      ]
     },
     // Install bash-language-server to activate https://github.com/bash-lsp/bash-language-server
     "bash": {
       "command": "bash-language-server",
-      "args": ["start"],
-      "filetypes": ["sh"]
+      "args": [
+        "start"
+      ],
+      "filetypes": [
+        "sh"
+      ]
     }
   }
 }
