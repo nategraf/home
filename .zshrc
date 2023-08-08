@@ -58,9 +58,10 @@ antigen apply
 HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE="true"
 
 # Completion settings.
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'                       # case insensitive completion.
-zstyle ':completion:*' insert-tab pending                                       # pasting with tabs doesn't perform completion
-zstyle ':completion:*' completer _expand _complete _files _correct _approximate # default to file completion
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'               # case insensitive completion.
+zstyle ':completion:*' insert-tab pending                               # pasting with tabs doesn't perform completion
+zstyle ':completion:*' completer _extensions _expand _complete _correct # default to file completion
+zstyle ':completion:*' use-cache on
 
 setopt GLOB_COMPLETE # trigger the completion after a glob * instead of expanding it.
 
