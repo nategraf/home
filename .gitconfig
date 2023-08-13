@@ -37,8 +37,7 @@
     prune = true
 
 [remote "origin"]
-    # When fetching, get the HEAD symbol to have an unambigous reference to the main branch.
-    fetch = "+HEAD:refs/remotes/origin/HEAD"
+#    fetch = "+HEAD:refs/remotes/origin/HEAD"
 
 [init]
 	defaultBranch = main
