@@ -540,11 +540,8 @@ endif
 
 " Override for jellybeans to use the terminal background instead of its own color.
 let g:jellybeans_overrides = {
-\    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
+\    'background': { 'ctermbg': 'none', '256ctermbg': 'none', 'guibg': 'none' },
 \}
-if has('termguicolors') && &termguicolors
-    let g:jellybeans_overrides['background']['guibg'] = 'none'
-endif
 
 "------------------------------------------------------------
 " Plugin
