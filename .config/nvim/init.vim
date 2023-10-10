@@ -22,6 +22,12 @@ nnoremap <silent> gy <Plug>(coc-type-definition)
 nnoremap <silent> gi <Plug>(coc-implementation)
 nnoremap <silent> gr <Plug>(coc-references)
 
+"https://github.com/neoclide/coc.nvim/issues/318
+"nnoremap <silent> gd <C-u>:call CocAction('jumpDefinition', 'tab drop')<CR>
+"nnoremap <silent> gy <C-u>:call CocAction('jumpTypeDefinition', 'tab drop')<CR>
+"nnoremap <silent> gi <C-u>:call CocAction('jumpImplementation', 'tab drop')<CR>
+"nnoremap <silent> gr <C-u>:call CocAction('jumpReferences', 'tab drop')<CR>
+
 inoremap <silent> <C-S> <C-\><C-O>:call CocActionAsync('showSignatureHelp')<CR>
 
 " bind Leader c CoC command0.s and actions

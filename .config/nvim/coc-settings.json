@@ -1,21 +1,24 @@
 {
-  "coc.preferences.formatOnSave": true,
-  "coc.preferences.formatOnSaveFiletypes": [
-    "rust",
-    "jsonc"
-  ],
+  "[rust][jsonc]": {
+    "coc.preferences.formatOnSave": true
+  },
   "suggest.noselect": true,
   "suggest.autoTrigger": "always",
   "workspace.ignoredFolders": [
     "$HOME/.cargo/**",
     "$HOME/.rustup/**"
   ],
-  "rust-analyzer.check.features": "all",
-  "rust-analyzer.cargo.features": "all",
+  "workspace.rootPatterns": [
+    ".git",
+    ".hg",
+    ".projections.json",
+    "Cargo.toml"
+  ],
   //"rust-analyzer.check.command": "clippy",
   "rust-analyzer.diagnostics.disabled": [
     "inactive-code"
   ],
+  "rust-analyzer.check.allTargets": true,
   "markdownlint": {
     "config": {
       "default": true,
