@@ -28,7 +28,7 @@ nnoremap <silent> gr <Plug>(coc-references)
 "nnoremap <silent> gi <C-u>:call CocAction('jumpImplementation', 'tab drop')<CR>
 "nnoremap <silent> gr <C-u>:call CocAction('jumpReferences', 'tab drop')<CR>
 
-inoremap <silent> <C-S> <C-\><C-O>:call CocActionAsync('showSignatureHelp')<CR>
+inoremap <silent> <C-s> <C-\><C-O>:call CocActionAsync('showSignatureHelp')<CR>
 
 " bind Leader c CoC command0.s and actions
 nnoremap <Leader>cx :<C-u>CocFzfList<CR>

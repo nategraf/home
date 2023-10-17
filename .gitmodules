@@ -86,3 +86,6 @@
 	path = .fzf
 	url = https://github.com/junegunn/fzf.git
 	branch = "0.40.0"
+[submodule ".vim/bundle/vim-abolish"]
+	path = .vim/bundle/vim-abolish
+	url = git@github.com:tpope/vim-abolish.git
