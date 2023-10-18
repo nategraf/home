@@ -13,8 +13,8 @@ let g:coc_global_extensions = ['coc-json', 'coc-rust-analyzer', 'coc-markdownlin
 :hi CocInlayHint guifg=DarkGrey
 
 " With CoC, bind ]g and [g to next and prev diagnostics message.
-nnoremap [g <Plug>(coc-diagnostic-prev)
-nnoremap ]g <Plug>(coc-diagnostic-next)
+nnoremap [d <Plug>(coc-diagnostic-prev)
+nnoremap ]d <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation
 nnoremap <silent> gd <Plug>(coc-definition)
@@ -28,7 +28,7 @@ nnoremap <silent> gr <Plug>(coc-references)
 "nnoremap <silent> gi <C-u>:call CocAction('jumpImplementation', 'tab drop')<CR>
 "nnoremap <silent> gr <C-u>:call CocAction('jumpReferences', 'tab drop')<CR>
 
-inoremap <silent> <C-s> <C-\><C-O>:call CocActionAsync('showSignatureHelp')<CR>
+inoremap <C-s> <C-\><C-O>:call CocActionAsync('showSignatureHelp')<CR>
 
 " bind Leader c CoC command0.s and actions
 nnoremap <Leader>cx :<C-u>CocFzfList<CR>
@@ -39,15 +39,10 @@ nnoremap <Leader>co :<C-u>CocFzfList outline<CR>
 nnoremap <Leader>ca :<C-u>CocFzfList actions<CR>
 xnoremap <Leader>ca :CocFzfList actions<CR>
 
-nnoremap <Leader>a <Plug>(coc-fix-current)
-
-" Run the Code Lens action on the current line
-nmap <leader>cl  <Plug>(coc-codelens-action)
-
 " Only get suggestions when requested.
 "let g:copilot_enabled=v:false
 
-imap <silent><script><expr> <C-l> copilot#Accept("\<CR>")
+inoremap <silent><script><expr> <C-l> copilot#Accept("\<CR>")
 let g:copilot_no_tab_map = v:true
 
 " Disable mouse support.
