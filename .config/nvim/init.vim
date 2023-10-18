@@ -44,7 +44,11 @@ nnoremap <Leader>a <Plug>(coc-fix-current)
 " Run the Code Lens action on the current line
 nmap <leader>cl  <Plug>(coc-codelens-action)
 
-" TODO: Add something for :call CocAction('showSignatureHelp')
+" Only get suggestions when requested.
+"let g:copilot_enabled=v:false
+
+imap <silent><script><expr> <C-l> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
 
 " Disable mouse support.
 set mouse=
