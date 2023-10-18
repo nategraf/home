@@ -33,7 +33,7 @@
 
 [submodule ".vim/bundle/vim-abolish"]
 	path = .vim/bundle/vim-abolish
-	url = git@github.com:tpope/vim-abolish.git
+	url = https://github.com/tpope/vim-abolish.git
 
 ### Vim git integration
 
@@ -69,8 +69,8 @@
 	url = https://github.com/antoinemadec/coc-fzf.git
 	branch = release
 
-[submodule "/home/victor/.config/nvim/pack/github/start/copilot.vim"]
-	path = /home/victor/.config/nvim/pack/github/start/copilot.vim
+[submodule ".config/nvim/pack/github/start/copilot.vim"]
+	path = .config/nvim/pack/github/start/copilot.vim
 	url = https://github.com/github/copilot.vim
 
 ### Themes
