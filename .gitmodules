@@ -42,11 +42,6 @@
     url = https://github.com/tpope/vim-fugitive.git
 	branch = "v3.6"
 
-[submodule ".vim/bundle/vim-rhubarb"]
-	path = .vim/bundle/vim-rhubarb
-	url = https://github.com/tpope/vim-rhubarb.git
-	branch = "master"
-
 ### Vim languages
 
 [submodule "vim-go"]
