@@ -430,9 +430,6 @@ if executable('ag')
   " Use ag over grep
   set grepprg=ag\ --vimgrep
   let g:ackprg = 'ag --vimgrep'
-
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
 endif
 
 " bind = to grep word under cursor
@@ -455,6 +452,33 @@ let g:ack_mappings = { "<space>": "<C-W><CR><C-W>T" }
 " If you have cloned fzf on ~/.fzf directory, load the
 " vimscript it contains to enable it as a plugin.
 set rtp+=~/.fzf
+
+" Additionally using fzf.vim
+" https://github.com/junegunn/fzf.vim
+nnoremap <C-p> :<C-u>Files<CR>
+nnoremap <c-_> :<C-u>Buffers<CR>
+
+" - Preview window on the right with 50% width
+" - Preview window hidden by default.
+" - CTRL-p will toggle preview window.
+let g:fzf_vim = {}
+let g:fzf_vim.buffers_jump = 1
+let g:fzf_vim.preview_window = ['hidden,right,50%', 'ctrl-p']
+
+" Build a quickfix list from the selected entries.
+function! s:build_quickfix_list(lines)
+  call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
+  copen
+  cc
+endfunction
+
+let g:fzf_action = {
+  \ 'ctrl-q': function('s:build_quickfix_list'),
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit',  
+  \ 'space': 'tab drop',
+  \ }
 
 "------------------------------------------------------------
 " Easymotion
@@ -491,27 +515,10 @@ hi SignColumn ctermbg=NONE
 hi SignatureMarkText ctermbg=NONE
 
 "------------------------------------------------------------
-" ctrlp (github.com/ctrlpvim/ctrlp.vim)
-" TIP: Use <c-z> to mark/unmark multiple files and <c-o> to open them.
-
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-
-" Bind C-_ (same as Ctrl+/) to open a fuzzy-finder list of open buffers.
-nnoremap <c-_> :<C-u>CtrlPBuffer<CR>
-
-" Always use cwd as the starting point for search.
-let g:ctrlp_working_path_mode = ''
-
-" Add ctrl+enter as a mapping to open a selection in a new tab.
-let g:ctrlp_prompt_mappings = { 'AcceptSelection("t")': ['<c-t>', '<space>'] }
-
-"------------------------------------------------------------
 " bookmarks (github.com/MattesGroeger/vim-bookmarks)
 
 let g:bookmark_save_per_working_dir = 1
 let g:bookmark_auto_save = 1
-let g:bookmark_disable_ctrlp = 1
 
 "-----------------------------------------------------------
 " vim-polyglot (github.com/sheerun/vim-polyglot)
