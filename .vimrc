@@ -480,6 +480,8 @@ let g:fzf_action = {
   \ 'space': 'tab drop',
   \ }
 
+let $FZF_DEFAULT_COMMAND = 'ag -g "" --hidden'
+
 "------------------------------------------------------------
 " Easymotion
 
