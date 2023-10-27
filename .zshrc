@@ -17,6 +17,22 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# FZF settings
+if [ -f ~/.fzf.zsh ]; then
+  # HACK: Load fzf keybindings in the zsh vi mode hook for post-init.
+  # This allows the fzf keybinds (ctrl-r in particular) to take precedence over vi modes.
+  function load_fzf_keybinds() {
+    source ~/.fzf.zsh
+
+    bindkey -M vicmd '^p' fzf-file-widget
+    bindkey -M viins '^p' fzf-file-widget
+  }
+  zvm_after_init_commands+=load_fzf_keybinds
+elif [ -d ~/.fzf ]; then
+  # If fzf is cloned, but not installed, install it now.
+  ~/.fzf/install --no-bash --key-bindings --completion --no-update-rc
+fi
+
 # Load antigen and Oh My ZSH with ZSH plugins
 #
 # Awesome Zsh Plugins: https://github.com/unixorn/awesome-zsh-plugins
@@ -95,20 +111,6 @@ zstyle ':omz:update' mode reminder    # just remind me to update when it's time
 # e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
 # Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
 # COMPLETION_WAITING_DOTS="true"
-
-# FZF settings
-if [ -f ~/.fzf.zsh ]; then
-  source ~/.fzf.zsh
-elif [ -d ~/.fzf ]; then
-  # If fzf is cloned, but not installed, install it now.
-  ~/.fzf/install --no-bash --key-bindings --completion --no-update-rc
-fi
-
-# Additionally bind ctrl-p to opening the file list in vi mode.
-if [ -d ~/.fzf ]; then
-  bindkey -M vicmd '^p' fzf-file-widget
-  bindkey -M viins '^p' fzf-file-widget
-fi
 
 # Load p10k command prompt configuration.
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
