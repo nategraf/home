@@ -406,22 +406,27 @@ nnoremap <Leader>do :<C-u>diffoff<CR>
 set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
 
 " Create a quickfix window with the files that have changed in a diff.
-" TODO: Improve this command
+" DEPRECATED
 command -nargs=? -bar GReview call setqflist(map(systemlist("git diff --pretty='' --name-only <args> --"), '{"filename": v:val, "lnum": 1}'))|cwindow|redraw!
 
 " Useful bindings for Git and Github operations.
 " Set the diffbase variable with soemthing like `let g:diffbase = "deadbeef"`
 let g:diffbase = "HEAD"
-nnoremap <Leader>gd :<C-u>Gdiff origin/HEAD...<CR>
-nnoremap <Leader>gD :<C-u>exec "Gdiff" g:diffbase . "..."<CR>
-nnoremap <Leader>gs :<C-u>GStatus<CR>
-nnoremap <Leader>gc :<C-u>GCommit<CR>
-nnoremap <Leader>gp :<C-u>Gpush<CR>
+nnoremap <Leader>gd :<C-u>Gdiff! origin/HEAD...<CR>
+nnoremap <Leader>gD :<C-u>exec "Gdiff!" g:diffbase . "..."<CR>
+nnoremap <Leader>gs :<C-u>Git<CR>
+" Add the current buffer to the index (i.e. git add). Save the buffer first.
+nnoremap <Leader>gw :<C-u>w<CR>:Gwrite<CR>
+" Set the current buffer to the value in the index (i.e. git checkout).
+nnoremap <Leader>gr :<C-u>Gread<CR>
+nnoremap <Leader>gc :<C-u>Git commit<CR>
+nnoremap <Leader>gp :<C-u>Git push<CR>
 nnoremap <Leader>gB :<C-u>Git blame<CR>
+nnoremap <Leader>gl :<C-u>Git log<CR>
 nnoremap <Leader>gb :<C-u>GBrowse!<CR>
 xnoremap <Leader>gb :GBrowse!<CR>
-nnoremap <Leader>gr :<C-u>GReview origin/HEAD...<CR>
-nnoremap <Leader>gR :<C-u>exec "GReview" g:diffbase . "..."<CR>
+nnoremap <Leader>gr :<C-u>"Git" "difftool" --name-only origin/HEAD...<CR>
+nnoremap <Leader>gR :<C-u>exec "Git" "difftool" "--name-only" g:diffbase . "..."<CR>
 
 "------------------------------------------------------------
 " The Silver Searcher (and grep) and Ack.vim
@@ -457,6 +462,7 @@ set rtp+=~/.fzf
 " https://github.com/junegunn/fzf.vim
 nnoremap <C-p> :<C-u>Files<CR>
 nnoremap <c-_> :<C-u>Buffers<CR>
+nnoremap <c-g> :<C-u>GFiles?<CR>
 
 " - Preview window on the right with 50% width
 " - Preview window hidden by default.
@@ -480,7 +486,8 @@ let g:fzf_action = {
   \ 'space': 'tab drop',
   \ }
 
-let $FZF_DEFAULT_COMMAND = 'ag -g "" --hidden'
+" Use ag as the default search command for fzf, respecting .gitignore.
+let $FZF_DEFAULT_COMMAND = 'ag --hidden -g ""'
 
 "------------------------------------------------------------
 " Easymotion

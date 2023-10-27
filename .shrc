@@ -87,6 +87,8 @@ fi
 # https://github.com/mozilla/sccache
 if which sccache > /dev/null; then
   export RUSTC_WRAPPER=sccache
+  # Pin to ~/.cache/sccache to avoid MacOS clearing it out periodically.
+  export SCCACHE_DIR=$HOME/.cache/sccache
 fi
 
 # Preference to always have terminal color in Cargo.

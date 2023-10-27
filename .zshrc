@@ -96,13 +96,20 @@ zstyle ':omz:update' mode reminder    # just remind me to update when it's time
 # Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
 # COMPLETION_WAITING_DOTS="true"
 
-# Load p10k command prompt configuration.
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
+# FZF settings
 if [ -f ~/.fzf.zsh ]; then
   source ~/.fzf.zsh
 elif [ -d ~/.fzf ]; then
   # If fzf is cloned, but not installed, install it now.
   ~/.fzf/install --no-bash --key-bindings --completion --no-update-rc
 fi
+
+# Additionally bind ctrl-p to opening the file list in vi mode.
+if [ -d ~/.fzf ]; then
+  bindkey -M vicmd '^p' fzf-file-widget
+  bindkey -M viins '^p' fzf-file-widget
+fi
+
+# Load p10k command prompt configuration.
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
