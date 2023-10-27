@@ -40,10 +40,12 @@ nnoremap <Leader>ca :<C-u>CocFzfList actions<CR>
 xnoremap <Leader>ca :CocFzfList actions<CR>
 
 " Only get suggestions when requested.
-"let g:copilot_enabled=v:false
+let g:copilot_enabled=v:false
 
 inoremap <silent><script><expr> <C-l> copilot#Accept("\<CR>")
+inoremap <C-h> <Cmd>call copilot#Suggest()<CR>
 let g:copilot_no_tab_map = v:true
+let g:copilot_no_maps = v:true
 
 " Disable mouse support.
 set mouse=
