@@ -408,8 +408,8 @@ command -nargs=? -bar GReview call setqflist(map(systemlist("git diff --pretty='
 " Useful bindings for Git and Github operations.
 " Set the diffbase variable with soemthing like `let g:diffbase = "deadbeef"`
 let g:diffbase = "HEAD"
-nnoremap <Leader>gd :<C-u>Gdiff! origin/HEAD...<CR>
-nnoremap <Leader>gD :<C-u>exec "Gdiff!" g:diffbase . "..."<CR>
+nnoremap <Leader>gd :<C-u>Gdiff origin/HEAD...<CR>
+nnoremap <Leader>gD :<C-u>exec "Gdiff" g:diffbase . "..."<CR>
 nnoremap <Leader>gs :<C-u>Git<CR>
 " Add the current buffer to the index (i.e. git add). Save the buffer first.
 nnoremap <Leader>gw :<C-u>w<CR>:Gwrite<CR>
