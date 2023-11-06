@@ -21,6 +21,7 @@ nnoremap <silent> gd <Plug>(coc-definition)
 nnoremap <silent> gy <Plug>(coc-type-definition)
 nnoremap <silent> gi <Plug>(coc-implementation)
 nnoremap <silent> gr <Plug>(coc-references)
+nnoremap <silent> gl :<C-u>CocFzfListResume<CR>
 
 "https://github.com/neoclide/coc.nvim/issues/318
 "nnoremap <silent> gd <C-u>:call CocAction('jumpDefinition', 'tab drop')<CR>
