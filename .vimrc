@@ -226,23 +226,8 @@ onoremap <silent> ]L :<C-u>call NextIndent(1, 1, 1, 1)<CR>
 "-----------------------------------------------------------
 " Directory explorer settings
 " 
-" Configure to open directories in a tree view
 "
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_browse_split = 4
-let g:netrw_altv = 1
-let g:netrw_winsize = 25
-
-" Open then directory tree immediately on start.
-"augroup ProjectDrawer
-"  autocmd!
-"  autocmd VimEnter * :Vexplore
-"augroup END
-
-" Bind Leader h to open the directory tree on the left hand side.
 " Related binding to switching tabs.
-nnoremap H :Vexplore<CR>
 
 "------------------------------------------------------------
 " Mappings {{{1
