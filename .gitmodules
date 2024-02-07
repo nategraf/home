@@ -30,12 +30,20 @@
 	path = .vim/bundle/vim-abolish
 	url = https://github.com/tpope/vim-abolish.git
 
+[submodule ".vim/bundle/fzf.vim"]
+	path = .vim/bundle/fzf.vim
+	url = https://github.com/junegunn/fzf.vim.git
+
 ### Vim git integration
 
 [submodule "vim-fugitive"]
     path = .vim/bundle/vim-fugitive
     url = https://github.com/tpope/vim-fugitive.git
 	branch = "v3.6"
+
+[submodule ".vim/bundle/vim-rhubarb"]
+	path = .vim/bundle/vim-rhubarb
+	url = https://github.com/tpope/vim-rhubarb.git
 
 ### Vim languages
 
@@ -84,9 +92,3 @@
 	path = .fzf
 	url = https://github.com/junegunn/fzf.git
 	branch = "0.40.0"
-[submodule ".vim/bundle/fzf.vim"]
-	path = .vim/bundle/fzf.vim
-	url = git@github.com:junegunn/fzf.vim.git
-[submodule ".vim/bundle/vim-rhubarb"]
-	path = .vim/bundle/vim-rhubarb
-	url = https://github.com/tpope/vim-rhubarb.git
