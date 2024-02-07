@@ -14,6 +14,13 @@ alias ovs="ovs-vsctl "
 alias kc="kubectl "
 alias netadminsh='sudo setpriv --inh-caps "+net_admin,+net_raw,+net_bind_service" --ambient-caps "+net_admin,+net_raw,+net_bind_service" --reuid $USER --regid $(id -g) --init-groups --reset-env $SHELL'
 
+if which bazelisk > /dev/null; then
+    alias bzl="bazelisk "
+elif which bazel > /dev/null; then
+    alias bzl="bazel "
+fi
+
+
 s(){
     command sudo "$@"
 }

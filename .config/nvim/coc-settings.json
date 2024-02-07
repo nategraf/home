@@ -1,5 +1,5 @@
 {
-  "[rust][jsonc]": {
+  "[rust][jsonc][c][cc][cpp][c++][objc][objcpp]": {
     "coc.preferences.formatOnSave": true
   },
   "suggest.noselect": true,
@@ -14,11 +14,19 @@
     ".projections.json",
     "Cargo.toml"
   ],
-  //"rust-analyzer.check.command": "clippy",
+  "rust-analyzer.checkOnSave": true,
+  "rust-analyzer.check.command": "clippy",
   "rust-analyzer.diagnostics.disabled": [
     "inactive-code"
   ],
-  "rust-analyzer.check.allTargets": true,
+  "rust-analyzer.server.extraEnv": {
+    "CC": "clang",
+    "CXX": "clang++",
+  },
+  "rust-analyzer.check.extraArgs": [
+    "--target-dir",
+    "target/check"
+  ],
   "markdownlint": {
     "config": {
       "default": true,
