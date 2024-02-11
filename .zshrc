@@ -81,8 +81,9 @@ zstyle ':completion:*' use-cache on
 
 setopt GLOB_COMPLETE # trigger the completion after a glob * instead of expanding it.
 
-# Add .zfunc to ZSH fpath to load completion scripts stored there.
+# Add .zfunc and asdf to ZSH fpath to load completion scripts stored there.
 fpath+="$HOME/.zfunc"
+fpath=(${ASDF_DIR}/completions $fpath)
 
 # Bind ctrl-j/k/h/l to naviagte the completion list.
 zmodload zsh/complist
