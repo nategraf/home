@@ -57,6 +57,11 @@
 	url = https://github.com/sheerun/vim-polyglot.git
 	branch = "v4.17.1"
 
+[submodule ".vim/bundle/yats.vim"]
+	path = .vim/bundle/yats.vim
+	url = https://github.com/HerringtonDarkholme/yats.vim.git
+	branch = "master"
+
 [submodule ".config/nvim/bundle/coc.nvim"]
 	path = .config/nvim/bundle/coc.nvim
 	url = https://github.com/neoclide/coc.nvim
