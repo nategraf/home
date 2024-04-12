@@ -35,6 +35,7 @@
       "no-bare-urls": false
     }
   },
+  "biome.enable": false,
   "languageserver": {
     // Install clangd to enable https://clangd.llvm.org/installation
     // NOTE: Also create a compile_commands.json file for each project.
