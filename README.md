@@ -4,9 +4,10 @@ In the home directory, running the following commands will setup this repo (and 
 
 ```sh
 git init -b main
-git remote add https://github.com/nategraf/home
+git remote add https://github.com/nategraf/home origin
+git fetch
 git reset --hard origin/main
-git submodule update --init
+git submodule update --init --recursive
 ```
 
 ## Tools
@@ -16,7 +17,7 @@ Here is a listed of the tools that should additionally be installed to make use 
 * git
 * zsh
 * tmux
-* neovim (https://github.com/neovim/neovim/blob/master/INSTALL.md)
+* neovim (https://github.com/neovim/neovim/blob/master/INSTALL.md) (Hint: use AppImage on Ubuntu)
 * bat (https://github.com/sharkdp/bat) (`cargo install --locked bat`)
 * delta (https://github.com/dandavison/delta.git) (`cargo insall --locked git-delta`)
 * mosh (https://mosh.org/)
