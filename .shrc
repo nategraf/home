@@ -69,7 +69,7 @@ fi
 
 ### Bun (JS runtime)
 
-if [ -d "$HOME/.bun/_bun" ]; then
+if [ -f "$HOME/.bun/_bun" ]; then
   . "$HOME/.bun/_bun"
 
   export BUN_INSTALL="$HOME/.bun"
