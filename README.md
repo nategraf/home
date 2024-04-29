@@ -4,7 +4,7 @@ In the home directory, running the following commands will setup this repo (and 
 
 ```sh
 git init -b main
-git remote add https://github.com/nategraf/home origin
+git remote add origin https://github.com/nategraf/home
 git fetch
 git reset --hard origin/main
 git submodule update --init --recursive
