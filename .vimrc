@@ -536,7 +536,7 @@ set background=dark
 if &diff
   colorscheme jellybeans
 else
-  colorscheme jellybeans
+  colorscheme papercolor
 endif
 
 " Override for jellybeans to use the terminal background instead of its own color.
