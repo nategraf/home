@@ -29,6 +29,7 @@
 
 [delta]
     line-numbers = true
+    navigate = true
 
 [diff]
     colorMoved = default
