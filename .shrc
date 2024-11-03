@@ -109,6 +109,12 @@ fi
 # Can be turned off with `unset CARGO_TERM_COLOR`
 export CARGO_TERM_COLOR=always
 
+### Foundry
+
+if [ -d "$HOME/.foundry" ]; then
+  export PATH=$HOME/.foundry/bin:$PATH
+fi
+
 ### Containers
 
 if [ -d "$HOME/.docker/bin" ]; then
