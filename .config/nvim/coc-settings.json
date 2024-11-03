@@ -6,26 +6,27 @@
   "suggest.autoTrigger": "always",
   "workspace.ignoredFolders": [
     "$HOME/.cargo/**",
-    "$HOME/.rustup/**"
+    "$HOME/.rustup/**",
+    "$HOME"
   ],
   "workspace.rootPatterns": [
     ".git",
     ".hg",
     ".projections.json",
-    "Cargo.toml"
   ],
   "rust-analyzer.checkOnSave": true,
   "rust-analyzer.check.command": "clippy",
   "rust-analyzer.diagnostics.disabled": [
-    "inactive-code"
+    "inactive-code",
+    "unlinked-file",
   ],
   "rust-analyzer.server.extraEnv": {
     "CC": "clang",
-    "CXX": "clang++",
+    "CXX": "clang++"
   },
   "rust-analyzer.check.extraArgs": [
     "--target-dir",
-    "target/check"
+    "target/analyzer"
   ],
   "markdownlint": {
     "config": {
