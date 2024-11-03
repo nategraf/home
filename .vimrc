@@ -243,6 +243,10 @@ vnoremap // y/<C-R>"<CR>
 nnoremap J gT
 nnoremap K gt
 
+" Override J and K mappings in fugitive buffers
+autocmd FileType fugitive nnoremap <buffer> J gT
+autocmd FileType fugitive nnoremap <buffer> K gt
+
 " Leader bindings for quick execution
 " -----------------------------------
 
