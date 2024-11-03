@@ -166,29 +166,31 @@ reqcaps() {
 vimr() {
     vim -R - $@
 }
+[ -z "$BASH_VERSION" ] || export -f vimr
+
+dkln() {
+  if [ -z "$1" ]; then
+      echo "usage: dkln <container> <ln path>" && return 1
+  fi
+
+  id=$($DOCKER_CMD_PREFIX docker inspect -f '{{.Id}}' "$1")
+  if [ -z "$id" ]; then
+      echo "container $1 not found" && return 1
+  fi
+  shift
+
+  root="$(sudo cat "/var/run/docker/runtime-runc/moby/$id/state.json" | python3 -c 'import sys, json; sys.stdout.write(json.load(sys.stdin)["config"]["rootfs"])')"
+  if [ -z "$root" ]; then
+      echo "failed to identify rootfs for $id" && return 1
+  fi
+
+  sudo ln -s "$root" $@
+}
+[ -z "$BASH_VERSION" ] || export -f dkln
 
 # Only define the following functions when in Bash.
 # These use non-standard names and I am too stuborn to change them.
 if [ -n "$BASH_VERSION" ]; then
-  dkln() {
-      if [ -z "$1" ]; then
-          echo "usage: dkln <container> <ln path>" && return 1
-      fi
-
-      id=$($DOCKER_CMD_PREFIX docker inspect -f '{{.Id}}' $1)
-      if [ -z "$id" ]; then
-          echo "container $1 not found" && return 1
-      fi
-      shift
-
-      root="$(sudo cat /var/run/docker/runtime-runc/moby/$id/state.json | python3 -c 'import sys, json; sys.stdout.write(json.load(sys.stdin)["config"]["rootfs"])')"
-      if [ -z "$root" ]; then
-          echo "failed to identify rootfs for $id" && return 1
-      fi
-
-      sudo ln -s $root $@
-  }
-  export -f dkln
 
   # Kill all but the most recent mosh session.
   mosh-highlander() {
