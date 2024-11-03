@@ -72,10 +72,6 @@
 	url = https://github.com/antoinemadec/coc-fzf.git
 	branch = release
 
-[submodule ".config/nvim/pack/github/start/copilot.vim"]
-	path = .config/nvim/pack/github/start/copilot.vim
-	url = https://github.com/github/copilot.vim
-
 ### Themes
 
 [submodule ".alacritty-colorscheme"]
