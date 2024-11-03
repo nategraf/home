@@ -372,6 +372,19 @@ nnoremap <Leader>.x :<C-u>if exists("g:syntax_on") <BAR> syntax off <BAR> else <
 " Rust options
 let g:rustfmt_autosave = 1
 
+augroup CargoSort
+  autocmd!
+  autocmd BufWritePost Cargo.toml :silent! !cargo sort %:p:h
+augroup END
+
+"------------------------------------------------------------
+" Solidity options
+
+augroup ForgeFmt
+  autocmd!
+  autocmd BufWritePost *.sol :silent! !forge fmt %:p:h
+augroup END
+
 "------------------------------------------------------------
 " Diff leader commands
 
