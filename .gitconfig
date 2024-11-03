@@ -9,6 +9,7 @@
     st = status
     ci = commit -v
     co = checkout
+    com = checkout origin/HEAD
     br = branch
     mt = mergetool
 
@@ -21,6 +22,8 @@
     diff-branch = !git log --oneline --graph --decorate --left-right --cherry-mark --no-merges --date=relative HEAD...$1
     current-branch = rev-parse --abbrev-ref HEAD
     tree = ls-tree -r HEAD
+    # setup the origin/HEAD ref on origin
+    set-origin-head = git remote set-head origin -a
 
 [checkout]
     # When running `git checkout <branch>` do not automatically create a tracking branch for the
