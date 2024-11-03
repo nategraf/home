@@ -116,3 +116,10 @@ zstyle ':omz:update' mode reminder    # just remind me to update when it's time
 # Load p10k command prompt configuration.
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# bun completions
+[ -s "/Users/victorgraf/.bun/_bun" ] && source "/Users/victorgraf/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
