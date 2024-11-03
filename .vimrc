@@ -223,14 +223,8 @@ onoremap <silent> ]l :<C-u>call NextIndent(0, 1, 0, 1)<CR>
 onoremap <silent> [L :<C-u>call NextIndent(1, 0, 1, 1)<CR>
 onoremap <silent> ]L :<C-u>call NextIndent(1, 1, 1, 1)<CR>
 
-"-----------------------------------------------------------
-" Directory explorer settings
-" 
-"
-" Related binding to switching tabs.
-
 "------------------------------------------------------------
-" Mappings {{{1
+" Mappings
 "
 " Useful mappings
 
