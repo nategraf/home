@@ -4,10 +4,12 @@ source ~/.vimrc
 
 set updatetime=300
 
-let g:LanguageClient_serverCommands = { 'rust': ['rust-analyzer'] }
-
 " Set the set of extensions that should be installed.
 let g:coc_global_extensions = ['coc-json', 'coc-rust-analyzer', 'coc-markdownlint']
+
+" Feed more memory to MolochJS in hopes of appeasing it.
+" TIP: Add --cpu-prof and --heap-prof to get profiles.
+let g:coc_node_args = ['--max-old-space-size=8192']
 
 " Tone down the inlay hint text brightness a bit to make it easier to distinguish from code.
 :hi CocInlayHint guifg=DarkGrey
