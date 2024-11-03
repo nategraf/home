@@ -23,7 +23,7 @@
     current-branch = rev-parse --abbrev-ref HEAD
     tree = ls-tree -r HEAD
     # setup the origin/HEAD ref on origin
-    set-origin-head = git remote set-head origin -a
+    set-origin-head = remote set-head origin -a
 
 [checkout]
     # When running `git checkout <branch>` do not automatically create a tracking branch for the
