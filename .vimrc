@@ -233,8 +233,8 @@ onoremap <silent> ]L :<C-u>call NextIndent(1, 1, 1, 1)<CR>
 map Y y$
 
 " Add the ability to insert a single charecter by pressing 's' or 'S'
-:nnoremap S :<C-u>exec "normal i".nr2char(getchar())."\e"<CR>
-:nnoremap s :<C-u>exec "normal a".nr2char(getchar())."\e"<CR>
+nnoremap S :<C-u>exec "normal i".nr2char(getchar())."\e"<CR>
+nnoremap s :<C-u>exec "normal a".nr2char(getchar())."\e"<CR>
 
 " Map // in visual mode to search under selection
 vnoremap // y/<C-R>"<CR>
