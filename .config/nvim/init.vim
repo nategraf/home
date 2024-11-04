@@ -45,8 +45,20 @@ xnoremap <Leader>ca :CocFzfList actions<CR>
 " Only get suggestions when requested.
 let g:copilot_enabled=v:false
 
-inoremap <silent><script><expr> <C-l> copilot#Accept("\<CR>")
-inoremap <C-h> <Cmd>call copilot#Suggest()<CR>
+inoremap <silent><script><expr> <C-l> copilot#Accept("")
+
+" Show first suggestion or cycle through them
+function! CheckCopilotOrSuggest()
+    if copilot#GetDisplayedSuggestion().text == ''
+        return "\<Cmd>call copilot#Suggest()\<CR>"
+    else
+        return "\<Cmd>call copilot#Next()\<CR>"
+    endif
+endfunction
+
+" Forward with Ctrl-h and back with Shift-Ctrl-h
+inoremap <expr> <C-h> CheckCopilotOrSuggest()
+
 let g:copilot_no_tab_map = v:true
 let g:copilot_no_maps = v:true
 
