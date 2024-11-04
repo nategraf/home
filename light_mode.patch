@@ -1,0 +1,38 @@
+diff --git a/.alacritty.yml b/.alacritty.yml
+index e380ef4..4100073 100644
+--- a/.alacritty.yml
++++ b/.alacritty.yml
+@@ -15,7 +15,7 @@
+ # https://github.com/alacritty/alacritty-theme
+ import:
+   # ~/.alacritty-colorscheme/themes/tomorrow_night_bright.yaml
+-  - ~/.alacritty-colorscheme/themes/papercolor_dark.yaml
++  - ~/.alacritty-colorscheme/themes/papercolor_light.yaml
+ 
+ # Any items in the `env` entry below will be added as
+ # environment variables. Some entries may override variables
+diff --git a/.gitconfig b/.gitconfig
+index 529f459..19ab583 100644
+--- a/.gitconfig
++++ b/.gitconfig
+@@ -30,6 +30,7 @@
+ [delta]
+     line-numbers = true
+     navigate = true
++    light = true
+ 
+ [diff]
+     colorMoved = default
+diff --git a/.vimrc b/.vimrc
+index 0cccbaa..d455755 100644
+--- a/.vimrc
++++ b/.vimrc
+@@ -531,7 +531,7 @@ let g:polyglot_disabled = ['csv']
+ " * papercolor (https://github.com/NLKNguyen/papercolor-theme)
+ 
+ set termguicolors
+-set background=dark
++set background=light
+ 
+ if &diff
+   colorscheme jellybeans
