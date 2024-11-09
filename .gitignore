@@ -63,3 +63,8 @@
 
 # Include asdf
 !.asdf
+
+# Include utility scripts
+!/bin
+/bin/*
+!/bin/theme-switcher.sh
