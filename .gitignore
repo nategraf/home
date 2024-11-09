@@ -2,67 +2,67 @@
 *
 
 # Include git repo information
-!.gitignore
-!.gitignore.global
-!.gitmodules
-!.gitconfig
-!.git-completion.bash
+!/.gitignore
+!/.gitignore.global
+!/.gitmodules
+!/.gitconfig
+!/.git-completion.bash
 
 # Include vim profile
-!.vim
-!.vim/**
-.vim/%*.sw*
-.vim/spell/**
-.vim/cache/**
-.vim/.netrwhist
-!.vimrc
+!/.vim
+!/.vim/**
+/.vim/%*.sw*
+/.vim/spell/**
+/.vim/cache/**
+/.vim/.netrwhist
+!/.vimrc
 
 # Include shell profile
-!.bashrc
-!.zshrc
-!.rc.sh
-!.aliases.sh
-!.profile
-!.inputrc
-!.oh-my-zsh
-!.antigen.zsh
-!.p10k.zsh
-!.fzf
+!/.bashrc
+!/.zshrc
+!/.rc.sh
+!/.aliases.sh
+!/.profile
+!/.inputrc
+!/.oh-my-zsh
+!/.antigen.zsh
+!/.p10k.zsh
+!/.fzf
 
 # Include tmux profile
-!.tmux.conf
+!/.tmux.conf
 !/light_mode.patch
 
 # Include IPython profile
-!.ipython/
-.ipython/*
-!.ipython/profile_default/
-.ipython/profile_default/*
-!.ipython/profile_default/ipython_config.py
+!/.ipython/
+/.ipython/*
+!/.ipython/profile_default/
+/.ipython/profile_default/*
+!/.ipython/profile_default/ipython_config.py
 
 # Include alacritty terminal profile
-!.alacritty.yml
-!.alacritty-colorscheme
-!.alacritty-colorscheme/**
+!/.alacritty.yml
+!/.alacritty-colorscheme
+!/.alacritty-colorscheme/**
 
 # Include chosen files in the .config dir.
-!.config
-.config/*
-!.config/git
-!.config/git/**
-!.config/gh
-.config/gh/**
-!.config/gh/config.yml
-!.config/nvim
-!.config/nvim/**
+!/.config
+/.config/*
+!/.config/git
+!/.config/git/**
+!/.config/gh
+/.config/gh/**
+!/.config/gh/config.yml
+!/.config/nvim
+!/.config/nvim/**
 
 # Include global settings for cargo
-!.cargo/
-.cargo/*
-!.cargo/config.toml
+!/.cargo/
+/.cargo/*
+!/.cargo/config.toml
 
 # Include asdf
-!.asdf
+!/.asdf
 
 # Include utility scripts
 !/bin
