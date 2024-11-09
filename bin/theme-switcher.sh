@@ -30,7 +30,7 @@ handle_theme_change() {
 
 # Create systemd service file
 create_service_file() {
-    cat >| "$HOME/.config/systemd/user/$SERVICE_NAME.service" << EOL
+    cat > "$HOME/.config/systemd/user/$SERVICE_NAME.service" << EOL
 [Unit]
 Description=Monitor system theme changes and apply patches
 PartOf=graphical-session.target
