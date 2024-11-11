@@ -10,6 +10,7 @@
     ci = commit -v
     co = checkout
     com = checkout origin/HEAD
+    fcom = !git fetch && git checkout origin/HEAD
     br = branch
     mt = mergetool
 
